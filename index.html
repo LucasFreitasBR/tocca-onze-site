@@ -215,7 +215,8 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 @keyframes ping{0%{transform:scale(.4); opacity:.9} 100%{transform:scale(2.6); opacity:0}}
 .lift{position:absolute; width:var(--cw, 250px); padding:0; border:0; text-align:left; cursor:pointer; background:var(--surface); border-radius:20px; overflow:hidden; transform-origin:50% 100%; will-change:transform, filter}
 .lift .art{display:block; height:calc(var(--cw, 250px) * .56)}
-.lift .art svg{display:block; width:100%; height:100%}
+.lift .art svg, .lift .art img{display:block; width:100%; height:100%}
+.lift .art img{object-fit:cover; background:var(--surface-2)}
 .lift .lb{display:block; padding:14px 16px 16px}
 .lift strong{display:block; font-family:var(--f-display); font-size:var(--step-lead); font-weight:700; letter-spacing:-.02em; line-height:1.15}
 .lift small{display:block; margin-top:4px; font-size:var(--step-small); color:var(--muted)}
@@ -859,12 +860,15 @@ function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let
 /* ---------- Data ---------- */
 const REGIONS = [
   { id: 'porto', name: 'Porto de Galinhas', state: 'Ipojuca · PE', y: 1900, art: 'tower',
+    photo: { src: 'assets/destinos/porto-de-galinhas.jpg', pos: '50% 56%', alt: 'Jangadas coloridas nas piscinas naturais de Porto de Galinhas, com o mar verde-claro na frente' },
     text: 'Piscinas naturais formadas pelos recifes, vila de pedestres e a maior rede de hospedagem do litoral sul.',
     dist: '≈ 60 km do Aeroporto do Recife', perfil: 'Procura o ano inteiro. Studios e flats giram rápido na temporada.' },
   { id: 'carneiros', name: 'Praia dos Carneiros', state: 'Tamandaré · PE', y: 1200, art: 'bungalow',
+    photo: { src: 'assets/destinos/carneiros.jpg', pos: '38% 55%', alt: 'Igrejinha de São Benedito na beira da Praia dos Carneiros ao pôr do sol, entre coqueiros' },
     text: 'Coqueirais, águas calmas e a igrejinha de São Benedito na beira do mar.',
     dist: '≈ 100 km do Aeroporto do Recife', perfil: 'Público de alto padrão. Bangalôs e casas com diárias mais altas.' },
   { id: 'maragogi', name: 'Maragogi', state: 'Alagoas', y: 500, art: 'flats',
+    photo: { src: 'assets/destinos/maragogi.jpg', pos: '50% 55%', alt: 'Vista aérea das galés de Maragogi, com catamarãs e banhistas entre os recifes' },
     text: 'As galés, piscinas naturais a cerca de 6 km da costa, e a Rota Ecológica dos Milagres logo ao sul.',
     dist: '≈ 130 km do Recife e de Maceió', perfil: 'Ticket de entrada menor e turismo em crescimento.' }
 ];
@@ -1356,7 +1360,8 @@ function buildFly() {
     const pin = document.createElement('div'); pin.className = 'pin'; plane.appendChild(pin);
     const sh = document.createElement('div'); sh.className = 'lift-shadow'; plane.appendChild(sh);
     const b = document.createElement('button'); b.className = 'lift'; b.type = 'button';
-    b.innerHTML = `<span class="art">${art(reg.art, 100 + i)}</span><span class="lb"><strong>${reg.name}</strong><small>${devs.length} empreendimentos · ${min ? 'a partir de ' + short(min) : 'valores em breve'}</small></span>`;
+    const pic = reg.photo ? `<img src="${reg.photo.src}" alt="${reg.photo.alt}" style="object-position:${reg.photo.pos}" decoding="async" draggable="false">` : art(reg.art, 100 + i);
+    b.innerHTML = `<span class="art">${pic}</span><span class="lb"><strong>${reg.name}</strong><small>${devs.length} empreendimentos · ${min ? 'a partir de ' + short(min) : 'valores em breve'}</small></span>`;
     b.addEventListener('click', () => { setFilter(reg.id); goTo('#empreendimentos'); });
     plane.appendChild(b);
     return { reg, pin, sh, b };
