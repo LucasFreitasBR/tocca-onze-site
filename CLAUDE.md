@@ -49,8 +49,8 @@ Direção da taste-skill: "O lugar carrega a página" (seed 161212063, `.taste-s
 Tudo fica em `REGIONS`, `DEVS` e `SEASON`, no início do script.
 - **Diária (`d`) e ocupação (`o`)** de cada tipologia são **médias reais de mercado do Airbnb** na cidade, para o mesmo número de quartos, segundo a AirROI (out/2025 a set/2026): Ipojuca para Porto de Galinhas, Tamandaré para Carneiros e Maragogi para Maragogi e Japaratinga. Loft conta como studio e loft duplex como 1 quarto. Maragogi não tem amostra de studio, então o studio do Galés usa a média de 1 quarto. São médias de todos os anúncios, não do imóvel em si.
 - **`SEASON`** = RevPAR mensal de Ipojuca dividido pela média do ano (AirROI, set/2025 a ago/2026). Janeiro é o pico (1,90) e maio o mês mais fraco (0,64).
-- **Real**: a marca tocca onze e o logo.
-- **Ainda fictícios**: empreendimentos, nomes, preços (`p`), áreas (`a`), datas de entrega, CRECI, WhatsApp e endereço.
+- **Real**: a marca tocca onze e o logo, e o empreendimento **Fox Carneiros** (Praia dos Carneiros), no lugar do antigo exemplo Pontal dos Carneiros. Ele tem 5 perspectivas da incorporadora em `assets/empreendimentos/fox-carneiros/` (capa: fachada à noite, recortada com `object-position` 50% 38%) e `units: []` até chegarem os valores. Sem tipologias, o card mostra "Valores e tipologias em breve" e "Ver fotos", e o modal vira galeria (setas, teclado e arrasto) com a classe `.no-units`, que esconde as métricas, o gráfico e o botão do simulador e troca a ação por "Quero saber os valores". Empreendimentos com `photos` usam a primeira foto como capa (`devCover()`) e ganham galeria no modal (`galMarkup()`, `galGo()`).
+- **Ainda fictícios**: os outros 5 empreendimentos, nomes, preços (`p`), áreas (`a`), datas de entrega, CRECI, WhatsApp e endereço.
 - Fórmula: receita anual = soma mensal de `diária × dias × ocupação × peso sazonal`; rentabilidade bruta = receita / preço.
 
 Médias da AirROI por cidade (12 meses até set/2026): Ipojuca R$ 647 de diária e 37,3% de ocupação; Tamandaré R$ 753 e 29,9%; Maragogi R$ 670 e 32,0%.

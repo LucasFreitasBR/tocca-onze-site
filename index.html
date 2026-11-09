@@ -267,8 +267,9 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 .dev-card:hover .dev-in{background:var(--surface-2)}
 .dev-art{position:relative; display:block; aspect-ratio:4/3; overflow:hidden; max-width:100%}
 .dev-art-in{position:absolute; inset:0 -12%; will-change:transform}
-.dev-art-in svg{display:block; width:100%; height:100%; transition:transform 1s var(--ease)}
-.dev-card:hover .dev-art-in svg{transform:scale(1.06)}
+.dev-art-in svg, .dev-art-in img{display:block; width:100%; height:100%; transition:transform 1s var(--ease)}
+.dev-art-in img{object-fit:cover; background:var(--surface-2)}
+.dev-card:hover .dev-art-in svg, .dev-card:hover .dev-art-in img{transform:scale(1.06)}
 .dev-badge{position:absolute; top:14px; left:14px; padding:6px 12px; border-radius:999px; font-size:var(--step-small); font-weight:700; background:var(--surface); color:var(--ink)}
 .dev-body{display:block; padding:20px 22px 22px}
 .dev-place{display:block; font-size:var(--step-small); font-weight:700; color:var(--sea-text)}
@@ -298,7 +299,25 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 .m-art{position:relative; min-height:100%; overflow:hidden}
 .m-art-in{position:absolute; inset:-6%; will-change:transform}
 .m-art svg{display:block; width:100%; height:100%}
-.m-art .dev-badge{z-index:1}
+.m-art .dev-badge{z-index:3}
+/* galeria de fotos do modal (empreendimentos com fotos reais) */
+.m-gal{position:absolute; inset:0; overflow:hidden; background:var(--surface-2); touch-action:pan-y; user-select:none; -webkit-user-select:none}
+.m-gal-track{display:flex; height:100%; transition:transform .6s var(--ease); will-change:transform}
+.m-gal-track img{flex:0 0 100%; display:block; width:100%; height:100%; object-fit:cover; pointer-events:none}
+.m-gal-btn{position:absolute; z-index:2; top:50%; translate:0 -50%; display:grid; place-items:center; width:44px; height:44px; padding:0; border:0; border-radius:50%; background:var(--surface); color:var(--ink); cursor:pointer; transition:background-color .3s, transform .3s var(--ease)}
+.m-gal-btn:hover{background:var(--coral); color:var(--coral-ink)}
+.m-gal-btn:active{transform:scale(.92)}
+.m-gal-btn svg{width:20px; height:20px}
+.m-gal-btn.prev{left:14px}
+.m-gal-btn.next{right:14px}
+.m-gal-foot{position:absolute; z-index:2; left:14px; right:14px; bottom:14px; display:flex; justify-content:space-between; align-items:center; gap:8px}
+.m-gal-count, .m-gal-note{padding:6px 12px; border-radius:999px; background:var(--surface); color:var(--ink); font-size:var(--step-small); font-weight:700; font-variant-numeric:tabular-nums}
+.m-gal-note{font-weight:500}
+@media (prefers-reduced-motion: reduce){ .m-gal-track{transition:none} }
+/* sem valores ainda: some o seletor de tipologia, as métricas, o gráfico e o botão do simulador */
+.modal-panel.no-units .seg, .modal-panel.no-units .metrics, .modal-panel.no-units .m-season, .modal-panel.no-units #mSim{display:none}
+.modal-panel.no-units #mVisit{background:var(--coral); color:var(--coral-ink)}
+@media (min-width:821px){ .modal-panel.no-units{min-height:min(560px, 86vh)} }
 .m-body{padding:clamp(22px, 3vw, 40px); min-width:0}
 .m-name{font-size:var(--step-sub); margin-top:10px}
 .m-kind{color:var(--muted); margin-top:6px}
@@ -639,7 +658,7 @@ html.js .pass{display:block}
       <button class="round" id="next" aria-label="Próximo empreendimento"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 4l6 6-6 6"/></svg></button>
     </div>
   </div>
-  <p class="wrap disclaimer">Empreendimentos, imagens, preços e áreas ilustrativos para este protótipo. Diária e ocupação são médias do Airbnb na cidade para o mesmo número de quartos (AirROI, out/2025 a set/2026).</p>
+  <p class="wrap disclaimer">O Fox Carneiros é um empreendimento real, com valores em breve e perspectivas ilustrativas. Os demais empreendimentos, imagens, preços e áreas são exemplos deste protótipo. Diária e ocupação são médias do Airbnb na cidade para o mesmo número de quartos (AirROI, out/2025 a set/2026).</p>
 </section>
 
 <section class="sim" id="simulador">
@@ -820,8 +839,17 @@ const DEVS = [
     units: [{ l: 'Studio', a: 34, p: 489000, d: 324, o: .36 }, { l: '1 quarto', a: 52, p: 689000, d: 407, o: .38 }, { l: '2 quartos', a: 78, p: 1040000, d: 647, o: .39 }] },
   { id: 'cupe', seed: 23, art: 'lofts', name: 'Mar de Cupe Lofts', region: 'porto', place: 'Cupe · Porto de Galinhas', kind: 'Lofts com rooftop e piscina', delivery: 'Pronto para morar',
     units: [{ l: 'Loft', a: 40, p: 525000, d: 324, o: .36 }, { l: 'Loft duplex', a: 62, p: 760000, d: 407, o: .38 }] },
-  { id: 'pontal', seed: 37, art: 'bungalow', name: 'Pontal dos Carneiros', region: 'carneiros', place: 'Praia dos Carneiros · Tamandaré', kind: 'Bangalôs entre coqueiros', delivery: 'Entrega jun/2027',
-    units: [{ l: 'Bangalô 1 quarto', a: 60, p: 890000, d: 483, o: .31 }, { l: 'Bangalô 2 quartos', a: 95, p: 1380000, d: 672, o: .31 }] },
+  // Fox Carneiros: empreendimento real, com as perspectivas da incorporadora. Valores e tipologias chegam depois:
+  // enquanto units estiver vazio, card e modal mostram "em breve" e não calculam rentabilidade.
+  { id: 'fox-carneiros', seed: 37, art: 'bungalow', name: 'Fox Carneiros', region: 'carneiros', place: 'Praia dos Carneiros · Tamandaré', kind: 'Residencial com rooftop e piscina', delivery: 'Valores em breve',
+    photos: [
+      { src: 'assets/empreendimentos/fox-carneiros/fachada-noite.jpg', pos: '50% 38%', alt: 'Fachada do Fox Carneiros ao entardecer, com as janelas acesas e coqueiros na frente' },
+      { src: 'assets/empreendimentos/fox-carneiros/piscina-rooftop.jpg', pos: '40% 50%', alt: 'Piscina no rooftop do Fox Carneiros, com deck, guarda-sóis e o mar ao fundo' },
+      { src: 'assets/empreendimentos/fox-carneiros/terraco.jpg', pos: '40% 50%', alt: 'Terraço com coqueiros, jardim e mesas, com vista para o mar' },
+      { src: 'assets/empreendimentos/fox-carneiros/salao.jpg', pos: '45% 50%', alt: 'Salão de festas com mesas redondas, luminárias de palha e janelas para o mar' },
+      { src: 'assets/empreendimentos/fox-carneiros/fachada-dia.jpg', pos: '50% 45%', alt: 'Fachada do Fox Carneiros de dia, com varandas, ripados de madeira e coqueiros' }
+    ],
+    units: [] },
   { id: 'gales', seed: 41, art: 'flats', name: 'Galés Maragogi', region: 'maragogi', place: 'Burgalhau · Maragogi', kind: 'Flats com serviço de hotel', delivery: 'Entrega set/2027',
     units: [{ l: 'Studio', a: 30, p: 385000, d: 311, o: .32 }, { l: '1 quarto', a: 48, p: 560000, d: 311, o: .32 }, { l: '2 quartos', a: 70, p: 790000, d: 441, o: .34 }] },
   { id: 'tamandare', seed: 53, art: 'block', name: 'Tamandaré Pé na Areia', region: 'carneiros', place: 'Centro · Tamandaré', kind: 'Apartamentos frente mar', delivery: 'Entrega mar/2028',
@@ -1241,11 +1269,11 @@ function buildFly() {
   $$('.lift, .lift-shadow, .pin', plane).forEach(n => n.remove());
   lifts = REGIONS.map((reg, i) => {
     const devs = DEVS.filter(d => d.region === reg.id);
-    const min = Math.min(...devs.flatMap(d => d.units.map(u => u.p)));
+    const prices = devs.flatMap(d => d.units.map(u => u.p)), min = prices.length ? Math.min(...prices) : 0;
     const pin = document.createElement('div'); pin.className = 'pin'; plane.appendChild(pin);
     const sh = document.createElement('div'); sh.className = 'lift-shadow'; plane.appendChild(sh);
     const b = document.createElement('button'); b.className = 'lift'; b.type = 'button';
-    b.innerHTML = `<span class="art">${art(reg.art, 100 + i)}</span><span class="lb"><strong>${reg.name}</strong><small>${devs.length} empreendimentos · a partir de ${short(min)}</small></span>`;
+    b.innerHTML = `<span class="art">${art(reg.art, 100 + i)}</span><span class="lb"><strong>${reg.name}</strong><small>${devs.length} empreendimentos · ${min ? 'a partir de ' + short(min) : 'valores em breve'}</small></span>`;
     b.addEventListener('click', () => { setFilter(reg.id); goTo('#empreendimentos'); });
     plane.appendChild(b);
     return { reg, pin, sh, b };
@@ -1344,22 +1372,28 @@ const track = $('#track'), carVp = $('#carVp'), carBar = $('#carBar');
 let filter = 'all';
 const car = { x: 0, target: 0, min: 0, step: 300, offs: [], cards: [], drag: false, moved: false, sx: 0, st: 0, v: 0, lx: 0, lt: 0, block: false, pid: null };
 function bestYield(d) { return Math.max(...d.units.map(u => grossYear(u.d, u.o) / u.p)); }
+// capa do empreendimento: a primeira foto quando houver, senão a ilustração
+const devCover = (d, eager) => d.photos && d.photos.length
+  ? `<img src="${d.photos[0].src}" alt="${d.photos[0].alt}" style="object-position:${d.photos[0].pos || '50% 50%'}"${eager ? '' : ' loading="lazy"'} decoding="async">`
+  : art(d.art, d.seed);
 function renderCards() {
   const list = DEVS.filter(d => filter === 'all' || d.region === filter);
   track.innerHTML = list.map(d => {
-    const min = Math.min(...d.units.map(u => u.p));
-    return `<button class="dev-card" data-id="${d.id}" type="button" aria-label="${d.name}, ver valores">
+    const has = d.units.length > 0, min = has ? Math.min(...d.units.map(u => u.p)) : 0;
+    return `<button class="dev-card" data-id="${d.id}" type="button" aria-label="${d.name}, ${has ? 'ver valores' : 'ver fotos'}">
       <span class="dev-in">
-        <span class="dev-art"><span class="dev-art-in">${art(d.art, d.seed)}</span><span class="dev-badge">${d.delivery}</span></span>
+        <span class="dev-art"><span class="dev-art-in">${devCover(d)}</span><span class="dev-badge">${d.delivery}</span></span>
         <span class="dev-body">
           <span class="dev-place">${d.place}</span>
           <span class="dev-name">${d.name}</span>
-          <span class="dev-kind">${d.kind} · ${d.units.length} ${d.units.length > 1 ? 'tipologias' : 'tipologia'}</span>
-          <span class="dev-rows">
-            <span class="dev-row"><span>A partir de</span><strong>${brl.format(min)}</strong></span>
-            <span class="dev-row"><span>Rentab. bruta estimada</span><strong>até ${pct1(bestYield(d) * 100)} a.a.</strong></span>
+          <span class="dev-kind">${d.kind}${has ? ` · ${d.units.length} ${d.units.length > 1 ? 'tipologias' : 'tipologia'}` : ''}</span>
+          <span class="dev-rows">${has
+            ? `<span class="dev-row"><span>A partir de</span><strong>${brl.format(min)}</strong></span>
+            <span class="dev-row"><span>Rentab. bruta estimada</span><strong>até ${pct1(bestYield(d) * 100)} a.a.</strong></span>`
+            : `<span class="dev-row"><span>Valores e tipologias</span><strong>em breve</strong></span>
+            <span class="dev-row"><span>Fotos do projeto</span><strong>${d.photos ? d.photos.length : 0}</strong></span>`}
           </span>
-          <span class="dev-open">Ver valores <i>+</i></span>
+          <span class="dev-open">${has ? 'Ver valores' : 'Ver fotos'} <i>+</i></span>
         </span>
       </span></button>`;
   }).join('');
@@ -1470,6 +1504,7 @@ let mDev = null, mUnit = 0, mFrom = null, lastFocus = null;
 mBars.innerHTML = SEASON.map((_, i) => `<i class="${HIGH.has(i) ? 'hi' : ''}"></i>`).join('');
 const barEls = $$('i', mBars);
 function selectUnit(i) {
+  if (!mDev.units.length) return;
   mUnit = i; const u = mDev.units[i];
   $$('button', mSeg).forEach((b, k) => b.setAttribute('aria-pressed', String(k === i)));
   const b = $$('button', mSeg)[i], sp = $('.seg-pill', mSeg);
@@ -1484,9 +1519,43 @@ function selectUnit(i) {
   const m = monthly(u.d, u.o), mx = Math.max(...m.map(x => x.rev));
   barEls.forEach((el, k) => el.style.height = (m[k].rev / mx * 100).toFixed(1) + '%');
 }
+/* Galeria de fotos do modal: uma foto por vez, setas, contador, arrastar no celular e setas do teclado */
+const NOTE_DEFAULT = $('.m-note', panel).textContent;
+const NOTE_SOON = 'Valores, tipologias e datas serão divulgados em breve. As imagens são perspectivas ilustrativas do empreendimento.';
+let gal = { i: 0, n: 0 };
+function galMarkup(dev) {
+  const ph = dev.photos;
+  return `<div class="m-gal" id="mGal" role="group" aria-roledescription="galeria" aria-label="Fotos do ${dev.name}">
+    <div class="m-gal-track">${ph.map((p, k) => `<img src="${p.src}" alt="${p.alt}" style="object-position:${p.pos || '50% 50%'}"${k ? ' loading="lazy"' : ''} decoding="async">`).join('')}</div>
+    <button class="m-gal-btn prev" type="button" aria-label="Foto anterior"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4l-6 6 6 6"/></svg></button>
+    <button class="m-gal-btn next" type="button" aria-label="Próxima foto"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 4l6 6-6 6"/></svg></button>
+    <div class="m-gal-foot"><span class="m-gal-count" aria-live="polite">1 / ${ph.length}</span><span class="m-gal-note">Imagens ilustrativas</span></div>
+  </div>`;
+}
+function galGo(i) {
+  const el = $('#mGal'); if (!el) return;
+  gal.i = (i + gal.n) % gal.n;
+  $('.m-gal-track', el).style.transform = `translate3d(${-gal.i * 100}%,0,0)`;
+  $('.m-gal-count', el).textContent = `${gal.i + 1} / ${gal.n}`;
+}
+function galBind() {
+  const el = $('#mGal'); if (!el) return;
+  gal = { i: 0, n: mDev.photos.length };
+  $('.prev', el).addEventListener('click', () => galGo(gal.i - 1));
+  $('.next', el).addEventListener('click', () => galGo(gal.i + 1));
+  let sx = null;
+  el.addEventListener('pointerdown', e => { if (!e.target.closest('.m-gal-btn')) sx = e.clientX; });
+  el.addEventListener('pointerup', e => { if (sx === null) return; const dx = e.clientX - sx; sx = null; if (Math.abs(dx) > 40) galGo(gal.i + (dx < 0 ? 1 : -1)); });
+  el.addEventListener('pointercancel', () => { sx = null; });
+}
 function openModal(dev, fromEl) {
   mDev = dev; mFrom = fromEl; lastFocus = document.activeElement;
-  $('#mArt').innerHTML = `<div class="m-art-in">${art(dev.art, dev.seed)}</div><span class="dev-badge">${dev.delivery}</span>`;
+  const hasUnits = dev.units.length > 0;
+  $('#mArt').innerHTML = (dev.photos && dev.photos.length ? galMarkup(dev) : `<div class="m-art-in">${art(dev.art, dev.seed)}</div>`) + `<span class="dev-badge">${dev.delivery}</span>`;
+  galBind();
+  panel.classList.toggle('no-units', !hasUnits);
+  $('.m-note', panel).textContent = hasUnits ? NOTE_DEFAULT : NOTE_SOON;
+  $('#mVisit').textContent = hasUnits ? 'Agendar visita' : 'Quero saber os valores';
   $('#mPlace').textContent = dev.place; $('#mName').textContent = dev.name; $('#mKind').textContent = dev.kind;
   mSeg.innerHTML = '<span class="seg-pill"></span>' + dev.units.map((u, i) => `<button type="button" aria-pressed="false" data-u="${i}">${u.l}</button>`).join('');
   $$('button', mSeg).forEach(b => b.addEventListener('click', () => selectUnit(+b.dataset.u)));
@@ -1516,6 +1585,7 @@ function closeModal(after) {
 $$('[data-close]', modal).forEach(b => b.addEventListener('click', () => closeModal()));
 modal.addEventListener('keydown', e => {
   if (e.key === 'Escape') { e.preventDefault(); closeModal(); }
+  if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && $('#mGal') && !e.target.closest('input, select, textarea, [role="group"] button[aria-pressed]')) { e.preventDefault(); galGo(gal.i + (e.key === 'ArrowRight' ? 1 : -1)); }
   if (e.key === 'Tab') {
     const f = $$('button, [href], input, select, textarea', panel).filter(x => !x.disabled && x.offsetParent);
     const a = f[0], z = f[f.length - 1];
@@ -1535,7 +1605,8 @@ $('#mVisit').addEventListener('click', () => {
   const u = mDev.units[mUnit], d = mDev;
   closeModal(() => {
     const regMap = { porto: 'Porto de Galinhas', carneiros: 'Carneiros', maragogi: 'Maragogi' };
-    $('#f-region').value = regMap[d.region]; $('#f-msg').value = `Quero agendar uma visita ao ${d.name} (${u.l}).`;
+    $('#f-region').value = regMap[d.region];
+    $('#f-msg').value = u ? `Quero agendar uma visita ao ${d.name} (${u.l}).` : `Quero saber valores e tipologias do ${d.name} e agendar uma visita.`;
     goTo('#contato', () => $('#f-name').focus({ preventScroll: true }));
   });
 });
