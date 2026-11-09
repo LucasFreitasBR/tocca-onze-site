@@ -923,6 +923,8 @@ const DEVS = [
   { id: 'japaratinga', seed: 67, art: 'house', name: 'Japaratinga Eco Village', region: 'maragogi', place: 'Japaratinga · AL', kind: 'Casas em condomínio', delivery: 'Pronto para morar',
     units: [{ l: 'Casa 3 quartos', a: 140, p: 1650000, d: 666, o: .32 }] }
 ];
+// Empreendimentos reais (com fotos) vêm primeiro no carrossel e em cada filtro; a ordem entre eles segue a lista acima (sort estável).
+DEVS.sort((a, b) => (b.photos ? 1 : 0) - (a.photos ? 1 : 0));
 // Mercado por região, para o simulador e para a sazonalidade de cada empreendimento (AirROI, Airbnb, 12 meses até set/2026).
 // season: peso de cada mês (jan a dez) = RevPAR mensal da cidade / média do ano. high: meses de alta temporada no gráfico.
 // units: diária e ocupação médias por número de quartos. Maragogi não tem amostra de studio: usa a média de 1 quarto.
