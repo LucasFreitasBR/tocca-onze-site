@@ -51,13 +51,13 @@ Tudo fica em `REGIONS`, `DEVS` e `MARKET`, no início do script.
 - **`MARKET`**: dados de mercado por região (AirROI): diária e ocupação médias da cidade, médias por tamanho (`units`), sazonalidade (`season` = RevPAR mensal da cidade dividido pela média do ano) e meses de alta (`high`). Porto de Galinhas usa Ipojuca (pico em janeiro, 1,90; maio é o mais fraco, 0,64), Carneiros usa Tamandaré e Maragogi usa Maragogi. `monthly(d, o, region)` e `grossYear(d, o, region)` usam a sazonalidade da região, então cada empreendimento é calculado com a da sua.
 - **Real**: a marca tocca onze e o logo, e o empreendimento **Fox Carneiros** (Praia dos Carneiros), no lugar do antigo exemplo Pontal dos Carneiros. Ele tem 5 perspectivas da incorporadora em `assets/empreendimentos/fox-carneiros/` (capa: fachada à noite, recortada com `object-position` 50% 38%) e `units: []` até chegarem os valores. Sem tipologias, o card mostra "Valores e tipologias em breve" e "Ver fotos", e o modal vira galeria (setas, teclado e arrasto) com a classe `.no-units`, que esconde as métricas, o gráfico e o botão do simulador e troca a ação por "Quero saber os valores". Empreendimentos com `photos` usam a primeira foto como capa (`devCover()`) e ganham galeria no modal (`galMarkup()`, `galGo()`).
 - **Real também**: o **Eco Azzure Carneiros** (Praia dos Carneiros), com 8 perspectivas da incorporadora em `assets/empreendimentos/eco-azzure-carneiros/` (capa: fachada ao entardecer, `object-position` 57% 50%; depois rooftop visto de cima, piscina à noite, espaço gourmet, minimercado, brinquedoteca, academia e spa) e `units: []` até chegarem os valores. Funciona igual ao Fox Carneiros.
-- **Ainda fictícios**: os outros 5 empreendimentos, nomes, preços (`p`), áreas (`a`), datas de entrega, CRECI, WhatsApp e endereço.
+- **Ainda fictícios**: os outros 5 empreendimentos, nomes, preços (`p`), áreas (`a`), datas de entrega, WhatsApp e endereço.
 - Fórmula: receita anual = soma mensal de `diária × dias × ocupação × peso sazonal`; rentabilidade bruta = receita / preço.
 
 Médias da AirROI por cidade (12 meses até set/2026): Ipojuca R$ 647 de diária e 37,3% de ocupação; Tamandaré R$ 753 e 29,9%; Maragogi R$ 670 e 32,0%.
 
 ## Pendências para produção
-- Trocar CRECI ("a informar" no rodapé), WhatsApp, e-mail e endereço pelos dados reais da tocca onze.
+- O CRECI já é o real (CRECI PJ 17393, na linha legal do rodapé). Trocar WhatsApp, e-mail e endereço pelos dados reais da tocca onze.
 - Trocar `DEVS` pelos empreendimentos reais (nome, local, tipo, entrega, preço e área por tipologia). Se houver histórico próprio de diária e ocupação, ele substitui as médias da AirROI. Sem histórico, manter as médias com o rótulo "média da região".
 - Substituir as ilustrações SVG dos empreendimentos (função `art()`, nos cards, no mapa e no modal) por fotos reais de cada empreendimento. As fotos de destino atuais não servem para isso.
 - Sem as fotos, a página não tem nenhuma imagem real nem vídeo (o inspetor marca `few-pictures`); isso é intencional por enquanto.
