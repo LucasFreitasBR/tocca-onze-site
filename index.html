@@ -262,20 +262,21 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 .car-viewport{position:relative; margin:36px calc(var(--cm) + var(--ag)) 0; overflow:hidden; touch-action:pan-y; cursor:grab; user-select:none; -webkit-user-select:none}
 .car-viewport.grabbing{cursor:grabbing}
 .car-track{--skew:0deg; display:flex; gap:20px; width:max-content; padding-block:20px 30px; will-change:transform}
-.dev-card{flex:none; width:var(--cw); padding:0; border:0; background:none; text-align:left; cursor:pointer; perspective:900px}
-.dev-in{--rx:0deg; --ry:0deg; display:block; border-radius:26px; overflow:hidden; background:var(--surface); transform:rotateY(calc(var(--skew) + var(--ry))) rotateX(var(--rx)); transition:background-color .5s var(--ease), transform .25s linear}
+.dev-card{display:flex; flex:none; width:var(--cw); padding:0; border:0; background:none; text-align:left; cursor:pointer; perspective:900px}
+.dev-in{--rx:0deg; --ry:0deg; display:flex; flex-direction:column; width:100%; border-radius:26px; overflow:hidden; background:var(--surface); transform:rotateY(calc(var(--skew) + var(--ry))) rotateX(var(--rx)); transition:background-color .5s var(--ease), transform .25s linear}
 .dev-card:hover .dev-in{background:var(--surface-2)}
-.dev-art{position:relative; display:block; aspect-ratio:4/3; overflow:hidden; max-width:100%}
+.dev-art{position:relative; display:block; flex:none; aspect-ratio:4/3; overflow:hidden; max-width:100%}
 .dev-art-in{position:absolute; inset:0 -12%; will-change:transform}
 .dev-art-in svg, .dev-art-in img{display:block; width:100%; height:100%; transition:transform 1s var(--ease)}
 .dev-art-in img{object-fit:cover; background:var(--surface-2)}
 .dev-card:hover .dev-art-in svg, .dev-card:hover .dev-art-in img{transform:scale(1.06)}
 .dev-badge{position:absolute; top:14px; left:14px; padding:6px 12px; border-radius:999px; font-size:var(--step-small); font-weight:700; background:var(--surface); color:var(--ink)}
-.dev-body{display:block; padding:20px 22px 22px}
+/* todos os cards com a mesma altura: o corpo cresce e o "Ver fotos/valores" vai para o pé */
+.dev-body{display:flex; flex-direction:column; flex:1; padding:20px 22px 22px}
 .dev-place{display:block; font-size:var(--step-small); font-weight:700; color:var(--sea-text)}
 .dev-name{display:block; font-family:var(--f-display); font-size:var(--step-lead); font-weight:700; letter-spacing:-.025em; line-height:1.1; margin-top:8px}
-.dev-kind{display:block; color:var(--muted); font-size:var(--step-ui); margin-top:4px}
-.dev-rows{display:grid; gap:8px; margin-top:18px; padding:14px 16px; border-radius:14px; background:var(--bg)}
+.dev-kind{display:block; color:var(--muted); font-size:var(--step-ui); margin-top:4px; margin-bottom:18px}
+.dev-rows{display:grid; gap:8px; margin-top:auto; padding:14px 16px; border-radius:14px; background:var(--bg)}
 .dev-row{display:flex; justify-content:space-between; gap:12px; font-size:var(--step-ui); color:var(--ink)}
 .dev-row strong{font-weight:700; font-variant-numeric:tabular-nums}
 .dev-open{display:flex; align-items:center; justify-content:space-between; margin-top:18px; font-family:var(--f-display); font-size:var(--step-ui); font-weight:700}
