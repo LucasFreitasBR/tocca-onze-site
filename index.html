@@ -258,7 +258,7 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 .chips button[aria-selected="true"]{color:var(--bg)}
 .chip-pill{position:absolute; z-index:0; top:5px; left:0; height:40px; border-radius:999px; background:var(--ink); transition:transform .6s var(--ease), width .6s var(--ease)}
 /* o carrossel é recortado nas margens da página, não na borda da tela: o card que sobra some na linha da margem */
-.car-viewport{position:relative; margin:36px var(--cm) 0; overflow:hidden; touch-action:pan-y; cursor:grab; user-select:none; -webkit-user-select:none}
+.car-viewport{position:relative; margin:36px calc(var(--cm) + var(--ag)) 0; overflow:hidden; touch-action:pan-y; cursor:grab; user-select:none; -webkit-user-select:none}
 .car-viewport.grabbing{cursor:grabbing}
 .car-track{--skew:0deg; display:flex; gap:20px; width:max-content; padding-block:20px 30px; will-change:transform}
 .dev-card{flex:none; width:var(--cw); padding:0; border:0; background:none; text-align:left; cursor:pointer; perspective:900px}
@@ -283,13 +283,17 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 .car-foot{display:flex; align-items:center; gap:24px}
 .car-progress{flex:1; height:4px; background:var(--surface-2); border-radius:4px; overflow:hidden}
 .car-progress i{display:block; height:100%; background:var(--ink); transform-origin:left; transform:scaleX(.2)}
-/* setas nas laterais do carrossel, por dentro do recorte e na altura do meio da foto do card
+/* setas fora do carrossel, uma de cada lado dos cards, na altura do meio da foto. O recorte do carrossel
+   encolhe --ag de cada lado para abrir espaço para elas dentro da margem da página
    (na margem de fora elas bateriam no menu lateral de capítulos, a partir de 1280px) */
-.car-stage{--cw:clamp(260px, 30vw, 360px); --cm:max(var(--page-m, 16px), calc((100vw - var(--maxw)) / 2)); position:relative}
-.car-arrow{position:absolute; z-index:3; top:calc(20px + var(--cw) * .375); translate:0 -50%; background:var(--surface)}
-.car-arrow.prev{left:calc(var(--cm) + 12px)}
-.car-arrow.next{right:calc(var(--cm) + 12px)}
-@media (max-width:640px){ .car-stage{--cw:calc(100vw - 2 * var(--page-m, 16px))} }
+.car-stage{--cw:clamp(260px, 30vw, 360px); --ag:68px; --cm:max(var(--page-m, 16px), calc((100vw - var(--maxw)) / 2)); position:relative}
+.car-arrow{position:absolute; z-index:3; top:calc(20px + var(--cw) * .375); translate:0 -50%}
+.car-arrow.prev{left:var(--cm)}
+.car-arrow.next{right:var(--cm)}
+@media (max-width:640px){
+  .car-stage{--ag:48px; --cw:calc(100vw - 2 * (var(--page-m, 16px) + var(--ag)))}
+  .round.car-arrow{width:40px; height:40px}
+}
 .dev-art .dev-badge{top:auto; left:auto; bottom:14px; right:14px}
 .round{display:grid; place-items:center; width:52px; height:52px; border-radius:50%; border:0; background:var(--surface-2); color:var(--ink); cursor:pointer; transition:background-color .3s, color .3s, transform .5s var(--ease)}
 .round:hover{background:var(--ink); color:var(--bg)}
