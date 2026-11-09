@@ -1,0 +1,5 @@
+# O site é um único index.html sem build. O "build" só copia o que vai ao ar para dist/,
+# assim CLAUDE.md, versoes/ e as pastas de trabalho não ficam acessíveis no endereço público.
+[build]
+  command = "rm -rf dist && mkdir -p dist && cp index.html dist/ && cp -r assets dist/"
+  publish = "dist"

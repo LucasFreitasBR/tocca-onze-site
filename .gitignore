@@ -1,0 +1,14 @@
+# capturas e relatórios do inspetor da taste-skill (refeitos a cada rodada)
+.taste-skill/
+
+# cópia local da skill de terceiros; skills-lock.json registra a origem para reinstalar
+.agents/
+.claude/skills/
+.claude/settings.local.json
+
+# saída do build do Netlify
+dist/
+
+node_modules/
+Thumbs.db
+desktop.ini

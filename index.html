@@ -1,0 +1,1847 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>tocca onze · Investimentos imobiliários</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<script>/* tema escolhido no botão da navbar, aplicado antes da pintura para a página não piscar no tema errado */try{var t=localStorage.getItem('tocca-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<meta name="description" content="tocca onze, investimentos imobiliários: imóveis de praia em Porto de Galinhas, Praia dos Carneiros e Maragogi, escolhidos pelo que rendem no aluguel por temporada.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap">
+<style>
+/* Layout: full-bleed bands (hero beach scene, 3D coast fly-over, carousel strip, sea-band simulator) with a 1200px inner wrap.
+   One orchestrated moment: the coast fly-over, where the camera glides down the coastline and destination cards stand up off the map. */
+:root{
+  --p-agua:#a8e0d8; --p-teal:#2a9d9f; --p-areia:#f4e6cc; --p-coral:#f07a4a; --p-deep:#0a2629;
+  --bg:#a8e0d8; --surface:#f4e6cc; --surface-2:#bde8e1; --ink:#0a2629; --muted:#245b5f; --line:#8ccfc5;
+  --sea:#2a9d9f; --sea-text:#17646a; --lagoon:#a8e0d8; --coral:#f07a4a; --coral-ink:#0a2629; --sun:#f4e6cc;
+  --sky-top:#2a9d9f; --sky-bot:#f4e6cc; --hill:#23868a; --hill-2:#6cc4bd; --sea-deep:#2a9d9f; --sea-shallow:#a8e0d8;
+  --sand:#f4e6cc; --sand-2:#e8d4ad; --foam:#fbf6ea; --palm:#0a2629; --church:#fbf6ea;
+  --land:#f4e6cc; --land-2:#a8e0d8; --map-sea:#a8e0d8; --map-deep:#2a9d9f;
+  --band:#2a9d9f; --band-2:#35aaac; --band-ink:#0a2629; --band-muted:#0a2629; --band-line:#22898b;
+  --shadow-rgb:9 45 55;
+  /* Type: Gabarito, geométrica da Naipe Foundry (Rio de Janeiro), numa família só: 800/900 nos títulos, 400/500 no texto. */
+  --f-display:"Gabarito","Helvetica Neue",Arial,sans-serif;
+  --f-text:"Gabarito","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"Gabarito","Helvetica Neue",Arial,sans-serif;
+  --step-small:clamp(13px, .79rem + .1vw, 14px);
+  --step-ui:var(--step-small);
+  --step-body:clamp(16px, 1rem + .2vw, 18px);
+  --step-lead:clamp(20px, 1.1rem + .6vw, 26px);
+  --step-sub:clamp(22px, 1rem + 1.6vw, 36px);
+  --step-head:clamp(32px, 1rem + 3.2vw, 60px);
+  --step-line:clamp(84px, 13vw, 200px);
+  --step-xl:clamp(56px, 7.2vw, 112px);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --maxw:1200px;
+  --gl:max(16px, env(safe-area-inset-left, 0px));
+  --gr:max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0a2629; --surface:#103236; --surface-2:#163c40; --ink:#f4e6cc; --muted:#a8e0d8; --line:#24515a;
+  --sea:#a8e0d8; --sea-text:#a8e0d8; --lagoon:#2a9d9f; --coral:#f07a4a; --coral-ink:#0a2629; --sun:#f4e6cc;
+  --sky-top:#0c2d31; --sky-bot:#1d6c70; --hill:#164a4e; --hill-2:#1d6c70; --sea-deep:#185a5e; --sea-shallow:#2a9d9f;
+  --sand:#5c5838; --sand-2:#4a4630; --foam:#f4e6cc; --palm:#051719; --church:#f4e6cc;
+  --land:#163c40; --land-2:#1d6c70; --map-sea:#185a5e; --map-deep:#0f3438;
+  --band:#103a3e; --band-2:#174549; --band-ink:#f4e6cc; --band-muted:#a8e0d8; --band-line:#1d6c70;
+  --shadow-rgb:0 0 0; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#0a2629; --surface:#103236; --surface-2:#163c40; --ink:#f4e6cc; --muted:#a8e0d8; --line:#24515a;
+  --sea:#a8e0d8; --sea-text:#a8e0d8; --lagoon:#2a9d9f; --coral:#f07a4a; --coral-ink:#0a2629; --sun:#f4e6cc;
+  --sky-top:#0c2d31; --sky-bot:#1d6c70; --hill:#164a4e; --hill-2:#1d6c70; --sea-deep:#185a5e; --sea-shallow:#2a9d9f;
+  --sand:#5c5838; --sand-2:#4a4630; --foam:#f4e6cc; --palm:#051719; --church:#f4e6cc;
+  --land:#163c40; --land-2:#1d6c70; --map-sea:#185a5e; --map-deep:#0f3438;
+  --band:#103a3e; --band-2:#174549; --band-ink:#f4e6cc; --band-muted:#a8e0d8; --band-line:#1d6c70;
+  --shadow-rgb:0 0 0; color-scheme:dark;
+}
+
+html.lenis, html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+html{scroll-behavior:auto}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--f-text); font-size:var(--step-body); line-height:1.55; -webkit-font-smoothing:antialiased; overflow-x:hidden; font-kerning:normal}
+*,*::before,*::after{box-sizing:border-box}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{text-wrap:balance; font-family:var(--f-display); font-weight:800; letter-spacing:-.035em; line-height:1}
+em{font-style:normal; font-weight:inherit; color:inherit}
+a{color:inherit}
+button{font:inherit; color:inherit}
+:focus-visible{outline:2px solid var(--coral); outline-offset:3px; border-radius:8px}
+.wrap{width:100%; max-width:calc(var(--maxw) + 64px); margin-inline:auto; padding-left:var(--gl); padding-right:var(--gr)}
+@media (min-width:720px){ :root{--page-m:32px} .wrap{padding-left:max(32px, env(safe-area-inset-left, 0px)); padding-right:max(32px, env(safe-area-inset-right, 0px))} }
+.m-place{margin-top:6px; font-size:var(--step-small); font-weight:700; color:var(--sea-text)}
+.h2{font-size:var(--step-head); max-width:20ch}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+
+/* Buttons */
+.btn{--mx:0px; --my:0px; position:relative; display:inline-flex; align-items:center; gap:10px; height:54px; padding:0 26px; border-radius:999px; border:0; font-family:var(--f-display); font-weight:700; font-size:var(--step-ui); letter-spacing:-.005em; text-decoration:none; cursor:pointer; overflow:hidden; isolation:isolate;
+  transform:translate(var(--mx), var(--my)); transition:transform .5s var(--ease), background-color .3s, color .3s}
+.btn::after{content:""; position:absolute; inset:0; z-index:-1; border-radius:inherit; transform:translateY(101%); transition:transform .5s var(--ease)}
+.btn:hover::after{transform:translateY(0)}
+.btn:active{transform:translate(var(--mx), var(--my)) scale(.97)}
+.btn-coral{background:var(--coral); color:var(--coral-ink)}
+.btn-coral::after{background:var(--ink)}
+.btn-coral:hover{color:var(--bg)}
+.btn-ghost{background:var(--surface-2); color:var(--ink)}
+.btn-ghost::after{background:var(--ink)}
+.btn-ghost:hover{color:var(--bg)}
+.btn-sm{height:44px; padding:0 20px}
+.btn .arr{transition:transform .5s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+.tlink{font-family:var(--f-display); font-weight:700; font-size:var(--step-ui); color:inherit; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:6px; text-decoration-color:color-mix(in srgb, currentColor 35%, transparent); transition:text-decoration-color .3s, text-underline-offset .3s}
+.tlink:hover{text-decoration-color:var(--coral); text-underline-offset:4px}
+
+/* Header */
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top, 0px); z-index:60; background:var(--bg)}
+/* Barra fixa: --hk (0 no topo, 1 depois de ~140px de scroll) é escrito por headUpdate() e compacta altura, marca e fundo. */
+.site-head{--hk:0; position:fixed; top:0; left:0; right:0; z-index:50; padding-top:env(safe-area-inset-top, 0px); background:color-mix(in srgb, var(--bg) calc(var(--hk) * 94%), transparent); backdrop-filter:blur(calc(var(--hk) * 14px))} /* taste-skill-ignore: a única barra fixa com desfoque */
+.head-in{display:flex; align-items:center; gap:24px; height:calc(84px - 22px * var(--hk))}
+/* logotipo: os PNGs brancos da marca viram máscaras, então ganham a cor do token (funcionam nos dois temas) */
+.brand{display:flex; align-items:center; gap:12px; text-decoration:none}
+.brand-mark{width:calc(40px - 8px * var(--hk)); aspect-ratio:1; flex:none; background:var(--ink); -webkit-mask:url(assets/brand/tocca-onze-marca.png) center / contain no-repeat; mask:url(assets/brand/tocca-onze-marca.png) center / contain no-repeat}
+.brand-name{width:calc(150px - 22px * var(--hk)); aspect-ratio:1158 / 245; flex:none; background:var(--ink); -webkit-mask:url(assets/brand/tocca-onze-nome.png) center / contain no-repeat; mask:url(assets/brand/tocca-onze-nome.png) center / contain no-repeat}
+.nav{display:flex; gap:2px; margin-left:auto}
+.nav a{position:relative; padding:9px 14px; text-decoration:none; font-size:var(--step-ui); font-weight:500; color:var(--ink); border-radius:999px; transition:background-color .3s}
+.nav a::before{content:""; position:absolute; left:3px; top:50%; width:6px; height:6px; margin-top:-3px; border-radius:50%; background:var(--coral); opacity:0; transform:scale(.4); transition:transform .45s var(--ease), opacity .3s}
+.nav a:hover{background:color-mix(in srgb, var(--ink) 8%, transparent)}
+.nav a[aria-current="true"]{font-weight:700}
+.nav a[aria-current="true"]::before{opacity:1; transform:scale(1)}
+.menu-btn{display:none; margin-left:auto; height:44px; padding:0 20px; border-radius:999px; border:0; background:var(--surface-2); font-family:var(--f-display); font-weight:700; cursor:pointer}
+/* botão de tema: mostra a lua no modo claro (vai para o escuro) e o sol no escuro (vai para o claro) */
+.theme-btn{display:grid; place-items:center; flex:none; width:44px; height:44px; padding:0; border:0; border-radius:50%; background:var(--surface-2); color:var(--ink); cursor:pointer; transition:transform .3s var(--ease), background-color .3s}
+.theme-btn:hover{background:color-mix(in srgb, var(--ink) 12%, var(--surface-2))}
+.theme-btn:active{transform:scale(.92)}
+.theme-btn svg{width:20px; height:20px}
+.theme-btn .i-sun, .theme-btn[data-mode="dark"] .i-moon{display:none}
+.theme-btn[data-mode="dark"] .i-sun{display:block}
+@media (max-width:900px){
+  .head-in .btn{display:none}
+  .theme-btn{margin-left:auto}
+  .menu-btn{display:inline-flex; align-items:center; margin-left:0}
+  .nav{position:absolute; top:calc(100% + 4px); left:var(--gl); right:var(--gr); flex-direction:column; padding:10px; background:var(--surface); border-radius:20px; box-shadow:0 20px 50px -20px rgb(var(--shadow-rgb)/.35); transform-origin:top right; transform:scale(.92) translateY(-8px); opacity:0; pointer-events:none; transition:transform .45s var(--ease), opacity .3s} /* taste-skill-ignore: menu aberto flutua */
+  .nav.open{transform:none; opacity:1; pointer-events:auto}
+  .nav a{padding:14px 16px 14px 24px; font-size:var(--step-lead)}
+  .nav a::before{left:10px}
+}
+
+/* Hero */
+.hero-stage{position:relative}
+.hero{position:sticky; top:0; height:max(640px, 100svh); overflow:hidden; background:var(--sky-bot)}
+/* céu em quatro faixas chapadas, como nas passagens: a ilustração inteira fica numa só linguagem de cor sólida */
+.sky i{position:absolute; left:0; right:0; display:block}
+.sky i:nth-child(1){top:0; height:26%; background:var(--sky-top)}
+.sky i:nth-child(2){top:26%; height:12%; background:color-mix(in srgb, var(--sky-top) 62%, var(--sky-bot))}
+.sky i:nth-child(3){top:38%; height:10%; background:color-mix(in srgb, var(--sky-top) 34%, var(--sky-bot))}
+.sky i:nth-child(4){top:48%; height:8%; background:color-mix(in srgb, var(--sky-top) 14%, var(--sky-bot))}
+.scene{position:absolute; inset:0; transform-origin:50% 75%; will-change:transform}
+.layer{position:absolute; top:0; left:-4%; width:108%; height:100%; will-change:transform}
+.layer.tall{height:140%}
+.sunset{position:absolute; inset:0; background:var(--coral); opacity:0; mix-blend-mode:soft-light}
+.sun{position:absolute; left:66%; width:clamp(90px, 10vw, 150px); aspect-ratio:1; max-width:100%; border-radius:50%; background:var(--sun); will-change:transform}
+.sun::before{content:""; position:absolute; inset:-38%; border-radius:50%; background:color-mix(in srgb, var(--sun) 24%, transparent)}
+.cloud{position:absolute; display:block; border-radius:999px; background:var(--foam); opacity:.8; animation:drift linear infinite}
+.cloud::before, .cloud::after{content:""; position:absolute; border-radius:50%; background:inherit}
+.cloud::before{left:20%; bottom:30%; width:34%; height:150%}
+.cloud::after{left:48%; bottom:24%; width:26%; height:118%}
+.cloud.c1{width:220px; height:34px; top:12%; left:8%; animation-duration:90s}
+.cloud.c2{width:160px; height:26px; top:22%; left:48%; animation-duration:120s; opacity:.8}
+.cloud.c3{width:260px; height:38px; top:8%; left:72%; animation-duration:150s; opacity:.7}
+@keyframes drift{from{transform:translateX(-12vw)} to{transform:translateX(12vw)}}
+.jangada{position:absolute; left:52%; width:clamp(64px, 8vw, 120px); will-change:transform}
+/* Hero (direção "o lugar carrega a página"): a cena desenhada ocupa a tela; o título vai do canto de cima à esquerda
+   ao canto de baixo à direita, e a frase com a ação atravessa o meio a partir de 30vw. */
+.hero-copy{--pt:calc(100px + env(safe-area-inset-top, 0px)); --pb:calc(14px + env(safe-area-inset-bottom, 0px)); --px:32px; position:absolute; inset:0; z-index:3; will-change:transform, opacity}
+.hero-title{position:absolute; top:var(--pt); bottom:var(--pb); left:var(--px); right:var(--px); margin:0; display:flex; flex-direction:column; justify-content:space-between; pointer-events:none}
+.hl{display:block; overflow:hidden; padding-bottom:.06em; font-family:var(--f-display); font-weight:900; font-size:var(--step-line); line-height:.86; letter-spacing:-.055em; color:var(--ink); white-space:nowrap}
+.hl-in{display:block; will-change:transform}
+.hl1{align-self:flex-start}
+.hl2{align-self:flex-end}
+.hero-mid{position:absolute; left:30vw; top:50%; translate:0 -50%; max-width:40ch; color:var(--ink)}
+.hero-lede{font-size:var(--step-lead); font-weight:600; line-height:1.28; letter-spacing:-.012em}
+.hero-fact{margin-top:12px}
+.hero-fact b{font-weight:800; font-variant-numeric:tabular-nums}
+.hero-act{display:flex; flex-wrap:wrap; align-items:center; gap:14px 26px; margin-top:26px}
+@media (max-width:640px){
+  .hero-copy{--pt:calc(88px + env(safe-area-inset-top, 0px)); --pb:calc(16px + env(safe-area-inset-bottom, 0px)); --px:16px}
+  .hl{font-size:19vw}
+  .hero-mid{left:16px; right:16px; top:47%}
+  .hero-lede{font-size:19px}
+  .hero-fact{font-size:var(--step-ui)}
+}: título e frase grande lado a lado, depois três argumentos só em texto.
+   A seção sobe por cima da hero presa; a borda são duas ondas (água rasa atrás, fundo da página na frente) que andam com o scroll. */
+.hero-dim{position:absolute; inset:0; z-index:2; background:var(--bg); opacity:0; pointer-events:none}
+.why-wave{position:absolute; left:0; right:0; bottom:calc(100% - 2px); height:clamp(40px, 6vw, 88px); overflow:hidden; pointer-events:none}
+.why-wave svg{position:absolute; left:0; bottom:0; width:200%; height:100%; will-change:transform}
+.wave-back path{fill:var(--sea); opacity:.7}
+.wave-front path{fill:var(--bg)}
+.why{position:relative; z-index:2; margin-top:clamp(40px, 6vw, 88px); background:var(--bg); padding-bottom:clamp(110px, 12vw, 180px); overflow:hidden}
+/* o painel laranja encosta na borda direita a partir de 46vw e desce até o fim da seção; a segunda linha do título
+   entra nele. Dentro, o símbolo da tocca onze (o T de duas hastes, o "11") aparece grande e cortado. */
+.why{padding-top:22svh}
+.why-in{position:relative; z-index:1}
+.why-title{font-size:var(--step-xl); font-weight:900; letter-spacing:-.05em; line-height:.92}
+.why-title span{display:block; white-space:nowrap}
+.why-in > .statement, .why-rows{max-width:min(46ch, calc(46vw - var(--rail, 32px) - 56px))}
+.statement{margin-top:clamp(28px, 4vw, 48px); font-family:var(--f-display); font-weight:700; font-size:var(--step-lead); line-height:1.26; letter-spacing:-.015em; text-wrap:pretty}
+.statement .sw{opacity:.3; transition:opacity .25s linear}
+.why-rows{display:grid; gap:clamp(36px, 4vw, 56px); margin-top:clamp(56px, 7vw, 96px)}
+.why-rows h3{font-size:var(--step-sub); margin-bottom:10px}
+.why-rows p{max-width:40ch}
+.why-panel{position:absolute; z-index:0; right:0; top:calc(22svh + var(--step-xl) * .62); bottom:0; left:46vw; margin:0; overflow:hidden; background:var(--coral)}
+.why-panel img{position:absolute; width:118%; max-width:none; height:auto; right:-34%; bottom:-22%; opacity:.95; will-change:transform}
+@media (max-width:820px){
+  .why{padding-top:clamp(110px, 18vw, 160px); padding-bottom:0}
+  .why-in > .statement, .why-rows{max-width:none}
+  .why-panel{position:relative; left:auto; top:auto; width:75vw; height:56svh; margin:56px 0 0 auto}
+  .why-panel img{width:150%; right:-48%; bottom:-30%}
+}
+
+/* Fly-over */
+.fly{position:relative; height:440vh; background:var(--band)}
+.fly-sticky{position:sticky; top:0; height:100svh; overflow:hidden; perspective:1800px; perspective-origin:50% 38%}
+.fly-plane{position:absolute; top:0; left:62%; transform-origin:50% 0; transform-style:preserve-3d; will-change:transform}
+.fly-plane canvas{display:block; border-radius:34px}
+.pin{position:absolute; width:16px; height:16px; margin:-8px 0 0 -8px; border-radius:50%; background:var(--coral); outline:4px solid color-mix(in srgb, var(--coral) 30%, transparent); transform:translateZ(2px)}
+.pin::before,.pin::after{content:""; position:absolute; inset:-10px; border-radius:50%; border:2px solid var(--coral); animation:ping 2.4s var(--ease) infinite; opacity:0}
+.pin::after{animation-delay:1.2s}
+@keyframes ping{0%{transform:scale(.4); opacity:.9} 100%{transform:scale(2.6); opacity:0}}
+.lift{position:absolute; width:var(--cw, 250px); padding:0; border:0; text-align:left; cursor:pointer; background:var(--surface); border-radius:20px; overflow:hidden; transform-origin:50% 100%; will-change:transform, filter}
+.lift .art{display:block; height:calc(var(--cw, 250px) * .56)}
+.lift .art svg{display:block; width:100%; height:100%}
+.lift .lb{display:block; padding:14px 16px 16px}
+.lift strong{display:block; font-family:var(--f-display); font-size:var(--step-lead); font-weight:700; letter-spacing:-.02em; line-height:1.15}
+.lift small{display:block; margin-top:4px; font-size:var(--step-small); color:var(--muted)}
+.lift-shadow{position:absolute; width:var(--cw, 250px); border-radius:20px; background:rgb(var(--shadow-rgb)/.55); will-change:transform, opacity, filter}
+.fly-haze{display:none}
+.fly-hud{position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; pointer-events:none}
+.hud-card{pointer-events:auto; width:min(400px, 100%); padding:28px; border-radius:26px; background:var(--surface)}
+.hud-anim{will-change:transform, opacity}
+.hud-title{font-size:var(--step-sub); margin-top:0}
+.hud-state{font-size:var(--step-small); color:var(--muted); margin-top:6px}
+.hud-text{margin-top:14px; font-size:var(--step-ui); color:var(--ink)}
+.hud-facts{display:grid; gap:12px; margin:16px 0 20px; padding:14px 16px; border-radius:14px; background:var(--surface-2)}
+.hud-facts dt{font-size:var(--step-small); font-weight:700; color:var(--sea-text)}
+.hud-facts dd{margin:2px 0 0; font-size:var(--step-ui)}
+.hud-steps{list-style:none; display:flex; gap:6px; margin:22px 0 0; padding:0}
+.hud-steps li{flex:1; min-width:0}
+.hud-steps button{width:100%; padding:10px 0 0; border:0; background:none; text-align:left; cursor:pointer; font-size:var(--step-small); color:var(--muted); position:relative; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.hud-steps button::before{content:""; position:absolute; top:0; left:0; right:0; height:4px; border-radius:4px; background:var(--surface-2)}
+.hud-steps button::after{content:""; position:absolute; top:0; left:0; right:0; height:4px; border-radius:4px; background:var(--coral); transform:scaleX(var(--k,0)); transform-origin:left}
+.hud-steps button[aria-current="true"]{color:var(--ink)}
+@media (max-width:820px){
+  .fly{height:400vh}
+  .fly-plane{left:50%}
+  .fly-hud{justify-content:flex-end; padding-bottom:calc(16px + env(safe-area-inset-bottom, 0px))}
+  .hud-card{padding:18px 18px 16px; width:100%}
+  .hud-text,.hud-facts{display:none}
+  .hud-title{font-size:28px; margin-top:6px}
+  .hud-card .btn{margin-top:14px}
+}
+
+/* Developments */
+.devs{padding-block:clamp(90px, 12vw, 150px) clamp(70px, 9vw, 110px); overflow:hidden}
+#empreendimentos > .wrap:first-child{display:grid; grid-template-columns:minmax(0, 1fr) auto; align-items:end; gap:28px 48px}
+.sec-head{display:block}
+@media (max-width:640px){ .car-track .dev-card{width:calc(100vw - 2 * var(--page-m, 16px))} }
+@media (max-width:820px){ #empreendimentos > .wrap:first-child{grid-template-columns:1fr} }
+.sec-head .h2{margin-top:14px; max-width:14ch}
+.sec-head .note{max-width:44ch; margin-top:18px}
+.chips{position:relative; display:inline-flex; flex-wrap:wrap; gap:4px; padding:5px; margin-top:0; border-radius:999px; background:var(--surface-2); max-width:100%}
+.chips button{position:relative; z-index:1; height:40px; padding:0 18px; border:0; border-radius:999px; background:none; cursor:pointer; font-size:var(--step-ui); color:var(--muted); transition:color .4s}
+.chips button[aria-selected="true"]{color:var(--bg)}
+.chip-pill{position:absolute; z-index:0; top:5px; left:0; height:40px; border-radius:999px; background:var(--ink); transition:transform .6s var(--ease), width .6s var(--ease)}
+/* o carrossel é recortado nas margens da página, não na borda da tela: o card que sobra some na linha da margem */
+.car-viewport{--cm:max(var(--page-m, 16px), calc((100vw - var(--maxw)) / 2)); position:relative; margin:36px var(--cm) 0; overflow:hidden; touch-action:pan-y; cursor:grab; user-select:none; -webkit-user-select:none}
+.car-viewport.grabbing{cursor:grabbing}
+.car-track{--skew:0deg; display:flex; gap:20px; width:max-content; padding-block:20px 30px; will-change:transform}
+.dev-card{flex:none; width:clamp(260px, 30vw, 360px); padding:0; border:0; background:none; text-align:left; cursor:pointer; perspective:900px}
+.dev-in{--rx:0deg; --ry:0deg; display:block; border-radius:26px; overflow:hidden; background:var(--surface); transform:rotateY(calc(var(--skew) + var(--ry))) rotateX(var(--rx)); transition:background-color .5s var(--ease), transform .25s linear}
+.dev-card:hover .dev-in{background:var(--surface-2)}
+.dev-art{position:relative; display:block; aspect-ratio:4/3; overflow:hidden; max-width:100%}
+.dev-art-in{position:absolute; inset:0 -12%; will-change:transform}
+.dev-art-in svg{display:block; width:100%; height:100%; transition:transform 1s var(--ease)}
+.dev-card:hover .dev-art-in svg{transform:scale(1.06)}
+.dev-badge{position:absolute; top:14px; left:14px; padding:6px 12px; border-radius:999px; font-size:var(--step-small); font-weight:700; background:var(--surface); color:var(--ink)}
+.dev-body{display:block; padding:20px 22px 22px}
+.dev-place{display:block; font-size:var(--step-small); font-weight:700; color:var(--sea-text)}
+.dev-name{display:block; font-family:var(--f-display); font-size:var(--step-lead); font-weight:700; letter-spacing:-.025em; line-height:1.1; margin-top:8px}
+.dev-kind{display:block; color:var(--muted); font-size:var(--step-ui); margin-top:4px}
+.dev-rows{display:grid; gap:8px; margin-top:18px; padding:14px 16px; border-radius:14px; background:var(--bg)}
+.dev-row{display:flex; justify-content:space-between; gap:12px; font-size:var(--step-ui); color:var(--ink)}
+.dev-row strong{font-weight:700; font-variant-numeric:tabular-nums}
+.dev-open{display:flex; align-items:center; justify-content:space-between; margin-top:18px; font-family:var(--f-display); font-size:var(--step-ui); font-weight:700}
+.dev-open i{display:grid; place-items:center; width:36px; height:36px; border-radius:50%; background:var(--coral); color:var(--coral-ink); font-style:normal; transition:transform .6s var(--ease)}
+.dev-card:hover .dev-open i{transform:rotate(90deg)}
+.car-foot{display:flex; align-items:center; gap:24px}
+.car-progress{flex:1; height:4px; background:var(--surface-2); border-radius:4px; overflow:hidden}
+.car-progress i{display:block; height:100%; background:var(--ink); transform-origin:left; transform:scaleX(.2)}
+.car-nav{display:flex; gap:8px}
+.round{display:grid; place-items:center; width:52px; height:52px; border-radius:50%; border:0; background:var(--surface-2); color:var(--ink); cursor:pointer; transition:background-color .3s, color .3s, transform .5s var(--ease)}
+.round:hover{background:var(--ink); color:var(--bg)}
+.round:active{transform:scale(.92)}
+.round svg{width:20px; height:20px}
+.disclaimer{margin-top:18px; font-size:var(--step-small); color:var(--muted)}
+
+/* Modal */
+[hidden]{display:none!important}
+.modal{position:fixed; inset:0; z-index:80; display:grid; place-items:center; padding:calc(16px + env(safe-area-inset-top, 0px)) var(--gr) calc(16px + env(safe-area-inset-bottom, 0px)) var(--gl)}
+.modal-backdrop{position:absolute; inset:0; background:color-mix(in srgb, var(--band) 62%, transparent)}
+.modal-panel{position:relative; width:min(1040px, 100%); max-height:min(760px, 100%); overflow:auto; overscroll-behavior:contain; display:grid; grid-template-columns:1.05fr 1fr; border-radius:28px; background:var(--surface); box-shadow:0 60px 140px -40px rgb(0 0 0 / .5)} /* taste-skill-ignore: diálogo flutua */
+.m-art{position:relative; min-height:100%; overflow:hidden}
+.m-art-in{position:absolute; inset:-6%; will-change:transform}
+.m-art svg{display:block; width:100%; height:100%}
+.m-art .dev-badge{z-index:1}
+.m-body{padding:clamp(22px, 3vw, 40px); min-width:0}
+.m-name{font-size:var(--step-sub); margin-top:10px}
+.m-kind{color:var(--muted); margin-top:6px}
+.seg{position:relative; display:flex; flex-wrap:wrap; gap:4px; padding:4px; margin-top:24px; border-radius:16px; background:var(--surface-2)}
+.seg button{position:relative; z-index:1; flex:1 1 auto; min-height:40px; padding:6px 14px; border:0; border-radius:12px; background:none; cursor:pointer; font-size:var(--step-ui); color:var(--muted); transition:color .35s}
+.seg button[aria-pressed="true"]{color:var(--ink)}
+.seg-pill{position:absolute; z-index:0; border-radius:12px; background:var(--surface); transition:transform .55s var(--ease), width .55s var(--ease), height .55s var(--ease)}
+.metrics{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:1px; margin-top:22px; background:var(--line); border-radius:18px; overflow:hidden}
+.metric{padding:14px 16px; background:var(--surface); min-width:0}
+.metric span{display:block; font-size:var(--step-small); color:var(--muted)}
+.metric strong{display:block; margin-top:2px; font-size:var(--step-lead); font-weight:500; letter-spacing:-.02em; font-variant-numeric:tabular-nums}
+.metric.hl{background:color-mix(in srgb, var(--coral) 10%, var(--surface))}
+.metric.hl strong{color:var(--coral)}
+.m-season{margin-top:18px}
+.m-season p{font-size:var(--step-small); color:var(--muted); margin-bottom:8px}
+.m-bars{display:flex; align-items:flex-end; gap:4px; height:56px}
+.m-bars i{flex:1; border-radius:4px 4px 2px 2px; background:var(--lagoon); transform-origin:bottom; transition:height .7s var(--ease)}
+.m-bars i.hi{background:var(--coral)}
+.m-months{display:flex; gap:4px; margin-top:4px; font-family:var(--f-text); font-size:var(--step-small); color:var(--muted)}
+.m-months span{flex:1; text-align:center}
+.m-actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:22px}
+.m-note{margin-top:14px; font-size:var(--step-small); color:var(--muted)}
+.modal-x{position:absolute; top:14px; right:14px; z-index:3; width:44px; height:44px; border-radius:50%; border:0; background:var(--surface); cursor:pointer; display:grid; place-items:center; transition:transform .5s var(--ease)}
+.modal-x:hover{transform:rotate(90deg)}
+html.modal-open{overflow:hidden}
+@media (max-width:820px){
+  .modal-panel{grid-template-columns:1fr; max-height:100%}
+  .m-art{min-height:0; aspect-ratio:16/9}
+}
+
+/* Simulator */
+.sim{background:var(--band); color:var(--band-ink); padding-block:clamp(90px, 12vw, 150px)}
+.sim-grid{display:grid; grid-template-columns:minmax(0, .9fr) minmax(0, 1.1fr); gap:clamp(32px, 6vw, 80px); align-items:start}
+.sim .h2{margin-top:14px}
+.sim-lede{margin-top:18px; color:var(--band-muted); max-width:42ch}
+.fields{display:grid; gap:26px; margin-top:40px}
+.field-top{display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:12px}
+.field label{font-size:var(--step-ui)}
+.field output{font-family:var(--f-text); font-size:var(--step-ui); font-weight:800; font-variant-numeric:tabular-nums; color:var(--band-ink)}
+.field small{display:block; margin-top:8px; font-size:var(--step-small); color:var(--band-muted)}
+input[type=range]{--p:50%; -webkit-appearance:none; appearance:none; width:100%; height:6px; border-radius:6px; background:linear-gradient(to right, var(--sun) var(--p), var(--band-line) var(--p)); outline:none; cursor:pointer; margin:0} /* taste-skill-ignore: preenchimento do controle de faixa */
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none; width:24px; height:24px; border-radius:50%; background:var(--band-ink); border:6px solid var(--sun); transition:transform .3s var(--ease)}
+input[type=range]::-moz-range-thumb{width:14px; height:14px; border-radius:50%; background:var(--band-ink); border:6px solid var(--sun)}
+input[type=range]:active::-webkit-slider-thumb{transform:scale(1.25)}
+input[type=range]:focus-visible{outline:2px solid var(--sun); outline-offset:8px}
+.sim-out{padding:clamp(22px, 3vw, 36px); border-radius:28px; background:var(--band-2); min-width:0}
+.sim-out.flash{animation:flash 1.2s var(--ease)}
+@keyframes flash{0%{box-shadow:inset 0 0 0 1px var(--band-line), 0 0 0 0 var(--sun)} 30%{box-shadow:inset 0 0 0 2px var(--sun), 0 0 0 10px color-mix(in srgb, var(--sun) 25%, transparent)} 100%{box-shadow:inset 0 0 0 1px var(--band-line), 0 0 0 0 transparent}} /* taste-skill-ignore: pulso de estado ao recalcular */
+.big{display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 16px}
+.big strong{font-family:var(--f-display); font-size:var(--step-xl); font-weight:900; letter-spacing:-.045em; line-height:1; font-variant-numeric:tabular-nums}
+.big span{color:var(--band-muted); max-width:22ch}
+.kpis{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:26px; background:var(--band-line); border-radius:18px; overflow:hidden}
+.kpi{padding:14px 16px; background:var(--band-2); min-width:0}
+.kpi span{display:block; font-size:var(--step-small); color:var(--band-muted)}
+.kpi strong{display:block; margin-top:4px; font-size:var(--step-lead); font-weight:500; font-variant-numeric:tabular-nums; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.chart-wrap{position:relative; margin-top:28px}
+.chart-head{display:flex; justify-content:space-between; gap:12px; font-size:var(--step-ui); color:var(--band-muted); margin-bottom:10px}
+.chart-head b{font-weight:500; color:var(--band-ink)}
+.legend{display:flex; gap:14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:6px; vertical-align:-1px}
+#chart{display:block; width:100%; height:auto; overflow:visible}
+#chart text{font-family:var(--f-text); font-size:var(--step-small); fill:var(--band-muted)}
+#chart .grid{stroke:var(--band-line); stroke-width:1}
+#chart .bar{fill:var(--lagoon); transition:opacity .3s}
+#chart .bar.hi{fill:var(--sun)}
+#chart .bar.dim{opacity:.45}
+.tip{position:absolute; pointer-events:none; padding:8px 12px; border-radius:12px; background:var(--band-ink); color:var(--band); font-size:var(--step-small); white-space:nowrap; transform:translate(-50%, -110%); opacity:0; transition:opacity .2s}
+.tip.on{opacity:1}
+.compare{display:grid; gap:12px; margin-top:26px}
+.cmp-row{display:grid; grid-template-columns:120px 1fr 64px; gap:12px; align-items:center; font-size:var(--step-ui)}
+.cmp-row span{color:var(--band-muted)}
+.cmp-row b{font-weight:500; text-align:right; font-variant-numeric:tabular-nums}
+.cmp-bar{height:12px; border-radius:6px; background:var(--band-line); overflow:hidden}
+.cmp-bar i{display:block; height:100%; border-radius:6px; background:var(--sun); width:0; transition:width .9s var(--ease)}
+.cmp-bar.ref i{background:var(--band-muted)}
+.sim-note{margin-top:22px; font-size:var(--step-small); color:var(--band-muted)}
+@media (max-width:900px){ .sim-grid{grid-template-columns:1fr} }
+@media (max-width:520px){ .kpis{grid-template-columns:1fr 1fr} .cmp-row{grid-template-columns:92px 1fr 54px} }
+
+/* Como funciona (blueprint "um verbo de cada vez"): cinco telas de cor chapada, cada uma com um verbo enorme que segura
+   o centro enquanto a tela passa (procUpdate) e o símbolo da marca em tom sobre tom. */
+.process{position:relative}
+.proc-title{position:absolute; z-index:2; top:clamp(28px, 4vw, 48px); left:var(--rail, 32px); right:var(--rail, 32px); max-width:22ch; font-size:var(--step-sub); color:var(--p-deep)}
+.verbs{list-style:none; margin:0; padding:0}
+.verb{--f:var(--p-teal); --t:var(--p-deep); position:relative; height:78svh; min-height:500px; overflow:hidden; display:grid; place-items:center; background:var(--f); color:var(--t)}
+.verb.v2{--f:var(--p-coral); --t:var(--p-deep)}
+.verb.v3{--f:var(--p-areia); --t:var(--p-deep)}
+.verb.v4{--f:var(--p-agua); --t:var(--p-deep)}
+.verb.v5{--f:var(--p-deep); --t:var(--p-areia)}
+.verb-mark{position:absolute; width:min(120vmin, 1100px); aspect-ratio:1; right:-18vmin; bottom:-34vmin; background:color-mix(in srgb, var(--t) 12%, transparent); -webkit-mask:url(assets/brand/tocca-onze-marca.png) center / contain no-repeat; mask:url(assets/brand/tocca-onze-marca.png) center / contain no-repeat; will-change:transform}
+.verb:nth-child(even) .verb-mark{right:auto; left:-22vmin; bottom:auto; top:-30vmin}
+.verb-word{position:relative; margin:0; font-size:var(--step-line); font-weight:900; letter-spacing:-.055em; line-height:.9; will-change:transform}
+.verb.v5 .verb-word{color:var(--p-coral)}
+.verb-text{position:absolute; right:var(--rail, 32px); bottom:32px; max-width:38ch; margin:0; font-size:var(--step-body); font-weight:500; line-height:1.45}
+@media (max-width:640px){
+  .verb{height:80svh}
+  .verb-word{font-size:17vw}
+  .verb-text{left:16px; right:16px; bottom:20px; max-width:none}
+  .proc-title{left:16px; right:16px}
+}
+
+/* Contact */
+/* Contato (blueprint "cartão de visita sobre a foto"): a cena desenhada ocupa a tela e um cartão sólido fica no canto superior direito. */
+.contact{position:relative; min-height:100svh; display:flex; justify-content:flex-end; align-items:flex-start; padding:clamp(80px, 9vw, 120px) var(--rail, 32px) 60px; background:var(--sky-top); overflow:hidden}
+.contact-scene{position:absolute; inset:0; width:100%; height:100%}
+.contact-card{position:relative; z-index:1; width:min(440px, 100%); padding:32px; border-radius:8px; background:var(--surface); color:var(--ink)}
+.contact-title{font-size:var(--step-sub); letter-spacing:-.03em}
+.contact-lede{margin-top:12px}
+.contact-card .form{margin-top:22px}
+.wa{display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px; margin-top:22px; padding-top:18px}
+.wa .lbl{font-size:var(--step-small); color:var(--muted); display:block}
+.wa .val{font-size:var(--step-lead); font-weight:700; letter-spacing:-.01em; user-select:all; font-variant-numeric:tabular-nums}
+.wa .btn{margin-left:auto}
+@media (max-width:820px){
+  .contact{display:block; min-height:0; padding:0 16px 48px}
+  .contact-scene{position:relative; display:block; width:calc(100% + 32px); height:70svh; margin:0 -16px}
+  .contact-card{width:100%; margin-top:-80px; padding:24px}
+}
+.form{display:grid; grid-template-columns:1fr; gap:12px}
+.form .full{grid-column:1 / -1}
+.fld{position:relative; min-width:0}
+.fld input,.fld select,.fld textarea{width:100%; padding:24px 16px 10px; border-radius:14px; border:1px solid var(--line); background:var(--bg); color:var(--ink); font:inherit; font-size:var(--step-ui); transition:border-color .3s, box-shadow .3s; appearance:none}
+.fld select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%235d8a8c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-position:calc(100% - 16px) 50%; background-size:12px 8px; background-repeat:no-repeat}
+.fld textarea{min-height:84px; resize:vertical}
+.fld label{position:absolute; left:17px; top:17px; font-size:var(--step-ui); color:var(--muted); pointer-events:none; transform-origin:left top; transition:transform .35s var(--ease), color .3s}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none; border-color:var(--sea); box-shadow:0 0 0 4px color-mix(in srgb, var(--sea) 18%, transparent)} /* taste-skill-ignore: anel de foco do campo */
+.fld :is(input,textarea):focus + label,.fld :is(input,textarea):not(:placeholder-shown) + label,.fld select + label{transform:translateY(-9px) scale(.78); color:var(--sea-text)}
+.fld.err input{border-color:var(--coral)}
+.form .btn{justify-self:stretch; justify-content:center}
+.form-note{font-size:var(--step-small); color:var(--muted); align-self:center}
+
+/* Footer */
+.foot{display:grid; grid-template-rows:auto 1fr auto; min-height:68svh; padding:clamp(48px, 6vw, 80px) 0 calc(24px + env(safe-area-inset-bottom, 0px)); background:var(--ink); color:var(--bg)}
+.foot a{color:inherit}
+.foot-cols{display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:32px; font-size:var(--step-ui)}
+.foot-cols ul{list-style:none; margin:0; padding:0; display:grid; gap:6px}
+.foot-cols p{max-width:30ch}
+.fh{font-weight:800; margin-bottom:10px}
+.foot-end{grid-row:3}
+.foot-word{width:100%; aspect-ratio:1158 / 245; background:var(--bg); -webkit-mask:url(assets/brand/tocca-onze-nome.png) left bottom / contain no-repeat; mask:url(assets/brand/tocca-onze-nome.png) left bottom / contain no-repeat}
+.legal{margin-top:20px; font-size:var(--step-small)}
+@media (max-width:820px){ .foot{min-height:0} .foot-cols{grid-template-columns:1fr 1fr; row-gap:32px} .foot-end{margin-top:20svh} }
+
+/* Toast */
+.toast{position:fixed; z-index:90; left:50%; bottom:calc(24px + env(safe-area-inset-bottom, 0px)); transform:translate(-50%, calc(100% + 48px)); max-width:calc(100% - 32px); padding:14px 20px; border-radius:16px; background:var(--ink); color:var(--bg); font-size:var(--step-ui); box-shadow:0 20px 50px -20px rgb(0 0 0/.5); visibility:hidden; transition:transform .6s var(--ease), visibility 0s .6s} /* taste-skill-ignore: aviso flutua */
+/* escondido, o aviso fica todo abaixo da borda e invisível; antes, 140% da própria altura deixava ~15px aparecendo */
+.toast.on{transform:translate(-50%, 0); visibility:visible; transition:transform .6s var(--ease)}
+
+/* Menu lateral de capítulos (como o índice fixo do Shopify Editions): preso no canto inferior esquerdo a partir de 1280px.
+   O capítulo atual fica em destaque e a barra dele enche conforme a seção é rolada (railUpdate()).
+   mix-blend-mode: difference mantém o texto legível sobre a hero, as passagens e as seções claras ou escuras. */
+.rail{display:none}
+@media (min-width:1280px){
+  :root{--rail:210px}
+  .wrap{padding-left:var(--rail); padding-right:var(--rail); max-width:calc(var(--maxw) + var(--rail) * 2)}
+  .site-head .wrap{padding-left:32px; padding-right:32px; max-width:none}
+  :root{--page-m:var(--rail)}
+  .rail{display:block; position:fixed; z-index:45; left:32px; bottom:32px; width:170px; color:#fff; mix-blend-mode:difference; pointer-events:none}
+  .rail ol{list-style:none; margin:0; padding:0; display:grid; gap:2px}
+  .rail a{pointer-events:auto; display:block; padding:5px 0; text-decoration:none; color:inherit; font-size:var(--step-small); font-weight:500; line-height:1.2; opacity:.55; transition:opacity .3s}
+  .rail a:hover, .rail a[aria-current="true"]{opacity:1}
+  .rail a[aria-current="true"]{font-weight:800}
+  .rail-bar{display:block; height:3px; margin-top:6px; border-radius:3px; background:rgb(255 255 255 / .25); overflow:hidden; transform-origin:left; transform:scaleX(0); transition:transform .45s var(--ease)}
+  .rail a[aria-current="true"] .rail-bar{transform:scaleX(1)}
+  .rail-bar i{display:block; height:100%; background:#fff; transform-origin:left; transform:scaleX(0)}
+}
+
+/* Passagens entre seções (ideia das transições por cena do Shopify Editions Winter '26): um palco preso de 100svh
+   em que um elemento de praia atravessa a "câmera", cobre a tela e revela a seção seguinte, com o título do capítulo no meio.
+   Montadas por buildPasses(); só aparecem com JS e sem prefers-reduced-motion. */
+.pass{display:none; position:relative; z-index:2; height:190svh; background:var(--bg)}
+html.js .pass{display:block}
+.pass-stage{position:sticky; top:0; height:100svh; overflow:hidden; background:var(--bg)}
+.pass-el{position:absolute; left:0; top:0; will-change:transform, opacity}
+.pass-el svg{display:block; width:100%; height:100%; overflow:visible}
+.pass-cover{position:absolute; inset:0; opacity:0; will-change:opacity}
+.pass-title{position:absolute; left:0; right:0; top:50%; z-index:5; margin:0; padding-inline:16px; text-align:center; opacity:0; will-change:transform, opacity}
+.pass-title b{display:block; font-family:var(--f-display); font-weight:900; font-size:clamp(34px, 7.2vw, 112px); letter-spacing:-.045em; line-height:.9}
+.pass-title span{display:block; max-width:34ch; margin:22px auto 0; font-size:var(--step-lead); font-weight:500; line-height:1.3; opacity:.88}
+.pass-cloud path{fill:var(--foam)}
+.pass-gull path{fill:none; stroke:var(--ink); stroke-width:2.6; stroke-linecap:round}
+.pass-frond path{fill:var(--hill)}
+.pass-frond.alt path{fill:var(--hill-2)}
+.pass-wave .crest{fill:var(--band)}
+.pass-wave .foam{fill:none; stroke:var(--foam); stroke-width:5; stroke-linecap:round; opacity:.9}
+.pass-wave.back .crest{fill:var(--sea-deep)}
+.pass-wave.mid .crest{fill:var(--lagoon)}
+.pass-wave .body{position:absolute; left:0; right:0; top:119px; bottom:0; background:var(--band)}
+.pass-wave.back .body{background:var(--sea-deep)}
+.pass-wave.mid .body{background:var(--lagoon)}
+@media (prefers-reduced-motion: reduce){
+  html.js .pass{display:none}
+  *,*::before,*::after{animation-duration:.001ms!important; animation-iteration-count:1!important; transition-duration:.001ms!important}
+}
+</style>
+
+<header class="site-head" id="head">
+  <div class="wrap head-in">
+    <a class="brand" href="#hero" data-scroll aria-label="tocca onze investimentos imobiliários, início">
+      <span class="brand-mark" aria-hidden="true"></span><span class="brand-name" aria-hidden="true"></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="#regioes" data-scroll>Destinos</a>
+      <a href="#empreendimentos" data-scroll>Empreendimentos</a>
+      <a href="#simulador" data-scroll>Rentabilidade</a>
+      <a href="#processo" data-scroll>Como funciona</a>
+      <a href="#contato" data-scroll>Contato</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Mudar para o modo escuro"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg></button>
+    <a class="btn btn-coral btn-sm magnet" href="#contato" data-scroll>Falar com especialista</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+  </div>
+</header>
+
+<nav class="rail" id="rail" aria-label="Capítulos da página">
+  <ol>
+    <li><a href="#hero" data-scroll><span class="rail-name">Início</span><span class="rail-bar"><i></i></span></a></li>
+    <li><a href="#porque" data-scroll><span class="rail-name">Por que o litoral sul</span><span class="rail-bar"><i></i></span></a></li>
+    <li><a href="#regioes" data-scroll><span class="rail-name">Destinos</span><span class="rail-bar"><i></i></span></a></li>
+    <li><a href="#empreendimentos" data-scroll><span class="rail-name">Empreendimentos</span><span class="rail-bar"><i></i></span></a></li>
+    <li><a href="#simulador" data-scroll><span class="rail-name">Rentabilidade</span><span class="rail-bar"><i></i></span></a></li>
+    <li><a href="#processo" data-scroll><span class="rail-name">Como funciona</span><span class="rail-bar"><i></i></span></a></li>
+    <li><a href="#contato" data-scroll><span class="rail-name">Contato</span><span class="rail-bar"><i></i></span></a></li>
+  </ol>
+</nav>
+
+<main>
+<div class="hero-stage">
+<section class="hero" id="hero">
+  <div class="scene" aria-hidden="true">
+    <div class="sky"><i></i><i></i><i></i><i></i></div>
+    <div class="sunset" id="sunset"></div>
+    <div class="sun" id="sun"></div>
+    <div class="layer" data-depth="0.15"><i class="cloud c1"></i><i class="cloud c2"></i><i class="cloud c3"></i></div>
+    <canvas class="layer" id="cvHills" data-depth="0.32"></canvas>
+    <canvas class="layer" id="cvSea" data-depth="0.5"></canvas>
+    <div class="layer" data-depth="0.62">
+      <svg class="jangada" id="jangada" viewBox="0 0 120 120">
+        <defs><clipPath id="sail"><path d="M62 8 L62 84 L14 80 Z"/></clipPath></defs>
+        <g clip-path="url(#sail)">
+          <rect x="0" y="0" width="120" height="120" fill="var(--foam)"/>
+          <rect x="0" y="22" width="120" height="12" fill="var(--coral)"/>
+          <rect x="0" y="46" width="120" height="12" fill="var(--sun)"/>
+          <rect x="0" y="70" width="120" height="12" fill="var(--coral)"/>
+        </g>
+        <path d="M62 4 L62 92" stroke="var(--palm)" stroke-width="2.5"/>
+        <path d="M8 90 L112 90 L102 100 L18 100 Z" fill="var(--palm)"/>
+        <path d="M30 90 L30 82 M90 90 L90 84" stroke="var(--palm)" stroke-width="2"/>
+      </svg>
+    </div>
+    <canvas class="layer" id="cvSand" data-depth="1"></canvas>
+    <canvas class="layer tall" id="cvFronds" data-depth="1.3"></canvas>
+  </div>
+  <div class="hero-dim" id="heroDim" aria-hidden="true"></div>
+  <div class="hero-copy" id="heroCopy">
+    <h1 class="hero-title"><span class="hl hl1"><span class="hl-in">Renda</span></span> <span class="hl hl2"><span class="hl-in">de praia</span></span></h1>
+    <div class="hero-mid">
+      <p class="hero-lede">A tocca onze escolhe imóveis no litoral sul de Pernambuco e no norte de Alagoas pelo que rendem no aluguel por temporada.</p>
+      <p class="hero-fact">Em Porto de Galinhas, a diária média no Airbnb foi de <b>R$&nbsp;647</b> e a ocupação de <b>37%</b> nos últimos 12 meses.</p>
+      <div class="hero-act">
+        <a class="btn btn-coral magnet" href="#simulador" data-scroll>Calcular minha renda <span class="arr">→</span></a>
+        <a class="tlink" href="#empreendimentos" data-scroll>Ver empreendimentos</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="porque">
+  <div class="why-wave" aria-hidden="true">
+    <svg class="wave-back" id="waveBack" viewBox="0 0 2880 90" preserveAspectRatio="none"><path d="M0 46 C 240 6 480 6 720 46 S 1200 86 1440 46 S 1920 6 2160 46 S 2640 86 2880 46 V 90 H 0 Z"/></svg>
+    <svg class="wave-front" id="waveFront" viewBox="0 0 2880 90" preserveAspectRatio="none"><path d="M0 58 C 240 30 480 30 720 58 S 1200 86 1440 58 S 1920 30 2160 58 S 2640 86 2880 58 V 90 H 0 Z"/></svg>
+  </div>
+  <div class="wrap why-in">
+    <h2 class="why-title"><span>Por que o</span> <span>litoral sul</span></h2>
+    <p class="statement" id="statement">Quem compra aqui leva duas coisas: férias garantidas para a família e uma renda que acompanha as temporadas do Nordeste.</p>
+    <div class="why-rows">
+      <article data-reveal>
+        <h3>Duas altas temporadas</h3>
+        <p>Verão de dezembro a fevereiro e férias de julho, somados a Carnaval, São João e feriados prolongados.</p>
+      </article>
+      <article data-reveal>
+        <h3>Gestão de temporada</h3>
+        <p>Anúncio, precificação por data, check-in, limpeza e manutenção, com relatório mensal de ocupação e receita.</p>
+      </article>
+      <article data-reveal>
+        <h3>Dois estados, um litoral</h3>
+        <p>De Muro Alto (PE) a Japaratinga (AL), com acesso pelos aeroportos do Recife e de Maceió.</p>
+      </article>
+    </div>
+  </div>
+  <figure class="why-panel"><img src="assets/brand/tocca-onze-marca.png" width="280" height="280" alt="Símbolo da tocca onze: um T num círculo, com a haste em duas barras"></figure>
+</section>
+</div>
+
+<section class="fly" id="regioes" aria-label="Destinos">
+  <div class="fly-sticky" id="flySticky">
+    <div class="fly-plane" id="plane"><canvas id="cvMap"></canvas></div>
+    <div class="fly-haze"></div>
+    <div class="fly-hud wrap">
+      <div class="hud-card">
+        <div class="hud-anim" id="hudAnim">
+          <h2 class="hud-title" id="hudTitle">Porto de Galinhas</h2>
+          <p class="hud-state"><span id="hudState">Ipojuca · PE</span> · <span id="hudKicker">Destino 1 de 3</span></p>
+          <p class="hud-text" id="hudText">Piscinas naturais formadas pelos recifes, vila de pedestres e a maior rede de hospedagem do litoral sul.</p>
+          <dl class="hud-facts">
+            <div><dt>Acesso</dt><dd id="hudDist">≈ 60 km do Aeroporto do Recife</dd></div>
+            <div><dt>Perfil de investimento</dt><dd id="hudPerfil">Procura o ano inteiro. Studios e flats giram rápido na temporada.</dd></div>
+          </dl>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="hudBtn">Ver imóveis deste destino <span class="arr">→</span></button>
+        <ol class="hud-steps" id="hudSteps"></ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="devs" id="empreendimentos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+          <h2 class="h2">Escolha o seu e veja <em>os números</em></h2>
+      </div>
+      <p class="note">Arraste para navegar e toque em um empreendimento para ver preço, diária média e rentabilidade estimada de cada tipologia.</p>
+    </div>
+    <div class="chips" role="tablist" aria-label="Filtrar por destino" id="chips">
+      <span class="chip-pill" id="chipPill"></span>
+      <button role="tab" aria-selected="true" data-f="all">Todos</button>
+      <button role="tab" aria-selected="false" data-f="porto">Porto de Galinhas</button>
+      <button role="tab" aria-selected="false" data-f="carneiros">Carneiros</button>
+      <button role="tab" aria-selected="false" data-f="maragogi">Maragogi</button>
+    </div>
+  </div>
+  <div class="car-viewport" id="carVp"><div class="car-track" id="track"></div></div>
+  <div class="wrap car-foot">
+    <div class="car-progress"><i id="carBar"></i></div>
+    <div class="car-nav">
+      <button class="round" id="prev" aria-label="Empreendimento anterior"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4l-6 6 6 6"/></svg></button>
+      <button class="round" id="next" aria-label="Próximo empreendimento"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 4l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+  <p class="wrap disclaimer">Empreendimentos, imagens, preços e áreas ilustrativos para este protótipo. Diária e ocupação são médias do Airbnb na cidade para o mesmo número de quartos (AirROI, out/2025 a set/2026).</p>
+</section>
+
+<section class="sim" id="simulador">
+  <div class="wrap sim-grid">
+    <div>
+      <h2 class="h2">Quanto o seu imóvel <em>rende</em></h2>
+      <p class="sim-lede">Ajuste os valores e veja a receita mês a mês. A sazonalidade vem da receita real por noite disponível em Porto de Galinhas: janeiro é o pico, dezembro, fevereiro e julho vêm depois, e maio, junho e agosto são os mais calmos.</p>
+      <div class="fields">
+        <div class="field"><div class="field-top"><label for="sim-price">Valor do imóvel</label><output id="o-price" for="sim-price">R$ 560.000</output></div><input type="range" id="sim-price" min="250000" max="2500000" step="5000" value="560000"></div>
+        <div class="field"><div class="field-top"><label for="sim-daily">Diária média</label><output id="o-daily" for="sim-daily">R$ 410</output></div><input type="range" id="sim-daily" min="150" max="2000" step="10" value="410"></div>
+        <div class="field"><div class="field-top"><label for="sim-occ">Ocupação média no ano</label><output id="o-occ" for="sim-occ">38%</output></div><input type="range" id="sim-occ" min="20" max="90" step="1" value="38"><small>Valores iniciais: média do Airbnb para 1 quarto em Porto de Galinhas, R$ 407 de diária e 38% de ocupação (AirROI, out/2025 a set/2026).</small></div>
+        <div class="field"><div class="field-top"><label for="sim-cost">Custos operacionais</label><output id="o-cost" for="sim-cost">35%</output></div><input type="range" id="sim-cost" min="15" max="55" step="1" value="35"><small>Administração, limpeza, condomínio, IPTU, energia e taxas das plataformas.</small></div>
+        <div class="field"><div class="field-top"><label for="sim-ref">Rendimento de referência</label><output id="o-ref" for="sim-ref">10,0% a.a.</output></div><input type="range" id="sim-ref" min="4" max="16" step="0.5" value="10"><small>Ajuste para a taxa atual da aplicação que você usa como comparação.</small></div>
+      </div>
+    </div>
+    <div class="sim-out" id="simOut">
+      <div class="big"><strong id="r-yield">7,7%</strong><span>de rentabilidade líquida estimada ao ano, antes de impostos</span></div>
+      <div class="kpis">
+        <div class="kpi"><span>Receita bruta / ano</span><strong id="r-gross">R$ 0</strong></div>
+        <div class="kpi"><span>Resultado líquido / ano</span><strong id="r-net">R$ 0</strong></div>
+        <div class="kpi"><span>Média líquida / mês</span><strong id="r-month">R$ 0</strong></div>
+        <div class="kpi"><span>Custos / ano</span><strong id="r-cost">R$ 0</strong></div>
+        <div class="kpi"><span>Noites ocupadas</span><strong id="r-nights">0</strong></div>
+        <div class="kpi"><span>Retorno do capital</span><strong id="r-pay">0 anos</strong></div>
+      </div>
+      <div class="chart-wrap" id="chartWrap">
+        <div class="chart-head"><b>Receita bruta por mês</b><span class="legend"><span><i style="background:var(--sun)"></i>Alta temporada</span><span><i style="background:var(--lagoon)"></i>Demais meses</span></span></div>
+        <svg id="chart" viewBox="0 0 640 230" role="img" aria-label="Receita bruta estimada por mês"></svg>
+        <div class="tip" id="tip"></div>
+      </div>
+      <div class="compare">
+        <div class="cmp-row"><span>Imóvel (líquido)</span><div class="cmp-bar"><i id="cmpA"></i></div><b id="cmpAv">0%</b></div>
+        <div class="cmp-row"><span>Referência</span><div class="cmp-bar ref"><i id="cmpB"></i></div><b id="cmpBv">0%</b></div>
+      </div>
+      <p class="sim-note">Estimativa simplificada para conversa inicial. Não inclui valorização do imóvel, imposto de renda, financiamento nem mobília, e não é recomendação de investimento.</p>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="processo">
+  <h2 class="proc-title">Como funciona, do primeiro contato ao primeiro repasse</h2>
+  <ol class="verbs" id="verbs">
+    <li class="verb v1"><span class="verb-mark" aria-hidden="true"></span><h3 class="verb-word">Conversar</h3><p class="verb-text">Veraneio da família, renda de temporada ou os dois. Definimos destino, faixa de investimento e prazo.</p></li>
+    <li class="verb v2"><span class="verb-mark" aria-hidden="true"></span><h3 class="verb-word">Escolher</h3><p class="verb-text">Uma seleção curta de imóveis, cada um com diária e ocupação de referência da região e a rentabilidade estimada.</p></li>
+    <li class="verb v3"><span class="verb-mark" aria-hidden="true"></span><h3 class="verb-word">Visitar</h3><p class="verb-text">Visita presencial ou por chamada de vídeo, com o entorno, a praia e a vizinhança mostrados de verdade.</p></li>
+    <li class="verb v4"><span class="verb-mark" aria-hidden="true"></span><h3 class="verb-word">Assinar</h3><p class="verb-text">Negociação, análise da documentação do imóvel e acompanhamento até o registro em cartório.</p></li>
+    <li class="verb v5"><span class="verb-mark" aria-hidden="true"></span><h3 class="verb-word">Alugar</h3><p class="verb-text">Fotos, anúncio, calendário, hóspedes, limpeza e manutenção. Você recebe o relatório e o repasse todo mês.</p></li>
+  </ol>
+</section>
+
+<section class="contact" id="contato">
+  <svg class="contact-scene" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <rect width="1440" height="900" fill="var(--sky-top)"/>
+    <circle cx="330" cy="330" r="96" fill="var(--sun)"/>
+    <path d="M120 210c18-30 70-34 92-8 20-26 74-20 86 14 34-2 50 34 24 48H112c-26-10-22-48 8-54z" fill="var(--foam)"/>
+    <path d="M760 150c14-24 56-26 72-6 16-20 58-16 68 10 26-2 40 26 18 38H752c-20-8-16-38 8-42z" fill="var(--foam)"/>
+    <rect y="520" width="1440" height="380" fill="var(--sea-deep)"/>
+    <path d="M0 600h1440v24H0zM0 668h1440v16H0zM0 724h1440v12H0z" fill="var(--sea-shallow)"/>
+    <g transform="translate(560 430)"><path d="M62 0v86L14 80z" fill="var(--foam)"/><path d="M14 80l48 6V64L30 60zM22 42l40 4V28l-30-4z" fill="var(--coral)"/><path d="M62 -4v96" stroke="var(--palm)" stroke-width="3"/><path d="M4 92h112l-10 12H16z" fill="var(--palm)"/></g>
+    <path d="M0 780c160-26 330-26 520-6s420 24 600 2 250-20 320-10V900H0z" fill="var(--sand)"/>
+    <path d="M0 860c220-16 460-14 720-4s520 10 720 0V900H0z" fill="var(--sand-2)"/>
+  </svg>
+  <div class="contact-card">
+    <h2 class="contact-title">Fale com a tocca onze</h2>
+    <p class="contact-lede">Conte o que procura e um consultor responde com uma seleção de imóveis e a simulação de cada um.</p>
+    <form class="form" id="form" novalidate>
+      <div class="fld"><input id="f-name" name="nome" placeholder=" " required autocomplete="name"><label for="f-name">Seu nome</label></div>
+      <div class="fld"><input id="f-phone" name="whatsapp" placeholder=" " required inputmode="tel" autocomplete="tel"><label for="f-phone">WhatsApp</label></div>
+      <div class="fld"><select id="f-region" name="regiao"><option value="Qualquer destino">Qualquer destino</option><option value="Porto de Galinhas">Porto de Galinhas</option><option value="Carneiros">Carneiros e Tamandaré</option><option value="Maragogi">Maragogi e Japaratinga</option></select><label for="f-region">Destino de interesse</label></div>
+      <div class="fld"><select id="f-budget" name="faixa"><option>Até R$ 500 mil</option><option selected>R$ 500 mil a R$ 900 mil</option><option>R$ 900 mil a R$ 1,5 milhão</option><option>Acima de R$ 1,5 milhão</option></select><label for="f-budget">Faixa de investimento</label></div>
+      <div class="fld"><textarea id="f-msg" name="mensagem" placeholder=" "></textarea><label for="f-msg">Mensagem (opcional)</label></div>
+      <button class="btn btn-coral magnet" type="submit" id="fSubmit">Receber imóveis e simulações <span class="arr">→</span></button>
+      <span class="form-note">Formulário de demonstração. Nenhum dado é enviado.</span>
+    </form>
+    <div class="wa">
+      <div><span class="lbl">WhatsApp (número de exemplo)</span><span class="val" id="waNum">(81) 90000-0000</span></div>
+      <button class="btn btn-ghost btn-sm" id="copyWa" type="button">Copiar</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-cols">
+    <div><p class="fh">tocca onze</p><p>Investimentos imobiliários no litoral sul de Pernambuco e no norte de Alagoas.</p></div>
+    <div><p class="fh">Navegação</p><ul><li><a href="#regioes" data-scroll>Destinos</a></li><li><a href="#empreendimentos" data-scroll>Empreendimentos</a></li><li><a href="#simulador" data-scroll>Rentabilidade</a></li><li><a href="#processo" data-scroll>Como funciona</a></li><li><a href="#contato" data-scroll>Contato</a></li></ul></div>
+    <div><p class="fh">Destinos</p><ul><li>Porto de Galinhas</li><li>Praia dos Carneiros</li><li>Maragogi e Japaratinga</li></ul></div>
+    <div><p class="fh">Dados de mercado</p><p>Diárias e ocupação: <a href="https://www.airroi.com/airbnb-data/brazil/pernambuco/ipojuca" rel="noopener">AirROI</a>, médias do Airbnb de out/2025 a set/2026 em Ipojuca, Tamandaré e Maragogi.</p></div>
+  </div>
+  <div class="wrap foot-end">
+    <div class="foot-word" role="img" aria-label="tocca onze investimentos imobiliários"></div>
+    <p class="legal">© 2026 tocca onze · CRECI a informar · Protótipo: empreendimentos, preços e WhatsApp são exemplos.</p>
+  </div>
+</footer>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel" id="mPanel" role="dialog" aria-modal="true" aria-labelledby="mName">
+    <button class="modal-x" data-close aria-label="Fechar"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3l12 12M15 3L3 15"/></svg></button>
+    <div class="m-art" id="mArt"></div>
+    <div class="m-body">
+      <h2 class="m-name" data-m id="mName"></h2>
+      <p class="m-place" data-m id="mPlace"></p>
+      <p class="m-kind" data-m id="mKind"></p>
+      <div class="seg" data-m id="mSeg" role="group" aria-label="Tipologia"></div>
+      <div class="metrics" data-m>
+        <div class="metric"><span>Preço a partir de</span><strong id="mPrice">–</strong></div>
+        <div class="metric"><span>Área privativa</span><strong id="mArea">–</strong></div>
+        <div class="metric"><span>Diária média da região</span><strong id="mDaily">–</strong></div>
+        <div class="metric"><span>Ocupação média da região</span><strong id="mOcc">–</strong></div>
+        <div class="metric"><span>Receita bruta / ano</span><strong id="mGross">–</strong></div>
+        <div class="metric hl"><span>Rentabilidade bruta</span><strong id="mYield">–</strong></div>
+      </div>
+      <div class="m-season" data-m>
+        <p>Receita estimada mês a mês</p>
+        <div class="m-bars" id="mBars"></div>
+        <div class="m-months"><span>J</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span><span>J</span><span>A</span><span>S</span><span>O</span><span>N</span><span>D</span></div>
+      </div>
+      <div class="m-actions" data-m>
+        <button class="btn btn-coral btn-sm" id="mSim">Calcular a renda deste imóvel <span class="arr">→</span></button>
+        <button class="btn btn-ghost btn-sm" id="mVisit">Agendar visita</button>
+      </div>
+      <p class="m-note" data-m>Preço e área de exemplo. Diária e ocupação são médias do Airbnb para imóveis com o mesmo número de quartos na cidade (AirROI, out/2025 a set/2026). Rentabilidade bruta antes de custos e impostos.</p>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(() => {
+'use strict';
+document.documentElement.classList.add('js');
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const G = typeof gsap !== 'undefined' && !reduce ? gsap : null;
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const lerp = (a, b, t) => a + (b - a) * t;
+const smooth = t => t * t * (3 - 2 * t);
+const brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+const pct1 = v => new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(v) + '%';
+const int = v => new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 0 }).format(v);
+const short = v => v >= 1e6 ? 'R$ ' + new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 }).format(v / 1e6) + ' mi' : brl.format(v);
+let vars = {};
+function readVars() {
+  const cs = getComputedStyle(document.documentElement);
+  ['sky-top','sky-bot','hill','hill-2','sea-deep','sea-shallow','sand','sand-2','foam','palm','sun','coral','lagoon','land','land-2','map-sea','map-deep','bg','ink','muted','church','sea']
+    .forEach(k => vars[k] = cs.getPropertyValue('--' + k).trim());
+}
+function rgba(hex, a) {
+  let h = hex.replace('#', '');
+  if (h.length === 3) h = h.split('').map(c => c + c).join('');
+  const n = parseInt(h, 16);
+  return `rgba(${n >> 16 & 255},${n >> 8 & 255},${n & 255},${a})`;
+}
+function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+
+/* ---------- Data ---------- */
+const REGIONS = [
+  { id: 'porto', name: 'Porto de Galinhas', state: 'Ipojuca · PE', y: 1900, art: 'tower',
+    text: 'Piscinas naturais formadas pelos recifes, vila de pedestres e a maior rede de hospedagem do litoral sul.',
+    dist: '≈ 60 km do Aeroporto do Recife', perfil: 'Procura o ano inteiro. Studios e flats giram rápido na temporada.' },
+  { id: 'carneiros', name: 'Praia dos Carneiros', state: 'Tamandaré · PE', y: 1200, art: 'bungalow',
+    text: 'Coqueirais, águas calmas e a igrejinha de São Benedito na beira do mar.',
+    dist: '≈ 100 km do Aeroporto do Recife', perfil: 'Público de alto padrão. Bangalôs e casas com diárias mais altas.' },
+  { id: 'maragogi', name: 'Maragogi', state: 'Alagoas', y: 500, art: 'flats',
+    text: 'As galés, piscinas naturais a cerca de 6 km da costa, e a Rota Ecológica dos Milagres logo ao sul.',
+    dist: '≈ 130 km do Recife e de Maceió', perfil: 'Ticket de entrada menor e turismo em crescimento.' }
+];
+// Diária (d) e ocupação (o) por tipologia: médias do Airbnb na cidade para o mesmo número de quartos, AirROI, out/2025 a set/2026
+// (Ipojuca para Porto de Galinhas, Tamandaré para Carneiros, Maragogi para Maragogi e Japaratinga). Loft = studio, loft duplex = 1 quarto.
+// Maragogi não tem amostra de studio: o studio do Galés usa a média de 1 quarto. Preços (p), áreas (a) e empreendimentos seguem fictícios.
+const DEVS = [
+  { id: 'vila-recifes', seed: 11, art: 'tower', name: 'Vila Recifes', region: 'porto', place: 'Muro Alto · Porto de Galinhas', kind: 'Flats pé na areia', delivery: 'Entrega dez/2027',
+    units: [{ l: 'Studio', a: 34, p: 489000, d: 324, o: .36 }, { l: '1 quarto', a: 52, p: 689000, d: 407, o: .38 }, { l: '2 quartos', a: 78, p: 1040000, d: 647, o: .39 }] },
+  { id: 'cupe', seed: 23, art: 'lofts', name: 'Mar de Cupe Lofts', region: 'porto', place: 'Cupe · Porto de Galinhas', kind: 'Lofts com rooftop e piscina', delivery: 'Pronto para morar',
+    units: [{ l: 'Loft', a: 40, p: 525000, d: 324, o: .36 }, { l: 'Loft duplex', a: 62, p: 760000, d: 407, o: .38 }] },
+  { id: 'pontal', seed: 37, art: 'bungalow', name: 'Pontal dos Carneiros', region: 'carneiros', place: 'Praia dos Carneiros · Tamandaré', kind: 'Bangalôs entre coqueiros', delivery: 'Entrega jun/2027',
+    units: [{ l: 'Bangalô 1 quarto', a: 60, p: 890000, d: 483, o: .31 }, { l: 'Bangalô 2 quartos', a: 95, p: 1380000, d: 672, o: .31 }] },
+  { id: 'gales', seed: 41, art: 'flats', name: 'Galés Maragogi', region: 'maragogi', place: 'Burgalhau · Maragogi', kind: 'Flats com serviço de hotel', delivery: 'Entrega set/2027',
+    units: [{ l: 'Studio', a: 30, p: 385000, d: 311, o: .32 }, { l: '1 quarto', a: 48, p: 560000, d: 311, o: .32 }, { l: '2 quartos', a: 70, p: 790000, d: 441, o: .34 }] },
+  { id: 'tamandare', seed: 53, art: 'block', name: 'Tamandaré Pé na Areia', region: 'carneiros', place: 'Centro · Tamandaré', kind: 'Apartamentos frente mar', delivery: 'Entrega mar/2028',
+    units: [{ l: '2 quartos', a: 82, p: 860000, d: 672, o: .31 }, { l: '3 quartos', a: 118, p: 1190000, d: 971, o: .27 }] },
+  { id: 'japaratinga', seed: 67, art: 'house', name: 'Japaratinga Eco Village', region: 'maragogi', place: 'Japaratinga · AL', kind: 'Casas em condomínio', delivery: 'Pronto para morar',
+    units: [{ l: 'Casa 3 quartos', a: 140, p: 1650000, d: 666, o: .32 }] }
+];
+// Peso de cada mês (jan a dez) = RevPAR mensal de Ipojuca / média do ano (AirROI, set/2025 a ago/2026).
+const SEASON = [1.90, 1.35, .97, .78, .64, .72, 1.06, .69, .77, .91, .83, 1.37];
+const SEASON_MEAN = SEASON.reduce((a, b) => a + b, 0) / 12;
+const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+const MONTHS = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const HIGH = new Set([0, 1, 6, 11]);
+function monthly(daily, occ) {
+  return SEASON.map((w, i) => { const o = Math.min(.97, occ * w / SEASON_MEAN); return { rev: daily * DAYS[i] * o, nights: DAYS[i] * o }; });
+}
+const grossYear = (d, o) => monthly(d, o).reduce((s, m) => s + m.rev, 0);
+
+/* ---------- Illustrations ---------- */
+let artN = 0;
+function palm(x, y, h, lean) {
+  const tx = x + lean, ty = y - h;
+  let s = `<path d="M${x} ${y} Q${x + lean * .2} ${y - h * .55} ${tx} ${ty}" stroke="var(--palm)" stroke-width="${(h * .06).toFixed(1)}" fill="none" stroke-linecap="round"/>`;
+  [-170, -140, -110, -70, -40, -10, 20, 160].forEach((a, i) => {
+    const r = a * Math.PI / 180, L = h * (.42 + (i % 3) * .06);
+    const ex = tx + Math.cos(r) * L, ey = ty + Math.sin(r) * L * .55 + L * .32;
+    const cx = tx + Math.cos(r) * L * .5, cy = ty + Math.sin(r) * L * .5 - L * .12;
+    s += `<path d="M${tx} ${ty} Q${cx.toFixed(1)} ${(cy - 3).toFixed(1)} ${ex.toFixed(1)} ${ey.toFixed(1)} Q${cx.toFixed(1)} ${(cy + 5).toFixed(1)} ${tx} ${ty}Z" fill="var(--palm)"/>`;
+  });
+  return s;
+}
+function building(type, r) {
+  let s = '';
+  const win = (x, y, w, h, cols, rows) => { let o = ''; const cw = w / cols, ch = h / rows; for (let i = 0; i < cols; i++) for (let j = 0; j < rows; j++) o += `<rect x="${(x + i * cw + cw * .22).toFixed(1)}" y="${(y + j * ch + ch * .25).toFixed(1)}" width="${(cw * .56).toFixed(1)}" height="${(ch * .45).toFixed(1)}" rx="1.5" fill="var(--sea)" opacity=".38"/>`; return o; };
+  if (type === 'tower') {
+    s += `<rect x="214" y="66" width="96" height="132" rx="6" fill="var(--surface)"/>${win(214, 72, 96, 120, 4, 7)}`;
+    s += `<rect x="300" y="104" width="64" height="94" rx="6" fill="var(--surface)" opacity=".92"/>${win(300, 110, 64, 84, 3, 5)}`;
+    s += `<rect x="208" y="60" width="108" height="8" rx="4" fill="var(--coral)"/>`;
+  } else if (type === 'lofts') {
+    s += `<rect x="190" y="118" width="170" height="80" rx="6" fill="var(--surface)"/>${win(190, 124, 170, 70, 6, 3)}`;
+    s += `<rect x="226" y="88" width="104" height="34" rx="6" fill="var(--surface)"/>${win(226, 92, 104, 28, 4, 1)}`;
+    s += `<rect x="236" y="80" width="84" height="7" rx="3" fill="var(--lagoon)"/>`;
+  } else if (type === 'bungalow') {
+    [[176, 150], [250, 142], [324, 152]].forEach(([x, y]) => {
+      s += `<rect x="${x - 2}" y="${y + 28}" width="3" height="18" fill="var(--palm)"/><rect x="${x + 44}" y="${y + 28}" width="3" height="18" fill="var(--palm)"/>`;
+      s += `<rect x="${x}" y="${y + 6}" width="46" height="26" rx="3" fill="var(--surface)"/><rect x="${x + 16}" y="${y + 14}" width="14" height="18" fill="var(--sea)" opacity=".4"/>`;
+      s += `<path d="M${x - 10} ${y + 10} L${x + 23} ${y - 16} L${x + 56} ${y + 10}Z" fill="var(--sand-2)"/>`;
+    });
+  } else if (type === 'flats') {
+    s += `<rect x="180" y="110" width="190" height="88" rx="6" fill="var(--surface)"/>${win(180, 116, 190, 78, 7, 3)}`;
+    s += `<path d="M172 112 L275 86 L378 112Z" fill="var(--coral)" opacity=".9"/>`;
+  } else if (type === 'block') {
+    s += `<rect x="168" y="96" width="210" height="102" rx="6" fill="var(--surface)"/>${win(168, 102, 210, 92, 8, 4)}`;
+    for (let i = 0; i < 4; i++) s += `<rect x="168" y="${120 + i * 23}" width="210" height="2.5" fill="var(--ink)" opacity=".12"/>`;
+  } else {
+    [[190, 140], [290, 134]].forEach(([x, y]) => {
+      s += `<rect x="${x}" y="${y}" width="80" height="58" rx="4" fill="var(--surface)"/>${win(x, y + 10, 80, 40, 3, 1)}`;
+      s += `<path d="M${x - 8} ${y + 4} L${x + 40} ${y - 26} L${x + 88} ${y + 4}Z" fill="var(--coral)"/>`;
+    });
+  }
+  return s;
+}
+function art(type, seed) {
+  const r = rng(seed), n = ++artN, sx = 50 + r() * 110;
+  let waves = '';
+  for (let i = 0; i < 4; i++) { const y = 140 + i * 13; waves += `<path d="M0 ${y} Q50 ${y - 3} 100 ${y} T200 ${y} T300 ${y} T400 ${y}" stroke="var(--foam)" stroke-opacity="${.18 + i * .1}" fill="none" stroke-width="1.4"/>`; }
+  return `<svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs><linearGradient id="sk${n}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--sky-top)"/><stop offset="1" stop-color="var(--sky-bot)"/></linearGradient>
+  <linearGradient id="se${n}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--sea-deep)"/><stop offset="1" stop-color="var(--sea-shallow)"/></linearGradient></defs>
+  <rect width="400" height="260" fill="url(#sk${n})"/>
+  <circle cx="${sx.toFixed(0)}" cy="${(64 + r() * 24).toFixed(0)}" r="24" fill="var(--sun)"/>
+  <rect y="128" width="400" height="90" fill="url(#se${n})"/>
+  <ellipse cx="${(80 + r() * 60).toFixed(0)}" cy="160" rx="60" ry="7" fill="var(--lagoon)" opacity=".7"/>
+  ${waves}
+  <path d="M0 194 Q100 182 200 190 T400 186 V260 H0Z" fill="var(--sand)"/>
+  <path d="M0 214 Q120 204 240 212 T400 208 V260 H0Z" fill="var(--sand-2)" opacity=".5"/>
+  ${building(type, r)}
+  ${palm(40 + r() * 30, 230, 110 + r() * 30, 18 + r() * 16)}${palm(370, 236, 120, -24)}
+  </svg>`;
+}
+
+/* ---------- Smooth scroll ---------- */
+let lenis = null;
+if (!reduce && typeof Lenis !== 'undefined') {
+  lenis = new Lenis({ lerp: .1 });
+  const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
+  requestAnimationFrame(raf);
+}
+function goTo(target, after) {
+  const el = typeof target === 'string' ? $(target) : target;
+  if (!el) return;
+  // a barra fixa compacta tem 62px; o voo pelo litoral (#regioes) começa no topo exato da seção
+  const off = el.id === 'regioes' || el.id === 'hero' ? 0 : -62;
+  const top = el.getBoundingClientRect().top + scrollY + off;
+  if (lenis) lenis.scrollTo(top, { duration: 1.4, onComplete: after });
+  else { scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' }); if (after) setTimeout(after, reduce ? 0 : 700); }
+}
+$$('[data-scroll]').forEach(a => a.addEventListener('click', e => {
+  const id = a.getAttribute('href'); if (!id || id[0] !== '#') return;
+  e.preventDefault(); closeMenu(); goTo(id);
+}));
+
+/* ---------- Header ---------- */
+const head = $('#head'), menuBtn = $('#menuBtn'), nav = $('#nav');
+function closeMenu() { nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }
+menuBtn.addEventListener('click', () => { const o = nav.classList.toggle('open'); menuBtn.setAttribute('aria-expanded', String(o)); });
+const navLinks = $$('a', nav).map(a => ({ a, sec: $(a.getAttribute('href')) }));
+let headK = -1, curLink = null;
+function headUpdate(s) {
+  const k = clamp(s / 140, 0, 1);
+  if (Math.abs(k - headK) > .002) { headK = k; head.style.setProperty('--hk', k.toFixed(3)); }
+  let cur = null; const probe = 90;
+  navLinks.forEach(l => { if (l.sec && l.sec.getBoundingClientRect().top <= probe) cur = l.a; });
+  if (cur !== curLink) { if (curLink) curLink.removeAttribute('aria-current'); if (cur) cur.setAttribute('aria-current', 'true'); curLink = cur; }
+}
+
+/* ---------- Magnetic buttons ---------- */
+if (!reduce && matchMedia('(pointer:fine)').matches) {
+  $$('.magnet').forEach(b => {
+    b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); b.style.setProperty('--mx', ((e.clientX - r.left - r.width / 2) * .22).toFixed(1) + 'px'); b.style.setProperty('--my', ((e.clientY - r.top - r.height / 2) * .3).toFixed(1) + 'px'); });
+    b.addEventListener('pointerleave', () => { b.style.setProperty('--mx', '0px'); b.style.setProperty('--my', '0px'); });
+  });
+}
+
+/* ---------- Hero ---------- */
+const hero = $('#hero'), scene = $('#hero .scene'), heroDim = $('#heroDim'), waveBack = $('#waveBack'), waveFront = $('#waveFront'), heroCopy = $('#heroCopy'), sun = $('#sun'), sunset = $('#sunset'), jangada = $('#jangada');
+const layers = $$('[data-depth]', hero);
+const cv = { hills: $('#cvHills'), sea: $('#cvSea'), sand: $('#cvSand'), fronds: $('#cvFronds') };
+let HW = 0, HH = 0, LW = 0, seaCtx = null, heroVisible = true;
+const H_DPR = () => Math.min(devicePixelRatio || 1, 1.25);
+function sizeCanvas(c, w, h, dpr) { c.width = Math.round(w * dpr); c.height = Math.round(h * dpr); const x = c.getContext('2d'); x.setTransform(dpr, 0, 0, dpr, 0, 0); return x; }
+const HZ = () => HH * (innerWidth < 640 ? .6 : .6), SHORE = () => HH * .74;
+function heroPalm(ctx, x, y, h, lean, color) {
+  const tx = x + lean, ty = y - h;
+  ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineCap = 'round';
+  ctx.lineWidth = Math.max(2, h * .055);
+  ctx.beginPath(); ctx.moveTo(x, y); ctx.quadraticCurveTo(x + lean * .15, y - h * .55, tx, ty); ctx.stroke();
+  const angs = [-175, -150, -120, -85, -55, -25, 5, 160, 140];
+  angs.forEach((a, i) => {
+    const r = a * Math.PI / 180, L = h * (.5 + (i % 3) * .08);
+    const ex = tx + Math.cos(r) * L, ey = ty + Math.sin(r) * L * .5 + L * .38;
+    const cx = tx + Math.cos(r) * L * .55, cy = ty + Math.sin(r) * L * .55 - L * .1;
+    ctx.beginPath(); ctx.moveTo(tx, ty);
+    ctx.quadraticCurveTo(cx, cy - L * .05, ex, ey);
+    ctx.quadraticCurveTo(cx, cy + L * .09, tx, ty); ctx.fill();
+  });
+}
+function drawHills() {
+  const ctx = sizeCanvas(cv.hills, LW, HH, H_DPR()), hz = HZ(), r = rng(7);
+  const ridge = (x0, x1, peak, col) => {
+    ctx.fillStyle = col; ctx.beginPath(); ctx.moveTo(x0, hz + 30);
+    for (let x = x0; x <= x1; x += 6) {
+      const k = (x - x0) / (x1 - x0), env = Math.sin(k * Math.PI) ** .7;
+      ctx.lineTo(x, hz - env * peak - Math.sin(x * .03) * 3 * env);
+    }
+    ctx.lineTo(x1, hz + 30); ctx.closePath(); ctx.fill();
+  };
+  ridge(-LW * .05, LW * .42, HH * .06, vars['hill-2']);
+  ridge(LW * .64, LW * 1.05, HH * .08, vars['hill-2']);
+  ridge(-LW * .05, LW * .3, HH * .035, vars.hill);
+  ridge(LW * .74, LW * 1.05, HH * .045, vars.hill);
+  // coconut groves
+  for (let i = 0; i < 26; i++) {
+    const left = i < 12, x = left ? r() * LW * .3 : LW * .74 + r() * LW * .3;
+    const base = hz - (left ? HH * .02 : HH * .025) + r() * 6;
+    heroPalm(ctx, x, base, HH * (.05 + r() * .05), (r() - .5) * 18, vars.hill);
+  }
+  // Carneiros chapel on the right headland
+  const cx = LW * .8, cy = hz - HH * .012, s = Math.max(10, HH * .018);
+  ctx.fillStyle = vars.church;
+  ctx.fillRect(cx, cy - s, s * 1.6, s);
+  ctx.beginPath(); ctx.moveTo(cx - s * .1, cy - s); ctx.lineTo(cx + s * .8, cy - s * 1.6); ctx.lineTo(cx + s * 1.7, cy - s); ctx.fill();
+  ctx.fillRect(cx + s * 1.6, cy - s * 1.9, s * .55, s * 1.9);
+  ctx.beginPath(); ctx.moveTo(cx + s * 1.55, cy - s * 1.9); ctx.lineTo(cx + s * 1.875, cy - s * 2.4); ctx.lineTo(cx + s * 2.2, cy - s * 1.9); ctx.fill();
+}
+const POOLS = [{ x: .2, y: .36, r: .1 }, { x: .46, y: .6, r: .07 }, { x: .8, y: .34, r: .11 }];
+function drawSea(t) {
+  const ctx = seaCtx, hz = HZ(), sh = SHORE(), W = LW;
+  ctx.clearRect(0, 0, W, HH);
+  const g = ctx.createLinearGradient(0, hz, 0, sh + 30);
+  g.addColorStop(0, vars['sea-deep']); g.addColorStop(1, vars['sea-shallow']);
+  ctx.fillStyle = g; ctx.fillRect(0, hz, W, HH - hz);
+  POOLS.forEach((p, i) => {
+    const x = p.x * W, y = hz + (sh - hz) * p.y, rx = p.r * W, ry = rx * (.2 + .015 * Math.sin(t * .8 + i));
+    const rg = ctx.createRadialGradient(x, y, 0, x, y, rx);
+    rg.addColorStop(0, rgba(vars.lagoon, .85)); rg.addColorStop(.6, rgba(vars.lagoon, .45)); rg.addColorStop(1, rgba(vars.lagoon, 0));
+    ctx.fillStyle = rg; ctx.save(); ctx.translate(x, y); ctx.scale(1, ry / rx); ctx.beginPath(); ctx.arc(0, 0, rx, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+    ctx.fillStyle = rgba(vars.palm, .22);
+    for (let k = 0; k < 5; k++) { ctx.beginPath(); ctx.ellipse(x + Math.cos(k * 2.1 + i) * rx * .45, y + Math.sin(k * 1.7) * ry * .35, rx * .07, ry * .18, 0, 0, Math.PI * 2); ctx.fill(); }
+  });
+  // sun glitter
+  const sx = sunCX + LW * .04 / 1.08;
+  for (let i = 0; i < 30; i++) {
+    const f = i / 30, y = hz + 3 + f ** 1.35 * (sh - hz) * .85;
+    const w = (6 + f * 60) * (.35 + .65 * Math.abs(Math.sin(t * 2.2 + i * 1.7)));
+    ctx.fillStyle = rgba(vars.sun, .55 - f * .3);
+    ctx.fillRect(sx - w / 2 + Math.sin(t * .9 + i) * (4 + f * 10), y, w, 1.2 + f * 1.6);
+  }
+  // swell lines
+  for (let k = 0; k < 16; k++) {
+    const f = k / 16, y = hz + 4 + f ** 1.7 * (sh - hz - 6), amp = .5 + f * 5;
+    ctx.strokeStyle = rgba(vars.foam, .07 + f * .28); ctx.lineWidth = .8 + f * 1.4;
+    ctx.setLineDash([30 + f * 90, 40 + f * 110]); ctx.lineDashOffset = -t * (14 + f * 40) - k * 37;
+    ctx.beginPath();
+    for (let x = -20; x <= W + 20; x += 16) ctx.lineTo(x, y + Math.sin(x * (.011 - f * .006) + t * (.5 + f * .7) + k * 1.3) * amp);
+    ctx.stroke();
+  }
+  ctx.setLineDash([]);
+  // shore foam
+  const fy = sh - 12 + Math.sin(t * .8) * 8;
+  ctx.fillStyle = rgba(vars.foam, .35);
+  ctx.beginPath(); ctx.moveTo(0, HH);
+  for (let x = 0; x <= W; x += 12) ctx.lineTo(x, fy - 14 + Math.sin(x * .016 + t * 1.1) * 4);
+  ctx.lineTo(W, HH); ctx.fill();
+  ctx.fillStyle = rgba(vars.foam, .9);
+  ctx.beginPath(); ctx.moveTo(0, HH);
+  for (let x = 0; x <= W; x += 12) ctx.lineTo(x, fy + Math.sin(x * .021 + t * 1.4) * 3);
+  ctx.lineTo(W, HH); ctx.fill();
+}
+function drawSand() {
+  const ctx = sizeCanvas(cv.sand, LW, HH, H_DPR()), sh = SHORE(), r = rng(19);
+  const g = ctx.createLinearGradient(0, sh, 0, HH);
+  g.addColorStop(0, vars.sand); g.addColorStop(1, vars['sand-2']);
+  ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(0, HH);
+  for (let x = 0; x <= LW; x += 10) ctx.lineTo(x, sh + 6 + Math.sin(x * .006) * 8 + Math.sin(x * .021) * 3);
+  ctx.lineTo(LW, HH); ctx.fill();
+  ctx.fillStyle = rgba(vars['sand-2'], .7);
+  for (let i = 0; i < 90; i++) { ctx.beginPath(); ctx.arc(r() * LW, sh + 20 + r() * (HH - sh), .8 + r() * 1.6, 0, 7); ctx.fill(); }
+  // beach umbrella and chairs
+  const ux = LW * .2, uy = sh + (HH - sh) * .5, R = Math.max(34, HH * .065);
+  ctx.strokeStyle = vars.palm; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(ux, uy + R * .9); ctx.lineTo(ux + R * .1, uy - R * .55); ctx.stroke();
+  for (let i = 0; i < 6; i++) {
+    ctx.fillStyle = i % 2 ? vars.foam : vars.coral;
+    ctx.beginPath(); ctx.moveTo(ux + R * .1, uy - R * .55);
+    ctx.arc(ux + R * .1, uy - R * .1, R, Math.PI + i * Math.PI / 6, Math.PI + (i + 1) * Math.PI / 6); ctx.closePath(); ctx.fill();
+  }
+  ctx.fillStyle = rgba(vars.palm, .14); ctx.beginPath(); ctx.ellipse(ux + R * .3, uy + R * .95, R * 1.2, R * .18, 0, 0, 7); ctx.fill();
+  [[ux - R * 1.3, uy + R * .55], [ux + R * .9, uy + R * .6]].forEach(([x, y]) => {
+    ctx.strokeStyle = vars.palm; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + R * .7, y); ctx.lineTo(x + R * .95, y - R * .35); ctx.moveTo(x + R * .05, y); ctx.lineTo(x, y + R * .2); ctx.moveTo(x + R * .65, y); ctx.lineTo(x + R * .7, y + R * .2); ctx.stroke();
+    ctx.fillStyle = vars.sun; ctx.fillRect(x, y - 4, R * .7, 4);
+  });
+}
+function drawFronds() {
+  const h = HH * 1.4, ctx = sizeCanvas(cv.fronds, LW, h, H_DPR());
+  const narrow = LW < 700;
+  const bx = LW * (narrow ? 1.04 : .985), by = h, tx = LW * (narrow ? .97 : .91), ty = HH * (narrow ? .1 : .16);
+  ctx.strokeStyle = vars.palm; ctx.lineWidth = narrow ? 14 : 22; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(bx, by); ctx.quadraticCurveTo(LW * 1.02, HH * .6, tx, ty); ctx.stroke();
+  ctx.fillStyle = vars.palm;
+  const L = Math.min(LW * (narrow ? .38 : .26), 380);
+  [-200, -175, -150, -120, -95, 150, 125, 100, 75].forEach((a, i) => {
+    const r = a * Math.PI / 180, len = L * (.7 + (i % 3) * .14);
+    const ex = tx + Math.cos(r) * len, ey = ty + Math.sin(r) * len * .6 + len * .5;
+    const cx = tx + Math.cos(r) * len * .55, cy = ty + Math.sin(r) * len * .55 - len * .05;
+    ctx.beginPath(); ctx.moveTo(tx, ty); ctx.quadraticCurveTo(cx, cy - len * .06, ex, ey); ctx.quadraticCurveTo(cx, cy + len * .12, tx, ty); ctx.fill();
+    // leaflets
+    ctx.lineWidth = 1.2; ctx.strokeStyle = vars.palm;
+    for (let k = 1; k < 12; k++) {
+      const q = k / 12, px = (1 - q) * (1 - q) * tx + 2 * (1 - q) * q * cx + q * q * ex, py = (1 - q) * (1 - q) * ty + 2 * (1 - q) * q * (cy) + q * q * ey;
+      const nl = len * .12 * (1 - q * .6);
+      ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(px + Math.cos(r + 1.3) * nl, py + Math.sin(r + 1.3) * nl + nl * .6); ctx.moveTo(px, py); ctx.lineTo(px + Math.cos(r - 1.3) * nl, py + Math.sin(r - 1.3) * nl + nl * .6); ctx.stroke();
+    }
+  });
+  ctx.lineWidth = narrow ? 14 : 22;
+}
+let sunCX = 0;
+function layoutHero() {
+  HW = hero.clientWidth; HH = hero.clientHeight; LW = HW * 1.08;
+  seaCtx = sizeCanvas(cv.sea, LW, HH, H_DPR());
+  drawHills(); drawSand(); drawFronds(); drawSea(0);
+  const sz = sun.offsetWidth;
+  sun.style.top = (HZ() - sz * .72) + 'px';
+  sunCX = HW * .66 + sz / 2;
+  jangada.style.top = (HZ() + (SHORE() - HZ()) * .22) + 'px';
+}
+let mx = 0, my = 0, tmx = 0, tmy = 0;
+const intro = { k: 0 };
+hero.addEventListener('pointermove', e => { if (e.pointerType !== 'mouse') return; const r = hero.getBoundingClientRect(); tmx = (e.clientX - r.left) / r.width * 2 - 1; tmy = (e.clientY - r.top) / r.height * 2 - 1; });
+hero.addEventListener('pointerleave', () => { tmx = 0; tmy = 0; });
+function heroUpdate(s, t) {
+  heroVisible = s < HH * 1.2;
+  if (!heroVisible) return;
+  // cortina: a seção seguinte cobre a hero entre s = 0 e s = HH
+  const cov = clamp(s / HH, 0, 1);
+  // a cena fica parada (nada se desloca para cima, então nenhuma camada de trás aparece na base) e só aproxima: um zoom para dentro nunca abre borda
+  scene.style.transform = reduce ? '' : `scale(${(1 + cov * .08).toFixed(4)})`;
+  heroDim.style.opacity = (cov * .6).toFixed(3);
+  waveBack.style.transform = `translate3d(${(-(s * .35) % (HW || 1)).toFixed(2)}px,0,0)`;
+  waveFront.style.transform = `translate3d(${(-HW + (s * .2) % (HW || 1)).toFixed(2)}px,0,0)`;
+  mx += (tmx - mx) * .06; my += (tmy - my) * .06;
+  layers.forEach(l => {
+    const d = +l.dataset.depth;
+    l.style.transform = `translate3d(${(-mx * d * 26).toFixed(2)}px,${(-my * d * 12 + intro.k * d * 70).toFixed(2)}px,0)`;
+  });
+  const k = clamp(s / (HH * .8), 0, 1);
+  sun.style.transform = `translate3d(${(-mx * 4).toFixed(2)}px,${(s * .27).toFixed(2)}px,0)`;
+  sunset.style.opacity = (k * .85).toFixed(3);
+  // o texto sobe na mesma velocidade da página, então a onda que vem por baixo nunca passa por cima dele
+  heroCopy.style.transform = `translate3d(0,${(-s).toFixed(2)}px,0)`;
+  heroCopy.style.opacity = (1 - clamp(s / (HH * .6), 0, 1)).toFixed(3);
+  jangada.style.transform = `translate(${(Math.sin(t * .18) * 40).toFixed(2)}px,${(Math.sin(t * 1.3) * 3).toFixed(2)}px) rotate(${(Math.sin(t * 1.1) * 2.5).toFixed(2)}deg)`;
+  if (!reduce) drawSea(t);
+}
+
+/* ---------- Hero line (letreiro) ---------- */
+// As duas faixas (escura e clara) andam juntas: 40 px/s para a esquerda, mais um empurrão proporcional à velocidade do scroll.
+const lineTracks = $$('.hero-line .line-track');
+let mqX = 0, mqW = 0, prevS = 0, mqV = 0, prevT = 0;
+function mqUpdate(s, t) {
+  if (!lineTracks.length) return;
+  if (!mqW) mqW = lineTracks[0].scrollWidth / 2;
+  const dt = prevT ? Math.min(t - prevT, .1) : 0; prevT = t;
+  const dv = s - prevS; prevS = s;
+  mqV = lerp(mqV, dv, .1);
+  mqX -= (reduce ? 0 : 40 * dt) + Math.abs(mqV) * .35;
+  if (mqX < -mqW) mqX += mqW;
+  const tr = `translate3d(${mqX.toFixed(2)}px,0,0)`;
+  lineTracks.forEach(el => { el.style.transform = tr; });
+}
+
+/* ---------- Statement word highlight ---------- */
+const st = $('#statement');
+(function splitStatement() {
+  const walk = node => [...node.childNodes].forEach(n => {
+    if (n.nodeType === 3) {
+      const frag = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(p => { if (!p) return; if (/^\s+$/.test(p)) frag.appendChild(document.createTextNode(' ')); else { const sp = document.createElement('span'); sp.className = 'sw'; sp.textContent = p; frag.appendChild(sp); } });
+      n.replaceWith(frag);
+    } else if (n.nodeType === 1) walk(n);
+  });
+  walk(st);
+})();
+const sws = $$('.sw', st);
+let stLast = -1;
+function stUpdate() {
+  const r = st.getBoundingClientRect(), vh = innerHeight;
+  if (r.bottom < -100 || r.top > vh + 100) return;
+  const p = clamp((vh * .85 - r.top) / (r.height + vh * .35), 0, 1);
+  const lit = Math.round(p * sws.length * 1.15 * 10) / 10;
+  if (lit === stLast) return; stLast = lit;
+  sws.forEach((w, i) => { w.style.opacity = (.3 + .7 * clamp(lit - i, 0, 1)).toFixed(2); });
+}
+
+/* ---------- Fly-over ---------- */
+const fly = $('#regioes'), flySticky = $('#flySticky'), plane = $('#plane'), cvMap = $('#cvMap');
+const PH = 2400;
+let PW = 760, lifts = [], hudIdx = -1;
+const coastX = y => PW * .36 + Math.sin(y / 210) * PW * .035 + Math.sin(y / 67) * PW * .012;
+const TOWNS = [
+  ['Maceió ↑', 90, 1], ['Japaratinga', 300, 0], ['Maragogi', 500, 2], ['Barra Grande', 610, 0], ['São José da Coroa Grande', 900, 0],
+  ['Tamandaré', 1120, 0], ['Praia dos Carneiros', 1200, 2], ['Serrambi', 1560, 0], ['Maracaípe', 1830, 0], ['Porto de Galinhas', 1900, 2],
+  ['Cupe', 1960, 0], ['Muro Alto', 2020, 0], ['Recife ↓', 2320, 1]
+];
+function drawMap() {
+  readVars();
+  const dpr = Math.min(devicePixelRatio || 1, PW < 500 ? 2 : 1.5);
+  const ctx = sizeCanvas(cvMap, PW, PH, dpr);
+  cvMap.style.width = PW + 'px'; cvMap.style.height = PH + 'px';
+  const r = rng(3);
+  const og = ctx.createLinearGradient(0, 0, PW * .4, 0);
+  og.addColorStop(0, vars['map-deep']); og.addColorStop(1, vars['map-sea']);
+  ctx.fillStyle = og; ctx.fillRect(0, 0, PW, PH);
+  // reef line parallel to the coast
+  ctx.fillStyle = rgba(vars.foam, .5);
+  for (let y = 20; y < PH; y += 9) { const x = coastX(y) - PW * .07 - Math.sin(y / 90) * 6; if (r() > .35) ctx.fillRect(x, y, 2 + r() * 8, 1.6); }
+  // natural pools
+  [[1900, .12, 46], [1210, .09, 30], [500, .19, 64]].forEach(([y, off, rad]) => {
+    const x = coastX(y) - PW * off;
+    const g = ctx.createRadialGradient(x, y, 0, x, y, rad);
+    g.addColorStop(0, rgba(vars.lagoon, .95)); g.addColorStop(1, rgba(vars.lagoon, 0));
+    ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(x, y, rad * .7, rad, 0, 0, 7); ctx.fill();
+  });
+  // land
+  ctx.fillStyle = vars.land; ctx.beginPath(); ctx.moveTo(coastX(0), 0);
+  for (let y = 0; y <= PH; y += 6) ctx.lineTo(coastX(y), y);
+  ctx.lineTo(PW, PH); ctx.lineTo(PW, 0); ctx.closePath(); ctx.fill();
+  // coconut groves
+  ctx.fillStyle = rgba(vars['land-2'], .9);
+  for (let i = 0; i < 1700; i++) { const y = r() * PH, x = coastX(y) + 10 + Math.pow(r(), 1.8) * PW * .28; ctx.beginPath(); ctx.arc(x, y, 1.6 + r() * 2.6, 0, 7); ctx.fill(); }
+  // beach
+  ctx.strokeStyle = vars.sand; ctx.lineWidth = 9; ctx.beginPath();
+  for (let y = 0; y <= PH; y += 6) ctx.lineTo(coastX(y) + 4, y); ctx.stroke();
+  ctx.strokeStyle = rgba(vars.foam, .8); ctx.lineWidth = 1.5; ctx.beginPath();
+  for (let y = 0; y <= PH; y += 6) ctx.lineTo(coastX(y) - 2, y); ctx.stroke();
+  // road
+  ctx.strokeStyle = rgba(vars.ink, .25); ctx.lineWidth = 2; ctx.setLineDash([10, 8]); ctx.beginPath();
+  for (let y = 0; y <= PH; y += 10) ctx.lineTo(coastX(y) + PW * .3 + Math.sin(y / 300) * 20, y); ctx.stroke(); ctx.setLineDash([]);
+  ctx.font = `500 11px ${getComputedStyle(document.body).getPropertyValue('--f-mono') || 'monospace'}`;
+  ctx.fillStyle = rgba(vars.ink, .5);
+  ctx.save(); ctx.translate(coastX(1500) + PW * .3 + 10, 1500); ctx.rotate(Math.PI / 2); ctx.fillText('PE-060', 0, 0); ctx.restore();
+  ctx.save(); ctx.translate(coastX(380) + PW * .3 + 10, 380); ctx.rotate(Math.PI / 2); ctx.fillText('AL-101 NORTE', 0, 0); ctx.restore();
+  // state line
+  ctx.strokeStyle = rgba(vars.coral, .7); ctx.lineWidth = 1.5; ctx.setLineDash([4, 6]);
+  ctx.beginPath(); ctx.moveTo(coastX(800), 800); ctx.lineTo(PW, 800); ctx.stroke(); ctx.setLineDash([]);
+  const mono = getComputedStyle(document.documentElement).getPropertyValue('--f-mono');
+  const disp = getComputedStyle(document.documentElement).getPropertyValue('--f-display');
+  ctx.fillStyle = vars.coral; ctx.font = `500 12px ${mono}`;
+  ctx.fillText('ALAGOAS', PW - 96, 788); ctx.fillText('PERNAMBUCO', PW - 112, 822);
+  // towns
+  TOWNS.forEach(([name, y, w]) => {
+    const x = coastX(y);
+    if (w === 1) { ctx.fillStyle = rgba(vars.ink, .55); ctx.font = `500 13px ${mono}`; ctx.fillText(name.toUpperCase(), x + 18, y + 4); return; }
+    ctx.fillStyle = vars.ink; ctx.beginPath(); ctx.arc(x + 4, y, w === 2 ? 0 : 3, 0, 7); ctx.fill();
+    if (w === 2) return;
+    ctx.font = `400 15px ${disp}`; ctx.fillStyle = rgba(vars.ink, .78); ctx.fillText(name, x + 14, y + 5);
+  });
+  // compass: south is up on this strip
+  const cx = PW - 46, cy = 54;
+  ctx.strokeStyle = rgba(vars.ink, .6); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(cx, cy, 18, 0, 7); ctx.stroke();
+  ctx.fillStyle = vars.coral; ctx.beginPath(); ctx.moveTo(cx, cy + 14); ctx.lineTo(cx - 5, cy); ctx.lineTo(cx + 5, cy); ctx.fill();
+  ctx.fillStyle = vars.ink; ctx.font = `500 11px ${mono}`; ctx.fillText('N', cx - 4, cy + 34);
+  ctx.fillStyle = rgba(vars.ink, .45); ctx.font = `500 10px ${mono}`;
+  ctx.fillText('OCEANO ATLÂNTICO', 22, 40);
+}
+function buildFly() {
+  $$('.lift, .lift-shadow, .pin', plane).forEach(n => n.remove());
+  lifts = REGIONS.map((reg, i) => {
+    const devs = DEVS.filter(d => d.region === reg.id);
+    const min = Math.min(...devs.flatMap(d => d.units.map(u => u.p)));
+    const pin = document.createElement('div'); pin.className = 'pin'; plane.appendChild(pin);
+    const sh = document.createElement('div'); sh.className = 'lift-shadow'; plane.appendChild(sh);
+    const b = document.createElement('button'); b.className = 'lift'; b.type = 'button';
+    b.innerHTML = `<span class="art">${art(reg.art, 100 + i)}</span><span class="lb"><strong>${reg.name}</strong><small>${devs.length} empreendimentos · a partir de ${short(min)}</small></span>`;
+    b.addEventListener('click', () => { setFilter(reg.id); goTo('#empreendimentos'); });
+    plane.appendChild(b);
+    return { reg, pin, sh, b };
+  });
+}
+function layoutFly() {
+  const vw = innerWidth;
+  PW = vw < 820 ? Math.min(vw * .94, 520) : Math.min(780, vw * .5);
+  plane.style.width = PW + 'px'; plane.style.height = PH + 'px';
+  drawMap();
+  const cw = vw < 820 ? Math.min(200, PW * .5) : 250;
+  lifts.forEach(L => {
+    const y = L.reg.y, x = coastX(y);
+    L.pin.style.left = (x + 4) + 'px'; L.pin.style.top = y + 'px';
+    const left = Math.min(x + 26, PW - cw - 10);
+    const ch = cw * .56 + 74;
+    L.b.style.setProperty('--cw', cw + 'px'); L.b.style.left = left + 'px'; L.b.style.top = (y - ch - 12) + 'px';
+    L.sh.style.setProperty('--cw', cw + 'px'); L.sh.style.left = left + 'px'; L.sh.style.top = (y - ch - 12) + 'px'; L.sh.style.height = ch + 'px';
+  });
+}
+function steady(q) { const a = .1; if (q < a) return q * q / (2 * a * (1 - a)); if (q > 1 - a) { const r = 1 - q; return 1 - r * r / (2 * a * (1 - a)); } return (q - a / 2) / (1 - a); }
+const hudSteps = $('#hudSteps');
+hudSteps.innerHTML = ['Porto', 'Carneiros', 'Maragogi'].map((n, i) => `<li><button type="button" data-i="${i}">${n}</button></li>`).join('') + `<li><button type="button" data-i="3">Visão geral</button></li>`;
+const stepBtns = $$('button', hudSteps);
+const F0 = 2160, F1 = 360, PA = .78;
+stepBtns.forEach(b => b.addEventListener('click', () => {
+  const i = +b.dataset.i;
+  let p;
+  if (i === 3) p = 1; else { const f = REGIONS[i].y; const q = (F0 - f) / (F0 - F1); p = invSteady(q) * PA; }
+  const top = fly.offsetTop + p * (fly.offsetHeight - innerHeight) + 2;
+  if (lenis) lenis.scrollTo(top, { duration: 1.6 }); else scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+}));
+function invSteady(q) { let lo = 0, hi = 1; for (let k = 0; k < 30; k++) { const m = (lo + hi) / 2; if (steady(m) < q) lo = m; else hi = m; } return (lo + hi) / 2; }
+function setHud(i) {
+  if (i === hudIdx) return;
+  const first = hudIdx === -1; hudIdx = i;
+  const fill = () => {
+    if (i === 3) {
+      $('#hudKicker').textContent = 'Visão geral';
+      $('#hudTitle').textContent = 'Três destinos, um litoral';
+      $('#hudState').textContent = 'Pernambuco e Alagoas';
+      $('#hudText').textContent = 'Cerca de 120 km de costa entre Muro Alto e Japaratinga, protegida por uma linha de recifes que forma as piscinas naturais.';
+      $('#hudDist').textContent = 'Aeroportos do Recife e de Maceió';
+      $('#hudPerfil').textContent = 'Escolha o destino pelo perfil de hóspede e pelo ticket de entrada.';
+      $('#hudBtn').firstChild.textContent = 'Ver todos os empreendimentos ';
+    } else {
+      const r = REGIONS[i];
+      $('#hudKicker').textContent = `Destino ${i + 1} de 3`;
+      $('#hudTitle').textContent = r.name; $('#hudState').textContent = r.state; $('#hudText').textContent = r.text;
+      $('#hudDist').textContent = r.dist; $('#hudPerfil').textContent = r.perfil;
+      $('#hudBtn').firstChild.textContent = 'Ver imóveis deste destino ';
+    }
+  };
+  stepBtns.forEach((b, k) => b.setAttribute('aria-current', String(k === i)));
+  if (first || !G) { fill(); return; }
+  G.to('#hudAnim', { y: -14, opacity: 0, duration: .22, ease: 'power2.in', onComplete() { fill(); G.fromTo('#hudAnim', { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: .55, ease: 'power3.out' }); } });
+}
+$('#hudBtn').addEventListener('click', () => { setFilter(hudIdx >= 0 && hudIdx < 3 ? REGIONS[hudIdx].id : 'all'); goTo('#empreendimentos'); });
+function flyUpdate() {
+  const r = fly.getBoundingClientRect(), vh = innerHeight;
+  if (r.bottom < 0 || r.top > vh) return;
+  const p = clamp(-r.top / (r.height - vh), 0, 1);
+  let f, tilt, sc, cy, ov;
+  const fit = (vh * .86) / PH;
+  if (p <= PA) { f = lerp(F0, F1, steady(p / PA)); tilt = 54; sc = 1; cy = vh * .6; ov = 0; }
+  else { ov = smooth((p - PA) / (1 - PA)); f = lerp(F1, PH / 2, ov); tilt = lerp(54, 0, ov); sc = lerp(1, fit, ov); cy = lerp(vh * .6, vh * .5, ov); }
+  const wide = innerWidth >= 820;
+  const xShift = wide ? lerp(0, -innerWidth * .02, ov) : 0;
+  plane.style.transform = `translate3d(calc(-50% + ${xShift.toFixed(1)}px),${cy.toFixed(1)}px,0) rotateX(${tilt.toFixed(2)}deg) scale(${sc.toFixed(4)}) translate3d(0,${(-f).toFixed(1)}px,0)`;
+  let best = 0, bd = 1e9;
+  lifts.forEach((L, i) => {
+    const d = L.reg.y - f, ad = Math.abs(d);
+    if (ad < bd) { bd = ad; best = i; }
+    const lift = Math.exp(-((d / 520) ** 2) * 2) * (1 - ov);
+    const z = 6 + lift * 150, ang = lift * 50;
+    const blur = reduce ? 0 : clamp((ad - 260) / 90, 0, 7) * (1 - ov);
+    L.b.style.transform = `translateZ(${z.toFixed(1)}px) rotateX(${(-ang).toFixed(2)}deg)`;
+    L.b.style.filter = blur > .2 ? `blur(${blur.toFixed(1)}px)` : 'none';
+    L.sh.style.transform = `translate3d(${(z * .1).toFixed(1)}px,${(4 + z * .36).toFixed(1)}px,1px) scaleY(${(1 - lift * .35).toFixed(3)})`;
+    L.sh.style.opacity = (.12 + lift * .22).toFixed(3);
+    L.sh.style.filter = `blur(${(7 + z * .12).toFixed(1)}px)`;
+  });
+  setHud(ov > .45 ? 3 : best);
+  // step progress bars
+  stepBtns.forEach((b, i) => {
+    let k;
+    if (i === 3) k = ov;
+    else k = clamp(p / (invCache[i] * PA), 0, 1);
+    b.style.setProperty('--k', k.toFixed(3));
+  });
+}
+const invCache = REGIONS.map(r => invSteady((F0 - r.y) / (F0 - F1)));
+
+/* ---------- Carousel ---------- */
+const track = $('#track'), carVp = $('#carVp'), carBar = $('#carBar');
+let filter = 'all';
+const car = { x: 0, target: 0, min: 0, step: 300, offs: [], cards: [], drag: false, moved: false, sx: 0, st: 0, v: 0, lx: 0, lt: 0, block: false, pid: null };
+function bestYield(d) { return Math.max(...d.units.map(u => grossYear(u.d, u.o) / u.p)); }
+function renderCards() {
+  const list = DEVS.filter(d => filter === 'all' || d.region === filter);
+  track.innerHTML = list.map(d => {
+    const min = Math.min(...d.units.map(u => u.p));
+    return `<button class="dev-card" data-id="${d.id}" type="button" aria-label="${d.name}, ver valores">
+      <span class="dev-in">
+        <span class="dev-art"><span class="dev-art-in">${art(d.art, d.seed)}</span><span class="dev-badge">${d.delivery}</span></span>
+        <span class="dev-body">
+          <span class="dev-place">${d.place}</span>
+          <span class="dev-name">${d.name}</span>
+          <span class="dev-kind">${d.kind} · ${d.units.length} ${d.units.length > 1 ? 'tipologias' : 'tipologia'}</span>
+          <span class="dev-rows">
+            <span class="dev-row"><span>A partir de</span><strong>${brl.format(min)}</strong></span>
+            <span class="dev-row"><span>Rentab. bruta estimada</span><strong>até ${pct1(bestYield(d) * 100)} a.a.</strong></span>
+          </span>
+          <span class="dev-open">Ver valores <i>+</i></span>
+        </span>
+      </span></button>`;
+  }).join('');
+  car.cards = $$('.dev-card', track);
+  car.cards.forEach(c => {
+    c.addEventListener('click', e => { if (car.block) { e.preventDefault(); return; } openModal(DEVS.find(d => d.id === c.dataset.id), c); });
+    c.addEventListener('focus', () => { const i = car.cards.indexOf(c); car.target = clamp(-car.offs[i] + 0, car.min, 0); });
+    if (!reduce && matchMedia('(pointer:fine)').matches) {
+      const inn = $('.dev-in', c);
+      c.addEventListener('pointermove', e => { if (car.drag) return; const r = c.getBoundingClientRect(); inn.style.setProperty('--ry', (((e.clientX - r.left) / r.width - .5) * 10).toFixed(2) + 'deg'); inn.style.setProperty('--rx', ((.5 - (e.clientY - r.top) / r.height) * 8).toFixed(2) + 'deg'); });
+      c.addEventListener('pointerleave', () => { inn.style.setProperty('--ry', '0deg'); inn.style.setProperty('--rx', '0deg'); });
+    }
+  });
+  layoutCar();
+}
+function layoutCar() {
+  car.offs = car.cards.map(c => c.offsetLeft - car.cards[0].offsetLeft);
+  car.step = car.offs[1] || (car.cards[0] ? car.cards[0].offsetWidth + 20 : 300);
+  car.min = Math.min(0, carVp.clientWidth - track.scrollWidth);
+  car.target = clamp(car.target, car.min, 0);
+}
+function snap() {
+  let best = 0, bd = 1e9;
+  car.offs.forEach((o, i) => { const d = Math.abs(-o - car.target); if (d < bd) { bd = d; best = i; } });
+  car.target = clamp(-car.offs[best], car.min, 0);
+}
+carVp.addEventListener('pointerdown', e => {
+  if (e.button !== 0) return;
+  car.drag = true; car.moved = false; car.sx = e.clientX; car.st = car.target; car.lx = e.clientX; car.lt = performance.now(); car.v = 0; car.pid = e.pointerId;
+});
+addEventListener('pointermove', e => {
+  if (!car.drag || e.pointerId !== car.pid) return;
+  const dx = e.clientX - car.sx;
+  if (!car.moved && Math.abs(dx) > 6) { car.moved = true; carVp.classList.add('grabbing'); }
+  if (!car.moved) return;
+  let t = car.st + dx;
+  if (t > 0) t *= .35; else if (t < car.min) t = car.min + (t - car.min) * .35;
+  car.target = t;
+  const now = performance.now(); car.v = (e.clientX - car.lx) / Math.max(1, now - car.lt); car.lx = e.clientX; car.lt = now;
+});
+const endDrag = e => {
+  if (!car.drag || (e && e.pointerId !== car.pid)) return;
+  car.drag = false; carVp.classList.remove('grabbing');
+  if (car.moved) { car.block = true; setTimeout(() => car.block = false, 60); car.target = clamp(car.target + car.v * 260, car.min - 0, 0); snap(); }
+};
+addEventListener('pointerup', endDrag); addEventListener('pointercancel', endDrag);
+let wheelT;
+carVp.addEventListener('wheel', e => {
+  if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+  e.preventDefault(); car.target = clamp(car.target - e.deltaX, car.min, 0);
+  clearTimeout(wheelT); wheelT = setTimeout(snap, 140);
+}, { passive: false });
+const curIndex = () => { let b = 0, bd = 1e9; car.offs.forEach((o, i) => { const d = Math.abs(-o - car.target); if (d < bd) { bd = d; b = i; } }); return b; };
+$('#prev').addEventListener('click', () => { const i = Math.max(0, curIndex() - 1); car.target = clamp(-car.offs[i], car.min, 0); });
+$('#next').addEventListener('click', () => { const i = curIndex(); if (car.target <= car.min + 2) { car.target = 0; return; } car.target = clamp(-car.offs[Math.min(car.offs.length - 1, i + 1)], car.min, 0); });
+function carUpdate() {
+  const prev = car.x;
+  car.x += (car.target - car.x) * (reduce ? 1 : .12);
+  const vel = car.x - prev;
+  track.style.transform = `translate3d(${car.x.toFixed(2)}px,0,0)`;
+  track.style.setProperty('--skew', clamp(-vel * .35, -9, 9).toFixed(2) + 'deg');
+  const vw = carVp.clientWidth, c0 = car.cards[0] ? car.cards[0].offsetLeft : 0;
+  car.cards.forEach((c, i) => {
+    const center = c0 + car.offs[i] + car.x + c.offsetWidth / 2;
+    const rel = (center - vw / 2) / vw;
+    const a = c._art || (c._art = $('.dev-art-in', c));
+    a.style.transform = `translate3d(${(-rel * 34).toFixed(2)}px,0,0)`;
+    // card totalmente fora do recorte fica invisível (e fora do Tab), em vez de só escondido pelo overflow
+    const left = c0 + car.offs[i] + car.x, out = left > vw + 4 || left + c.offsetWidth < -4;
+    if (out !== c._out) { c._out = out; c.style.visibility = out ? 'hidden' : ''; }
+  });
+  const frac = car.min < 0 ? clamp(car.x / car.min, 0, 1) : 1;
+  carBar.style.transform = `scaleX(${(.12 + .88 * frac).toFixed(4)})`;
+}
+// filter chips
+const chips = $('#chips'), pill = $('#chipPill');
+function movePill() { const b = $('[aria-selected="true"]', chips); pill.style.width = b.offsetWidth + 'px'; pill.style.transform = `translate(${b.offsetLeft}px, ${b.offsetTop - 5}px)`; }
+function setFilter(f) {
+  if (f === filter) return;
+  filter = f;
+  $$('button', chips).forEach(b => b.setAttribute('aria-selected', String(b.dataset.f === f)));
+  movePill();
+  const old = car.cards;
+  const swap = () => { car.target = 0; car.x = 0; renderCards(); if (G) G.from(car.cards, { opacity: 0, y: 40, rotate: 1.5, duration: .7, stagger: .07, ease: 'power3.out', clearProps: 'opacity,transform' }); };
+  if (G && old.length) G.to(old, { opacity: 0, y: 24, scale: .97, duration: .26, stagger: .03, ease: 'power2.in', onComplete: swap });
+  else swap();
+}
+$$('button', chips).forEach(b => b.addEventListener('click', () => setFilter(b.dataset.f)));
+
+/* ---------- Number tween ---------- */
+function tween(el, to, fmt, dur = 750) {
+  const from = el._cur ?? to;
+  if (reduce || from === to) { el._cur = to; el.textContent = fmt(to); return; }
+  const id = (el._tid || 0) + 1; el._tid = id;
+  const t0 = performance.now();
+  const step = now => {
+    if (el._tid !== id) return;
+    const k = clamp((now - t0) / dur, 0, 1), e = 1 - Math.pow(1 - k, 4);
+    el._cur = from + (to - from) * e; el.textContent = fmt(el._cur);
+    if (k < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+/* ---------- Modal ---------- */
+const modal = $('#modal'), panel = $('#mPanel'), backdrop = $('.modal-backdrop', modal), mSeg = $('#mSeg'), mBars = $('#mBars');
+let mDev = null, mUnit = 0, mFrom = null, lastFocus = null;
+mBars.innerHTML = SEASON.map((_, i) => `<i class="${HIGH.has(i) ? 'hi' : ''}"></i>`).join('');
+const barEls = $$('i', mBars);
+function selectUnit(i) {
+  mUnit = i; const u = mDev.units[i];
+  $$('button', mSeg).forEach((b, k) => b.setAttribute('aria-pressed', String(k === i)));
+  const b = $$('button', mSeg)[i], sp = $('.seg-pill', mSeg);
+  sp.style.width = b.offsetWidth + 'px'; sp.style.height = b.offsetHeight + 'px'; sp.style.transform = `translate(${b.offsetLeft}px, ${b.offsetTop}px)`;
+  const g = grossYear(u.d, u.o);
+  tween($('#mPrice'), u.p, v => brl.format(Math.round(v / 1000) * 1000));
+  tween($('#mArea'), u.a, v => Math.round(v) + ' m²');
+  tween($('#mDaily'), u.d, v => brl.format(Math.round(v)));
+  tween($('#mOcc'), u.o * 100, v => Math.round(v) + '%');
+  tween($('#mGross'), g, v => brl.format(Math.round(v / 100) * 100));
+  tween($('#mYield'), g / u.p * 100, v => pct1(v) + ' a.a.');
+  const m = monthly(u.d, u.o), mx = Math.max(...m.map(x => x.rev));
+  barEls.forEach((el, k) => el.style.height = (m[k].rev / mx * 100).toFixed(1) + '%');
+}
+function openModal(dev, fromEl) {
+  mDev = dev; mFrom = fromEl; lastFocus = document.activeElement;
+  $('#mArt').innerHTML = `<div class="m-art-in">${art(dev.art, dev.seed)}</div><span class="dev-badge">${dev.delivery}</span>`;
+  $('#mPlace').textContent = dev.place; $('#mName').textContent = dev.name; $('#mKind').textContent = dev.kind;
+  mSeg.innerHTML = '<span class="seg-pill"></span>' + dev.units.map((u, i) => `<button type="button" aria-pressed="false" data-u="${i}">${u.l}</button>`).join('');
+  $$('button', mSeg).forEach(b => b.addEventListener('click', () => selectUnit(+b.dataset.u)));
+  ['#mPrice', '#mArea', '#mDaily', '#mOcc', '#mGross', '#mYield'].forEach(s => { const e = $(s); e._cur = 0; });
+  modal.hidden = false; document.documentElement.classList.add('modal-open'); if (lenis) lenis.stop();
+  requestAnimationFrame(() => selectUnit(0));
+  if (G) {
+    const pr = panel.getBoundingClientRect(), cr = fromEl.getBoundingClientRect();
+    const ins = `inset(${(cr.top - pr.top).toFixed(1)}px ${(pr.right - cr.right).toFixed(1)}px ${(pr.bottom - cr.bottom).toFixed(1)}px ${(cr.left - pr.left).toFixed(1)}px round 26px)`;
+    G.fromTo(panel, { clipPath: ins }, { clipPath: 'inset(0px 0px 0px 0px round 28px)', duration: .85, ease: 'expo.out', clearProps: 'clipPath' });
+    G.fromTo(backdrop, { opacity: 0 }, { opacity: 1, duration: .45 });
+    G.from($$('[data-m]', panel), { y: 26, opacity: 0, duration: .7, stagger: .05, delay: .2, ease: 'power3.out', clearProps: 'transform,opacity' });
+    G.from('.m-art-in', { scale: 1.18, duration: 1.4, ease: 'expo.out' });
+  }
+  setTimeout(() => $('.modal-x', modal).focus({ preventScroll: true }), 30);
+}
+function closeModal(after) {
+  if (modal.hidden) return;
+  const done = () => { modal.hidden = true; document.documentElement.classList.remove('modal-open'); if (lenis) lenis.start(); if (lastFocus && !after) lastFocus.focus({ preventScroll: true }); if (after) after(); };
+  if (G && mFrom && document.contains(mFrom)) {
+    const pr = panel.getBoundingClientRect(), cr = mFrom.getBoundingClientRect();
+    const ins = `inset(${(cr.top - pr.top).toFixed(1)}px ${(pr.right - cr.right).toFixed(1)}px ${(pr.bottom - cr.bottom).toFixed(1)}px ${(cr.left - pr.left).toFixed(1)}px round 26px)`;
+    G.fromTo(panel, { clipPath: 'inset(0px 0px 0px 0px round 28px)' }, { clipPath: ins, duration: .55, ease: 'power3.inOut', onComplete() { G.set(panel, { clearProps: 'clipPath' }); done(); } });
+    G.to(backdrop, { opacity: 0, duration: .45 });
+  } else done();
+}
+$$('[data-close]', modal).forEach(b => b.addEventListener('click', () => closeModal()));
+modal.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { e.preventDefault(); closeModal(); }
+  if (e.key === 'Tab') {
+    const f = $$('button, [href], input, select, textarea', panel).filter(x => !x.disabled && x.offsetParent);
+    const a = f[0], z = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); }
+    else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
+  }
+});
+panel.addEventListener('pointermove', e => {
+  if (reduce) return; const r = panel.getBoundingClientRect(); const a = $('.m-art-in', panel); if (!a) return;
+  a.style.transform = `translate3d(${(((e.clientX - r.left) / r.width - .5) * -18).toFixed(1)}px,${(((e.clientY - r.top) / r.height - .5) * -12).toFixed(1)}px,0)`;
+});
+$('#mSim').addEventListener('click', () => {
+  const u = mDev.units[mUnit];
+  closeModal(() => { setSim(u.p, u.d, Math.round(u.o * 100)); goTo('#simulador', () => { const o = $('#simOut'); o.classList.remove('flash'); void o.offsetWidth; o.classList.add('flash'); }); });
+});
+$('#mVisit').addEventListener('click', () => {
+  const u = mDev.units[mUnit], d = mDev;
+  closeModal(() => {
+    const regMap = { porto: 'Porto de Galinhas', carneiros: 'Carneiros', maragogi: 'Maragogi' };
+    $('#f-region').value = regMap[d.region]; $('#f-msg').value = `Quero agendar uma visita ao ${d.name} (${u.l}).`;
+    goTo('#contato', () => $('#f-name').focus({ preventScroll: true }));
+  });
+});
+
+/* ---------- Simulator ---------- */
+const S = { price: $('#sim-price'), daily: $('#sim-daily'), occ: $('#sim-occ'), cost: $('#sim-cost'), ref: $('#sim-ref') };
+const chart = $('#chart'), tip = $('#tip');
+const CW = 640, CH = 230, PL = 58, PB = 26, PT = 10, PR = 6;
+const plotW = CW - PL - PR, plotH = CH - PT - PB, slot = plotW / 12, bw = slot * .62;
+const ns = 'http://www.w3.org/2000/svg';
+const mk = (tag, attrs) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
+const gridG = mk('g', {}), barG = mk('g', {}), lblG = mk('g', {});
+chart.append(gridG, barG, lblG);
+const bars = SEASON.map((_, i) => { const r = mk('rect', { class: 'bar' + (HIGH.has(i) ? ' hi' : ''), x: (PL + slot * i + (slot - bw) / 2).toFixed(1), y: PT + plotH, width: bw.toFixed(1), height: 0, rx: 4 }); barG.appendChild(r); return r; });
+['J','F','M','A','M','J','J','A','S','O','N','D'].forEach((m, i) => { const t = mk('text', { x: (PL + slot * i + slot / 2).toFixed(1), y: CH - 6, 'text-anchor': 'middle' }); t.textContent = m; lblG.appendChild(t); });
+let shown = SEASON.map(() => 0), targ = SEASON.map(() => 0), yMax = 1, months = [];
+function niceMax(v) { const p = Math.pow(10, Math.floor(Math.log10(v))); for (const m of [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10]) if (m * p >= v) return m * p; return 10 * p; }
+function drawGrid() {
+  gridG.innerHTML = '';
+  for (let k = 0; k <= 4; k++) {
+    const v = yMax * k / 4, y = PT + plotH - plotH * k / 4;
+    gridG.appendChild(mk('line', { class: 'grid', x1: PL, x2: CW - PR, y1: y.toFixed(1), y2: y.toFixed(1) }));
+    const t = mk('text', { x: PL - 10, y: (y + 4).toFixed(1), 'text-anchor': 'end' });
+    t.textContent = v === 0 ? '0' : (v >= 1000 ? int(v / 1000) + ' mil' : int(v));
+    gridG.appendChild(t);
+  }
+}
+bars.forEach((b, i) => {
+  b.addEventListener('pointerenter', () => {
+    bars.forEach((o, k) => o.classList.toggle('dim', k !== i));
+    const m = months[i]; if (!m) return;
+    tip.innerHTML = `<b>${MONTHS[i]}</b> · ${brl.format(Math.round(m.rev / 10) * 10)} · ${Math.round(m.nights)} noites`;
+    const cr = chart.getBoundingClientRect(), wr = $('#chartWrap').getBoundingClientRect(), sc = cr.width / CW;
+    tip.style.left = (cr.left - wr.left + (PL + slot * i + slot / 2) * sc) + 'px';
+    tip.style.top = (cr.top - wr.top + (+b.getAttribute('y')) * sc - 6) + 'px';
+    tip.classList.add('on');
+  });
+  b.addEventListener('pointerleave', () => { bars.forEach(o => o.classList.remove('dim')); tip.classList.remove('on'); });
+});
+function fill(el) { const p = (el.value - el.min) / (el.max - el.min) * 100; el.style.setProperty('--p', p + '%'); }
+function setSim(price, daily, occ) {
+  S.price.value = clamp(Math.round(price / 5000) * 5000, +S.price.min, +S.price.max);
+  S.daily.value = clamp(Math.round(daily / 10) * 10, +S.daily.min, +S.daily.max);
+  S.occ.value = clamp(occ, +S.occ.min, +S.occ.max);
+  calc();
+}
+function calc() {
+  Object.values(S).forEach(fill);
+  const price = +S.price.value, daily = +S.daily.value, occ = +S.occ.value / 100, cost = +S.cost.value / 100, ref = +S.ref.value;
+  $('#o-price').textContent = brl.format(price); $('#o-daily').textContent = brl.format(daily);
+  $('#o-occ').textContent = Math.round(occ * 100) + '%'; $('#o-cost').textContent = Math.round(cost * 100) + '%'; $('#o-ref').textContent = pct1(ref) + ' a.a.';
+  months = monthly(daily, occ);
+  const gross = months.reduce((s, m) => s + m.rev, 0), nights = months.reduce((s, m) => s + m.nights, 0);
+  const costs = gross * cost, net = gross - costs, y = net / price * 100;
+  tween($('#r-yield'), y, v => pct1(v));
+  tween($('#r-gross'), gross, v => brl.format(Math.round(v)));
+  tween($('#r-net'), net, v => brl.format(Math.round(v)));
+  tween($('#r-month'), net / 12, v => brl.format(Math.round(v)));
+  tween($('#r-cost'), costs, v => brl.format(Math.round(v)));
+  tween($('#r-nights'), nights, v => int(v));
+  tween($('#r-pay'), net > 0 ? price / net : 0, v => net > 0 ? new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 1 }).format(v) + ' anos' : '–');
+  const top = Math.max(y, ref) * 1.15;
+  $('#cmpA').style.width = (y / top * 100).toFixed(1) + '%'; $('#cmpB').style.width = (ref / top * 100).toFixed(1) + '%';
+  $('#cmpAv').textContent = pct1(y); $('#cmpBv').textContent = pct1(ref);
+  const newMax = niceMax(Math.max(...months.map(m => m.rev)) * 1.02);
+  if (newMax !== yMax) { yMax = newMax; drawGrid(); }
+  targ = months.map(m => m.rev);
+  if (reduce) shown = targ.slice();
+}
+function chartUpdate() {
+  shown = shown.map((v, i) => Math.abs(targ[i] - v) < .5 ? targ[i] : v + (targ[i] - v) * .14);
+  bars.forEach((b, i) => { const h = Math.max(0, shown[i] / yMax * plotH); b.setAttribute('height', h.toFixed(1)); b.setAttribute('y', (PT + plotH - h).toFixed(1)); });
+}
+Object.values(S).forEach(el => el.addEventListener('input', calc));
+
+/* ---------- Process line ---------- */
+const verbs = $$('#verbs .verb').map(el => ({ el, word: $('.verb-word', el), mark: $('.verb-mark', el) }));
+const whyImg = $('.why-panel img'), whySec = $('#porque');
+function whyUpdate() {
+  if (reduce || !whyImg) return;
+  const r = whySec.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+  whyImg.style.transform = `translate3d(0,${(r.top * -.12).toFixed(1)}px,0) rotate(${(r.top * -.004).toFixed(2)}deg)`;
+}
+function procUpdate() {
+  // o verbo anda mais devagar que a tela (segura o centro); o símbolo anda no sentido contrário
+  const vh = innerHeight;
+  verbs.forEach(v => {
+    const r = v.el.getBoundingClientRect();
+    if (r.bottom < -40 || r.top > vh + 40) return;
+    const d = r.top + r.height / 2 - vh / 2;
+    if (!reduce) { v.word.style.transform = `translate3d(0,${(-d * .55).toFixed(1)}px,0)`; v.mark.style.transform = `translate3d(0,${(d * .18).toFixed(1)}px,0)`; }
+  });
+}
+
+/* ---------- Contact ---------- */
+const toast = $('#toast'); let toastT;
+function say(msg) { toast.textContent = msg; toast.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => toast.classList.remove('on'), 4200); }
+$('#copyWa').addEventListener('click', () => {
+  const txt = $('#waNum').textContent;
+  const fallback = () => { const s = getSelection(), rg = document.createRange(); rg.selectNodeContents($('#waNum')); s.removeAllRanges(); s.addRange(rg); say('Número selecionado. Use Copiar no seu teclado.'); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(() => say('Número copiado.'), fallback); else fallback();
+});
+$('#form').addEventListener('submit', e => {
+  e.preventDefault();
+  let ok = true;
+  ['#f-name', '#f-phone'].forEach(s => { const el = $(s); const bad = !el.value.trim(); el.parentElement.classList.toggle('err', bad); if (bad) ok = false; });
+  if (!ok) { say('Preencha nome e WhatsApp para continuar.'); if (G) G.fromTo('#form', { x: -8 }, { x: 0, duration: .5, ease: 'elastic.out(1, .3)' }); return; }
+  const b = $('#fSubmit'); b.disabled = true; b.firstChild.textContent = 'Enviando ';
+  setTimeout(() => { b.firstChild.textContent = 'Pedido registrado '; say('Formulário de demonstração: nada foi enviado. Conecte ao seu CRM ou WhatsApp para receber os contatos.'); setTimeout(() => { b.disabled = false; b.firstChild.textContent = 'Receber imóveis e simulações '; }, 2600); }, 700);
+});
+
+/* ---------- Reveal + intro ---------- */
+if (G) {
+  G.from('.hl-in', { yPercent: 108, duration: .95, ease: 'expo.out', stagger: .11, delay: .15 });
+  G.from(['.hero-lede', '.hero-fact', '.hero-act'], { y: 24, opacity: 0, duration: 1, stagger: .08, delay: .75, ease: 'power3.out', clearProps: 'transform,opacity' });
+  G.from(['.brand', '.site-head .nav a', '.theme-btn', '.head-in > .btn', '.menu-btn'], { y: -16, opacity: 0, duration: .9, stagger: .06, delay: .3, ease: 'power3.out', clearProps: 'transform,opacity' });
+  intro.k = 1; G.to(intro, { k: 0, duration: 2, ease: 'expo.out' });
+  const io = new IntersectionObserver(es => es.forEach(en => {
+    if (!en.isIntersecting) return; io.unobserve(en.target);
+    G.fromTo(en.target, { y: 40, opacity: .25 }, { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: (+en.target.dataset.d || 0) });
+  }), { rootMargin: '0px 0px -10% 0px' });
+  $$('[data-reveal]').forEach((el, i) => { el.dataset.d = (i % 3) * .1; io.observe(el); });
+}
+
+/* ---------- Menu lateral de capítulos ---------- */
+// Cada capítulo vai do topo da sua seção até o topo da seguinte (as passagens contam no capítulo anterior).
+const railLinks = $$('#rail a').map(a => ({ a, sec: $(a.getAttribute('href')), bar: $('.rail-bar i', a) }));
+let railCur = null;
+function railUpdate() {
+  if (!railLinks.length || innerWidth < 1280) return;
+  const probe = innerHeight * .4;
+  let cur = railLinks[0], k = 0;
+  railLinks.forEach((l, i) => {
+    const top = l.sec.getBoundingClientRect().top;
+    if (top <= probe) {
+      cur = l;
+      const next = railLinks[i + 1] ? railLinks[i + 1].sec.getBoundingClientRect().top : document.documentElement.scrollHeight - scrollY;
+      k = clamp((probe - top) / Math.max(1, next - top), 0, 1);
+    }
+  });
+  if (cur !== railCur) { if (railCur) railCur.a.removeAttribute('aria-current'); cur.a.setAttribute('aria-current', 'true'); railCur = cur; }
+  cur.bar.style.transform = `scaleX(${k.toFixed(3)})`;
+}
+
+/* ---------- Passagens entre seções ---------- */
+// Cada passagem é um palco preso; p vai de 0 (palco encosta no topo) a 1 (palco sai). O elemento cobre a tela por volta de p = .5,
+// e a cor que fica no fim é a do fundo da seção seguinte, para a emenda não aparecer.
+const band = (p, a, b) => smooth(clamp((p - a) / (b - a), 0, 1));
+// portal: a cobertura ganha um furo circular no centro que cresce até sumir (a saída das cenas do Shopify Editions)
+function portal(cover, q) {
+  const r = (q * 75).toFixed(2), m = q <= 0 ? 'none' : `radial-gradient(circle at 50% 50%, transparent ${r}vmax, #000 calc(${r}vmax + 1px))`; // taste-skill-ignore: máscara do portal (recorte circular), não é preenchimento
+  cover.style.webkitMaskImage = m; cover.style.maskImage = m;
+}
+function el(tag, cls, parent) { const n = document.createElement(tag); if (cls) n.className = cls; parent.appendChild(n); return n; }
+function titleIn(t, p, a, b, c, d) {
+  const i = band(p, a, b), o = band(p, c, d);
+  t.style.opacity = (i * (1 - o)).toFixed(3);
+  t.style.transform = `translateY(calc(-50% + ${((1 - i) * 70 - o * 50).toFixed(1)}px))`;
+}
+const CLOUD = 'M30 80C10 80 5 60 22 52C18 30 45 22 58 36C66 14 104 12 112 38C128 24 156 30 152 52C176 52 186 80 160 80Z';
+// folha de coqueiro: nervura curva com folíolos dos dois lados
+function frondPath() {
+  let d = 'M0 60 Q200 10 400 40 L400 46 Q200 22 0 66Z';
+  for (let k = 1; k < 26; k++) {
+    const q = k / 26, x = 400 * q, y = 60 - 26 * Math.sin(q * Math.PI * .9) + 4 * q, len = 70 * (1 - q * .55);
+    d += `M${x.toFixed(1)} ${y.toFixed(1)}l${(len * .55).toFixed(1)} ${(-len).toFixed(1)}l${(14 - q * 6).toFixed(1)} 4Z`;
+    d += `M${x.toFixed(1)} ${(y + 4).toFixed(1)}l${(len * .5).toFixed(1)} ${(len * .95).toFixed(1)}l${(14 - q * 6).toFixed(1)} -4Z`;
+  }
+  return d;
+}
+const PASS_KINDS = {
+  // Por que -> Destinos: subida pelas nuvens com gaivotas, até a vista aérea do mapa
+  clouds(stage, title) {
+    title.style.color = '#0b2730';
+    const cover = el('div', 'pass-cover', stage); cover.style.background = 'var(--foam)';
+    const spec = [[-30, -18, .9, .9], [26, -24, .7, 1.2], [-8, 14, 1.2, .7], [34, 20, .8, 1.4], [-38, 26, .6, 1.6], [6, -34, .5, 1.8], [14, 38, .7, 1.1], [-22, -40, .55, 1.5]];
+    const clouds = spec.map(([x, y, sc, z]) => { const c = el('div', 'pass-el pass-cloud', stage); c.innerHTML = `<svg viewBox="0 0 190 90"><path d="${CLOUD}"/></svg>`; c.style.width = '34vmax'; c.style.height = '16vmax'; return { c, x, y, sc, z }; });
+    const gulls = [[-6, -22, .9], [4, -16, .7], [-14, -12, .6]].map(([x, y, sc]) => { const g = el('div', 'pass-el pass-gull', stage); g.innerHTML = '<svg viewBox="0 0 32 12"><path d="M0 10Q8 0 16 8Q24 0 32 10"/></svg>'; g.style.width = '3.4vmax'; g.style.height = '1.3vmax'; return { g, x, y, sc }; });
+    return p => {
+      clouds.forEach(({ c, x, y, sc, z }) => {
+        const k = sc * (.55 + p * p * z * 7), f = 1 + p * z * 2.4;
+        c.style.transform = `translate(calc(50vw - 50% + ${(x * f).toFixed(2)}vw), calc(50vh - 50% + ${(y * f).toFixed(2)}vh)) scale(${k.toFixed(3)})`;
+        c.style.opacity = p > .44 ? '0' : '1';
+      });
+      gulls.forEach(({ g, x, y, sc }, i) => {
+        g.style.transform = `translate(calc(50vw + ${(x + p * 70 * sc).toFixed(2)}vw), calc(50vh + ${(y + Math.sin(p * 9 + i) * 1.5 - p * 18).toFixed(2)}vh)) scale(${(sc * (1 + p * 2)).toFixed(3)})`;
+        g.style.opacity = (1 - band(p, .24, .36)).toFixed(3);
+      });
+      cover.style.opacity = band(p, .26, .42).toFixed(3);
+      portal(cover, band(p, .76, .98));
+      // céu enquanto as nuvens passam; troca para o fundo da página escondida sob a cobertura, antes do portal abrir
+      stage.style.background = p > .45 ? 'var(--band)' : 'var(--sky-top)';
+      titleIn(title, p, .3, .44, .76, .88);
+    };
+  },
+  // Destinos -> Empreendimentos: folhas de coqueiro fecham a tela dos dois lados e reabrem
+  fronds(stage, title) {
+    title.style.color = 'var(--foam)';
+    const cover = el('div', 'pass-cover', stage); cover.style.background = 'var(--hill)';
+    const leaves = [];
+    [-1, 1].forEach(side => [-26, -6, 14, 34].forEach((off, i) => {
+      const l = el('div', 'pass-el pass-frond' + (i % 2 ? ' alt' : ''), stage);
+      l.innerHTML = `<svg viewBox="0 -40 400 140"><path d="${frondPath()}"/></svg>`;
+      l.style.width = '95vmax'; l.style.height = '33vmax'; l.style.transformOrigin = '0% 71%';
+      leaves.push({ l, side, off, i });
+    }));
+    return p => {
+      const c = band(p, .04, .36) - band(p, .74, .98);
+      leaves.forEach(({ l, side, off, i }) => {
+        const a = -100 + c * (100 + off) - (1 - c) * i * 4;
+        const x = side < 0 ? '-6vw' : 'calc(106vw)';
+        l.style.transform = `translate(${x}, calc(104vh - 71%)) scaleX(${-side}) rotate(${a.toFixed(2)}deg)`;
+      });
+      cover.style.opacity = band(p, .3, .38).toFixed(3);
+      portal(cover, band(p, .72, .9));
+      titleIn(title, p, .3, .42, .72, .84);
+    };
+  },
+  // Empreendimentos -> Rentabilidade: uma onda sobe e cobre tudo na cor do simulador
+  wave(stage, title) {
+    title.style.color = 'var(--band-ink)';
+    const mk = cls => { const w = el('div', 'pass-el pass-wave ' + cls, stage); w.style.left = '-15vw'; w.style.width = '130vw'; w.style.height = 'calc(100vh + 240px)';
+      w.innerHTML = '<svg viewBox="0 0 1440 120" preserveAspectRatio="none" style="height:120px"><path class="crest" d="M0 70C160 10 330 0 470 40S700 120 900 80S1220 0 1440 50V120H0Z"/><path class="foam" d="M0 70C160 10 330 0 470 40S700 120 900 80S1220 0 1440 50"/></svg><div class="body"></div>'; return w; };
+    const back = mk('back'), mid = mk('mid'), front = mk('front');
+    return p => {
+      const vh = innerHeight, eb = band(p, .0, .36), ef = band(p, .06, .44);
+      back.style.transform = `translate(${(-p * 9).toFixed(2)}vw, ${(vh * (1 - eb) - 260 * eb).toFixed(1)}px)`;
+      const em = band(p, .03, .4);
+      mid.style.transform = `translate(${(p * 12 - 8).toFixed(2)}vw, ${(vh * (1 - em) - 200 * em).toFixed(1)}px)`;
+      front.style.transform = `translate(${(p * 7 - 4).toFixed(2)}vw, ${(vh * (1 - ef) - 140 * ef).toFixed(1)}px)`;
+      titleIn(title, p, .3, .46, .84, .97);
+    };
+  },
+  // Como funciona -> Contato: a vela listrada de uma jangada atravessa a tela
+  sail(stage, title) {
+    title.style.color = '#0b2730';
+    const cover = el('div', 'pass-cover', stage); cover.style.background = 'var(--foam)';
+    const sail = el('div', 'pass-el', stage);
+    sail.innerHTML = '<svg viewBox="0 0 100 120"><defs><clipPath id="passSail"><path d="M62 0L62 118L0 110Z"/></clipPath></defs><g clip-path="url(#passSail)"><rect width="100" height="120" fill="var(--foam)"/><rect y="24" width="100" height="14" fill="var(--coral)"/><rect y="52" width="100" height="14" fill="var(--sun)"/><rect y="80" width="100" height="14" fill="var(--coral)"/></g><path d="M62 -4V124" stroke="var(--palm)" stroke-width="2"/></svg>';
+    sail.style.width = '150vmax'; sail.style.height = '180vmax';
+    return p => {
+      const e = band(p, 0, 1), x = lerp(100, -110, e), r = lerp(10, -6, e);
+      sail.style.transform = `translate(calc(${x.toFixed(2)}vmax), calc(50vh - 58%)) rotate(${r.toFixed(2)}deg)`;
+      cover.style.opacity = band(p, .28, .38).toFixed(3);
+      portal(cover, band(p, .74, .94));
+      stage.style.background = p > .45 ? 'var(--surface-2)' : 'var(--bg)';
+      titleIn(title, p, .3, .44, .74, .86);
+    };
+  }
+};
+const PASSES = [
+  { after: '.hero-stage', kind: 'clouds', title: 'Destinos', sub: 'Porto de Galinhas, Carneiros e Maragogi vistos de cima' },
+  { after: '#regioes', kind: 'fronds', title: 'Empreendimentos', sub: 'Imóveis selecionados, com preço e rentabilidade de cada tipologia' },
+  { after: '#empreendimentos', kind: 'wave', title: 'Rentabilidade', sub: 'Quanto um imóvel de praia rende, mês a mês' },
+  { after: '#processo', kind: 'sail', title: 'Contato', sub: 'Fale com um especialista e receba uma seleção de imóveis' }
+];
+const passes = [];
+if (!reduce) PASSES.forEach(cfg => {
+  const anchor = $(cfg.after); if (!anchor) return;
+  const root = document.createElement('div'); root.className = 'pass'; root.setAttribute('aria-hidden', 'true'); root.dataset.kind = cfg.kind;
+  const stage = el('div', 'pass-stage', root);
+  const title = el('div', 'pass-title', stage);
+  el('b', '', title).textContent = cfg.title; el('span', '', title).textContent = cfg.sub;
+  anchor.after(root);
+  passes.push({ root, update: PASS_KINDS[cfg.kind](stage, title) });
+});
+function passUpdate() {
+  const vh = innerHeight;
+  passes.forEach(ps => {
+    const r = ps.root.getBoundingClientRect();
+    if (r.bottom < -vh * .2 || r.top > vh * 1.2) return;
+    ps.update(clamp(-r.top / (r.height - vh), 0, 1));
+  });
+}
+
+/* ---------- Loop, resize, theme ---------- */
+function frame(now) {
+  const t = now / 1000, s = scrollY;
+  headUpdate(s); heroUpdate(s, t); mqUpdate(s, t); stUpdate(); flyUpdate(); carUpdate(); chartUpdate(); procUpdate(); whyUpdate(); passUpdate(); railUpdate();
+  requestAnimationFrame(frame);
+}
+function layoutAll() { readVars(); layoutHero(); layoutFly(); layoutCar(); movePill(); mqW = 0; }
+let rzT; addEventListener('resize', () => { clearTimeout(rzT); rzT = setTimeout(layoutAll, 120); });
+const redraw = () => { readVars(); drawHills(); drawSand(); drawFronds(); drawMap(); if (reduce) drawSea(0); };
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { redraw(); syncThemeBtn(); });
+// Botão de tema: sem escolha salva, segue o aparelho; com escolha, data-theme no <html> manda (as cores do escuro respondem aos dois)
+const themeBtn = $('#themeBtn');
+const themeNow = () => document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+function syncThemeBtn() {
+  const dark = themeNow() === 'dark';
+  themeBtn.dataset.mode = dark ? 'dark' : 'light';
+  themeBtn.setAttribute('aria-label', dark ? 'Mudar para o modo claro' : 'Mudar para o modo escuro');
+}
+themeBtn.addEventListener('click', () => {
+  const next = themeNow() === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  try { localStorage.setItem('tocca-theme', next); } catch (e) {}
+  syncThemeBtn();
+});
+syncThemeBtn();
+new MutationObserver(redraw).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+readVars();
+buildFly();
+renderCards();
+calc();
+layoutAll();
+setHud(0);
+requestAnimationFrame(frame);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { layoutAll(); });
+})();
+</script>
+
+</html>
