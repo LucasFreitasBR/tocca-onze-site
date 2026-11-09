@@ -13,7 +13,7 @@ Site da **tocca onze, investimentos imobiliários**, para imóveis no litoral su
 ## Repositório e deploy
 - Git na branch `main`, no GitHub da conta LucasFreitasBR: https://github.com/LucasFreitasBR/tocca-onze-site (está público desde a configuração do Netlify). O `.gitignore` deixa de fora `.taste-skill/`, a cópia local da skill (`.agents/` e `.claude/skills/`) e `dist/`. O `skills-lock.json` registra a origem da skill para reinstalar.
 - Netlify: o `netlify.toml` copia só `index.html` e `assets/` para `dist/` e publica essa pasta. Assim `CLAUDE.md`, `versoes/` e os arquivos de trabalho não ficam acessíveis no endereço público. Cada push na `main` atualiza o site.
-- Netlify: projeto `tocca-onze` no time "Tocca Onze Imobiliária", em https://tocca-onze.netlify.app. O primeiro deploy foi o commit `0423a1b`. O projeto nasceu **privado** no Netlify: quem não está logado no time recebe 401. Para abrir ao público, use "Make public" no painel do projeto.
+- Netlify: projeto `tocca-onze` no time "Tocca Onze Imobiliária", em https://tocca-onze.netlify.app. O primeiro deploy foi o commit `0423a1b`. O projeto nasceu privado no Netlify e foi aberto ao público ("Make public"); os deploy previews continuam privados ao time. Só `index.html` e `assets/` respondem; `CLAUDE.md`, `versoes/` e `netlify.toml` dão 404 no endereço público.
 
 ## O que existe
 **Paleta "Maré baixa"** (água rasa `#a8e0d8`, teal `#2a9d9f`, areia `#f4e6cc`, coral `#f07a4a`, em cerca de 41 / 26 / 18 / 15%). As cores fixas ficam em `--p-agua`, `--p-teal`, `--p-areia` e `--p-coral`, mais `--p-deep` (`#0a2629`) só para texto. Ele é um pouco mais escuro que o `#0e2f33` sugerido, para o texto sobre o teal passar de 4,5:1.
