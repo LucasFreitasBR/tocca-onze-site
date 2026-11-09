@@ -667,7 +667,7 @@ html.js .pass{display:block}
       <button class="round" id="next" aria-label="Próximo empreendimento"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 4l6 6-6 6"/></svg></button>
     </div>
   </div>
-  <p class="wrap disclaimer">O Fox Carneiros é um empreendimento real, com valores em breve e perspectivas ilustrativas. Os demais empreendimentos, imagens, preços e áreas são exemplos deste protótipo. Diária e ocupação são médias do Airbnb na cidade para o mesmo número de quartos (AirROI, out/2025 a set/2026).</p>
+  <p class="wrap disclaimer">O Fox Carneiros e o Eco Azzure Carneiros são empreendimentos reais, com valores em breve e perspectivas ilustrativas. Os demais empreendimentos, imagens, preços e áreas são exemplos deste protótipo. Diária e ocupação são médias do Airbnb na cidade para o mesmo número de quartos (AirROI, out/2025 a set/2026).</p>
 </section>
 
 <section class="sim" id="simulador">
@@ -875,6 +875,19 @@ const DEVS = [
       { src: 'assets/empreendimentos/fox-carneiros/terraco.jpg', pos: '40% 50%', alt: 'Terraço com coqueiros, jardim e mesas, com vista para o mar' },
       { src: 'assets/empreendimentos/fox-carneiros/salao.jpg', pos: '45% 50%', alt: 'Salão de festas com mesas redondas, luminárias de palha e janelas para o mar' },
       { src: 'assets/empreendimentos/fox-carneiros/fachada-dia.jpg', pos: '50% 45%', alt: 'Fachada do Fox Carneiros de dia, com varandas, ripados de madeira e coqueiros' }
+    ],
+    units: [] },
+  // Eco Azzure Carneiros: empreendimento real, com as perspectivas da incorporadora. Valores e tipologias chegam depois.
+  { id: 'eco-azzure', seed: 43, art: 'block', name: 'Eco Azzure Carneiros', region: 'carneiros', place: 'Praia dos Carneiros · Tamandaré', kind: 'Residencial com rooftop, piscina e lazer completo', delivery: 'Valores em breve',
+    photos: [
+      { src: 'assets/empreendimentos/eco-azzure-carneiros/fachada-entardecer.jpg', pos: '57% 50%', alt: 'Fachada do Eco Azzure Carneiros ao entardecer, com a torre iluminada e coqueiros em volta' },
+      { src: 'assets/empreendimentos/eco-azzure-carneiros/rooftop-vista-aerea.jpg', pos: '50% 50%', alt: 'Vista aérea do rooftop, com a piscina, o deck de madeira e o espaço gourmet' },
+      { src: 'assets/empreendimentos/eco-azzure-carneiros/piscina-noite.jpg', pos: '50% 60%', alt: 'Piscina do rooftop à noite, com espreguiçadeiras, guarda-sóis e o mar sob a lua ao fundo' },
+      { src: 'assets/empreendimentos/eco-azzure-carneiros/espaco-gourmet.jpg', pos: '45% 50%', alt: 'Espaço gourmet no rooftop à noite, com mesa de madeira, cozinha e luminárias de palha' },
+      { src: 'assets/empreendimentos/eco-azzure-carneiros/minimercado.jpg', pos: '60% 50%', alt: 'Minimercado no térreo, com prateleiras de madeira e plantas' },
+      { src: 'assets/empreendimentos/eco-azzure-carneiros/brinquedoteca.jpg', pos: '50% 50%', alt: 'Brinquedoteca com pebolim, videogame e pufes, envidraçada para o jardim' },
+      { src: 'assets/empreendimentos/eco-azzure-carneiros/academia.jpg', pos: '55% 50%', alt: 'Academia com esteiras e pesos, envidraçada para os coqueiros' },
+      { src: 'assets/empreendimentos/eco-azzure-carneiros/spa.jpg', pos: '30% 50%', alt: 'Spa com duas macas de madeira e luz do fim de tarde' }
     ],
     units: [] },
   { id: 'gales', seed: 41, art: 'flats', name: 'Galés Maragogi', region: 'maragogi', place: 'Burgalhau · Maragogi', kind: 'Flats com serviço de hotel', delivery: 'Entrega set/2027',
