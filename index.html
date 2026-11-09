@@ -332,6 +332,9 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 .m-body{padding:clamp(22px, 3vw, 40px); min-width:0}
 .m-name{font-size:var(--step-sub); margin-top:10px}
 .m-kind{color:var(--muted); margin-top:6px}
+.m-from{display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 12px; margin-top:20px; padding:14px 18px; border-radius:16px; background:var(--bg)}
+.m-from span{font-size:var(--step-ui); color:var(--muted)}
+.m-from strong{font-family:var(--f-display); font-size:var(--step-lead); font-weight:800; font-variant-numeric:tabular-nums}
 .seg{position:relative; display:flex; flex-wrap:wrap; gap:4px; padding:4px; margin-top:24px; border-radius:16px; background:var(--surface-2)}
 .seg button{position:relative; z-index:1; flex:1 1 auto; min-height:40px; padding:6px 14px; border:0; border-radius:12px; background:none; cursor:pointer; font-size:var(--step-ui); color:var(--muted); transition:color .35s}
 .seg button[aria-pressed="true"]{color:var(--ink)}
@@ -678,7 +681,7 @@ html.js .pass{display:block}
   <div class="wrap car-foot">
     <div class="car-progress"><i id="carBar"></i></div>
   </div>
-  <p class="wrap disclaimer">O Fox Carneiros, o Eco Azzure Carneiros e o Green Sea Oceanique são empreendimentos reais, com valores em breve e perspectivas ilustrativas. Os demais empreendimentos, imagens, preços e áreas são exemplos deste protótipo. Diária e ocupação são médias do Airbnb na cidade para o mesmo número de quartos (AirROI, out/2025 a set/2026).</p>
+  <p class="wrap disclaimer">O Fox Carneiros, o Eco Azzure Carneiros e o Green Sea Oceanique são empreendimentos reais, com preço inicial informado pela incorporadora, tipologias em breve e perspectivas ilustrativas. Os demais empreendimentos, imagens, preços e áreas são exemplos deste protótipo. Diária e ocupação são médias do Airbnb na cidade para o mesmo número de quartos (AirROI, out/2025 a set/2026).</p>
 </section>
 
 <section class="sim" id="simulador">
@@ -801,6 +804,7 @@ html.js .pass{display:block}
       <h2 class="m-name" data-m id="mName"></h2>
       <p class="m-place" data-m id="mPlace"></p>
       <p class="m-kind" data-m id="mKind"></p>
+      <p class="m-from" data-m id="mFrom" hidden><span>A partir de</span><strong></strong></p>
       <div class="seg" data-m id="mSeg" role="group" aria-label="Tipologia"></div>
       <div class="metrics" data-m>
         <div class="metric"><span>Preço a partir de</span><strong id="mPrice">–</strong></div>
@@ -842,7 +846,8 @@ const smooth = t => t * t * (3 - 2 * t);
 const brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
 const pct1 = v => new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(v) + '%';
 const int = v => new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 0 }).format(v);
-const short = v => v >= 1e6 ? 'R$ ' + new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 }).format(v / 1e6) + ' mi' : brl.format(v);
+const brlc = v => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: Number.isInteger(v) ? 0 : 2, maximumFractionDigits: 2 }).format(v);
+const short = v => v >= 1e6 ? 'R$ ' + new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 }).format(v / 1e6) + ' mi' : brlc(v);
 let vars = {};
 function readVars() {
   const cs = getComputedStyle(document.documentElement);
@@ -882,7 +887,8 @@ const DEVS = [
     units: [{ l: 'Loft', a: 40, p: 525000, d: 324, o: .36 }, { l: 'Loft duplex', a: 62, p: 760000, d: 407, o: .38 }] },
   // Fox Carneiros: empreendimento real, com as perspectivas da incorporadora. Valores e tipologias chegam depois:
   // enquanto units estiver vazio, card e modal mostram "em breve" e não calculam rentabilidade.
-  { id: 'fox-carneiros', seed: 37, art: 'bungalow', name: 'Fox Carneiros', region: 'carneiros', place: 'Praia dos Carneiros · Tamandaré', kind: 'Residencial com rooftop e piscina', delivery: 'Valores em breve',
+  // from: preço inicial informado (com centavos), mostrado como "a partir de" até chegarem as tipologias.
+  { id: 'fox-carneiros', seed: 37, art: 'bungalow', name: 'Fox Carneiros', region: 'carneiros', place: 'Praia dos Carneiros · Tamandaré', kind: 'Residencial com rooftop e piscina', delivery: 'Tipologias em breve', from: 175085,
     photos: [
       { src: 'assets/empreendimentos/fox-carneiros/fachada-noite.jpg', pos: '50% 38%', alt: 'Fachada do Fox Carneiros ao entardecer, com as janelas acesas e coqueiros na frente' },
       { src: 'assets/empreendimentos/fox-carneiros/piscina-rooftop.jpg', pos: '40% 50%', alt: 'Piscina no rooftop do Fox Carneiros, com deck, guarda-sóis e o mar ao fundo' },
@@ -892,7 +898,7 @@ const DEVS = [
     ],
     units: [] },
   // Eco Azzure Carneiros: empreendimento real, com as perspectivas da incorporadora. Valores e tipologias chegam depois.
-  { id: 'eco-azzure', seed: 43, art: 'block', name: 'Eco Azzure Carneiros', region: 'carneiros', place: 'Praia dos Carneiros · Tamandaré', kind: 'Residencial com rooftop, piscina e lazer completo', delivery: 'Valores em breve',
+  { id: 'eco-azzure', seed: 43, art: 'block', name: 'Eco Azzure Carneiros', region: 'carneiros', place: 'Praia dos Carneiros · Tamandaré', kind: 'Residencial com rooftop, piscina e lazer completo', delivery: 'Tipologias em breve', from: 256476.47,
     photos: [
       { src: 'assets/empreendimentos/eco-azzure-carneiros/fachada-entardecer.jpg', pos: '57% 50%', alt: 'Fachada do Eco Azzure Carneiros ao entardecer, com a torre iluminada e coqueiros em volta' },
       { src: 'assets/empreendimentos/eco-azzure-carneiros/rooftop-vista-aerea.jpg', pos: '50% 50%', alt: 'Vista aérea do rooftop, com a piscina, o deck de madeira e o espaço gourmet' },
@@ -905,7 +911,7 @@ const DEVS = [
     ],
     units: [] },
   // Green Sea Oceanique: empreendimento real em Maragogi, com as perspectivas da incorporadora. Valores e tipologias chegam depois.
-  { id: 'green-sea', seed: 47, art: 'tower', name: 'Green Sea Oceanique', region: 'maragogi', place: 'Maragogi · AL', kind: 'Resort residencial com piscinas, parque e quadras', delivery: 'Valores em breve',
+  { id: 'green-sea', seed: 47, art: 'tower', name: 'Green Sea Oceanique', region: 'maragogi', place: 'Maragogi · AL', kind: 'Resort residencial com piscinas, parque e quadras', delivery: 'Tipologias em breve', from: 280767.66,
     photos: [
       { src: 'assets/empreendimentos/green-sea-oceanique/vista-aerea-noite.jpg', pos: '50% 50%', alt: 'Vista aérea do Green Sea Oceanique ao anoitecer, com os prédios iluminados, as piscinas e a praia na frente' },
       { src: 'assets/empreendimentos/green-sea-oceanique/parque-vista-aerea.jpg', pos: '40% 50%', alt: 'Vista aérea do parque, com lago, pontes de madeira, coqueiros e quadras' },
@@ -1356,7 +1362,7 @@ function buildFly() {
   $$('.lift, .lift-shadow, .pin', plane).forEach(n => n.remove());
   lifts = REGIONS.map((reg, i) => {
     const devs = DEVS.filter(d => d.region === reg.id);
-    const prices = devs.flatMap(d => d.units.map(u => u.p)), min = prices.length ? Math.min(...prices) : 0;
+    const prices = devs.flatMap(d => d.units.length ? d.units.map(u => u.p) : d.from ? [d.from] : []), min = prices.length ? Math.min(...prices) : 0;
     const pin = document.createElement('div'); pin.className = 'pin'; plane.appendChild(pin);
     const sh = document.createElement('div'); sh.className = 'lift-shadow'; plane.appendChild(sh);
     const b = document.createElement('button'); b.className = 'lift'; b.type = 'button';
@@ -1478,6 +1484,8 @@ function renderCards() {
           <span class="dev-rows">${has
             ? `<span class="dev-row"><span>A partir de</span><strong>${brl.format(min)}</strong></span>
             <span class="dev-row"><span>Rentab. bruta estimada</span><strong>até ${pct1(bestYield(d) * 100)} a.a.</strong></span>`
+            : d.from ? `<span class="dev-row"><span>A partir de</span><strong>${brlc(d.from)}</strong></span>
+            <span class="dev-row"><span>Tipologias</span><strong>em breve</strong></span>`
             : `<span class="dev-row"><span>Valores e tipologias</span><strong>em breve</strong></span>
             <span class="dev-row"><span>Fotos do projeto</span><strong>${d.photos ? d.photos.length : 0}</strong></span>`}
           </span>
@@ -1611,6 +1619,7 @@ function selectUnit(i) {
 /* Galeria de fotos do modal: uma foto por vez, setas, contador, arrastar no celular e setas do teclado */
 const NOTE_DEFAULT = $('.m-note', panel).textContent;
 const NOTE_SOON = 'Valores, tipologias e datas serão divulgados em breve. As imagens são perspectivas ilustrativas do empreendimento.';
+const NOTE_FROM = 'Preço inicial informado pela incorporadora. Tipologias, áreas e datas serão divulgadas em breve; com elas entram a diária e a rentabilidade estimadas. As imagens são perspectivas ilustrativas do empreendimento.';
 let gal = { i: 0, n: 0 };
 function galMarkup(dev) {
   const ph = dev.photos;
@@ -1643,8 +1652,9 @@ function openModal(dev, fromEl) {
   $('#mArt').innerHTML = (dev.photos && dev.photos.length ? galMarkup(dev) : `<div class="m-art-in">${art(dev.art, dev.seed)}</div>`) + `<span class="dev-badge">${dev.delivery}</span>`;
   galBind();
   panel.classList.toggle('no-units', !hasUnits);
-  $('.m-note', panel).textContent = hasUnits ? NOTE_DEFAULT : NOTE_SOON;
-  $('#mVisit').textContent = hasUnits ? 'Agendar visita' : 'Quero saber os valores';
+  $('.m-note', panel).textContent = hasUnits ? NOTE_DEFAULT : dev.from ? NOTE_FROM : NOTE_SOON;
+  $('#mVisit').textContent = hasUnits ? 'Agendar visita' : dev.from ? 'Quero saber as tipologias' : 'Quero saber os valores';
+  const fromBox = $('#mFrom'); fromBox.hidden = hasUnits || !dev.from; if (dev.from) $('strong', fromBox).textContent = brlc(dev.from);
   $('#mPlace').textContent = dev.place; $('#mName').textContent = dev.name; $('#mKind').textContent = dev.kind;
   mSeg.innerHTML = '<span class="seg-pill"></span>' + dev.units.map((u, i) => `<button type="button" aria-pressed="false" data-u="${i}">${u.l}</button>`).join('');
   $$('button', mSeg).forEach(b => b.addEventListener('click', () => selectUnit(+b.dataset.u)));
@@ -1695,7 +1705,7 @@ $('#mVisit').addEventListener('click', () => {
   closeModal(() => {
     const regMap = { porto: 'Porto de Galinhas', carneiros: 'Carneiros', maragogi: 'Maragogi' };
     $('#f-region').value = regMap[d.region];
-    $('#f-msg').value = u ? `Quero agendar uma visita ao ${d.name} (${u.l}).` : `Quero saber valores e tipologias do ${d.name} e agendar uma visita.`;
+    $('#f-msg').value = u ? `Quero agendar uma visita ao ${d.name} (${u.l}).` : `Quero saber ${d.from ? 'as tipologias' : 'valores e tipologias'} do ${d.name} e agendar uma visita.`;
     goTo('#contato', () => $('#f-name').focus({ preventScroll: true }));
   });
 });
