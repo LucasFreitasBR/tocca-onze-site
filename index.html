@@ -353,7 +353,16 @@ html.modal-open{overflow:hidden}
 .sim-grid{display:grid; grid-template-columns:minmax(0, .9fr) minmax(0, 1.1fr); gap:clamp(32px, 6vw, 80px); align-items:start}
 .sim .h2{margin-top:14px}
 .sim-lede{margin-top:18px; color:var(--band-muted); max-width:42ch}
-.fields{display:grid; gap:26px; margin-top:40px}
+.sim-picks{display:grid; gap:10px; margin-top:32px}
+.sim-pick{display:flex; flex-wrap:wrap; gap:4px; padding:4px; border-radius:999px; background:var(--band-2); width:fit-content; max-width:100%}
+.sim-pick button{min-height:40px; padding:0 16px; border:0; border-radius:999px; background:none; cursor:pointer; font:inherit; font-size:var(--step-ui); color:var(--band-ink); transition:background-color .35s var(--ease), color .35s var(--ease)}
+.sim-pick button[aria-checked="true"]{background:var(--band-ink); color:var(--band); font-weight:500}
+.sim-pick button:focus-visible{outline:2px solid var(--sun); outline-offset:2px}
+.sim-market{display:flex; flex-wrap:wrap; gap:6px 28px; margin:8px 0 0}
+.sim-market div{display:grid; gap:2px}
+.sim-market dt{font-size:var(--step-small); color:var(--band-muted)}
+.sim-market dd{margin:0; font-size:var(--step-ui); font-weight:800; font-variant-numeric:tabular-nums}
+.fields{display:grid; gap:26px; margin-top:36px}
 .field-top{display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:12px}
 .field label{font-size:var(--step-ui)}
 .field output{font-family:var(--f-text); font-size:var(--step-ui); font-weight:800; font-variant-numeric:tabular-nums; color:var(--band-ink)}
@@ -665,11 +674,29 @@ html.js .pass{display:block}
   <div class="wrap sim-grid">
     <div>
       <h2 class="h2">Quanto o seu imóvel <em>rende</em></h2>
-      <p class="sim-lede">Ajuste os valores e veja a receita mês a mês. A sazonalidade vem da receita real por noite disponível em Porto de Galinhas: janeiro é o pico, dezembro, fevereiro e julho vêm depois, e maio, junho e agosto são os mais calmos.</p>
+      <p class="sim-lede">Escolha a região e o tamanho do imóvel e ajuste os valores para ver a receita mês a mês. A sazonalidade vem da receita real por noite disponível em <span id="simLedeCity">Ipojuca (Porto de Galinhas)</span>: <span id="simLedeTxt">janeiro é o pico, dezembro, fevereiro e julho vêm depois, e maio, junho e agosto são os mais calmos</span>.</p>
+      <div class="sim-picks">
+        <div class="sim-pick" role="radiogroup" aria-label="Região" id="simRegion">
+          <button type="button" role="radio" aria-checked="true" data-r="porto">Porto de Galinhas</button>
+          <button type="button" role="radio" aria-checked="false" data-r="carneiros">Carneiros</button>
+          <button type="button" role="radio" aria-checked="false" data-r="maragogi">Maragogi</button>
+        </div>
+        <div class="sim-pick" role="radiogroup" aria-label="Tamanho do imóvel" id="simType">
+          <button type="button" role="radio" aria-checked="false" data-t="0">Studio</button>
+          <button type="button" role="radio" aria-checked="true" data-t="1">1 quarto</button>
+          <button type="button" role="radio" aria-checked="false" data-t="2">2 quartos</button>
+          <button type="button" role="radio" aria-checked="false" data-t="3">3 quartos</button>
+        </div>
+        <dl class="sim-market" id="simMarket" aria-live="polite">
+          <div><dt>Diária média da região</dt><dd id="mk-d">R$ 647</dd></div>
+          <div><dt>Ocupação média da região</dt><dd id="mk-o">37%</dd></div>
+          <div><dt>Alta temporada</dt><dd id="mk-h">jan, fev, jul e dez</dd></div>
+        </dl>
+      </div>
       <div class="fields">
         <div class="field"><div class="field-top"><label for="sim-price">Valor do imóvel</label><output id="o-price" for="sim-price">R$ 560.000</output></div><input type="range" id="sim-price" min="250000" max="2500000" step="5000" value="560000"></div>
         <div class="field"><div class="field-top"><label for="sim-daily">Diária média</label><output id="o-daily" for="sim-daily">R$ 410</output></div><input type="range" id="sim-daily" min="150" max="2000" step="10" value="410"></div>
-        <div class="field"><div class="field-top"><label for="sim-occ">Ocupação média no ano</label><output id="o-occ" for="sim-occ">38%</output></div><input type="range" id="sim-occ" min="20" max="90" step="1" value="38"><small>Valores iniciais: média do Airbnb para 1 quarto em Porto de Galinhas, R$ 407 de diária e 38% de ocupação (AirROI, out/2025 a set/2026).</small></div>
+        <div class="field"><div class="field-top"><label for="sim-occ">Ocupação média no ano</label><output id="o-occ" for="sim-occ">38%</output></div><input type="range" id="sim-occ" min="20" max="90" step="1" value="38"><small id="simOccNote">Valores iniciais: média do Airbnb para 1 quarto em Porto de Galinhas, R$ 407 de diária e 38% de ocupação (AirROI, out/2025 a set/2026).</small></div>
         <div class="field"><div class="field-top"><label for="sim-cost">Custos operacionais</label><output id="o-cost" for="sim-cost">35%</output></div><input type="range" id="sim-cost" min="15" max="55" step="1" value="35"><small>Administração, limpeza, condomínio, IPTU, energia e taxas das plataformas.</small></div>
         <div class="field"><div class="field-top"><label for="sim-ref">Rendimento de referência</label><output id="o-ref" for="sim-ref">10,0% a.a.</output></div><input type="range" id="sim-ref" min="4" max="16" step="0.5" value="10"><small>Ajuste para a taxa atual da aplicação que você usa como comparação.</small></div>
       </div>
@@ -857,16 +884,31 @@ const DEVS = [
   { id: 'japaratinga', seed: 67, art: 'house', name: 'Japaratinga Eco Village', region: 'maragogi', place: 'Japaratinga · AL', kind: 'Casas em condomínio', delivery: 'Pronto para morar',
     units: [{ l: 'Casa 3 quartos', a: 140, p: 1650000, d: 666, o: .32 }] }
 ];
-// Peso de cada mês (jan a dez) = RevPAR mensal de Ipojuca / média do ano (AirROI, set/2025 a ago/2026).
-const SEASON = [1.90, 1.35, .97, .78, .64, .72, 1.06, .69, .77, .91, .83, 1.37];
-const SEASON_MEAN = SEASON.reduce((a, b) => a + b, 0) / 12;
+// Mercado por região, para o simulador e para a sazonalidade de cada empreendimento (AirROI, Airbnb, 12 meses até set/2026).
+// season: peso de cada mês (jan a dez) = RevPAR mensal da cidade / média do ano. high: meses de alta temporada no gráfico.
+// units: diária e ocupação médias por número de quartos. Maragogi não tem amostra de studio: usa a média de 1 quarto.
+const MARKET = {
+  porto: { name: 'Porto de Galinhas', city: 'Ipojuca', d: 647, o: .373,
+    season: [1.90, 1.35, .97, .78, .64, .72, 1.06, .69, .77, .91, .83, 1.37], high: [0, 1, 6, 11],
+    lede: 'janeiro é o pico, dezembro, fevereiro e julho vêm depois, e maio, junho e agosto são os mais calmos',
+    units: [{ l: 'Studio', d: 324, o: .36 }, { l: '1 quarto', d: 407, o: .38 }, { l: '2 quartos', d: 647, o: .39 }, { l: '3 quartos', d: 833, o: .38 }] },
+  carneiros: { name: 'Carneiros', city: 'Tamandaré', d: 753, o: .299,
+    season: [1.88, 1.25, .98, .81, .68, .68, .92, .65, .84, 1.00, 1.01, 1.32], high: [0, 1, 11],
+    lede: 'janeiro é o pico, dezembro e fevereiro vêm depois, e maio, junho e agosto são os mais calmos',
+    units: [{ l: 'Studio', d: 389, o: .28 }, { l: '1 quarto', d: 483, o: .31 }, { l: '2 quartos', d: 672, o: .31 }, { l: '3 quartos', d: 971, o: .27 }] },
+  maragogi: { name: 'Maragogi', city: 'Maragogi', d: 670, o: .32,
+    season: [1.71, 1.26, 1.09, .84, .75, .80, 1.10, .80, .81, .92, .87, 1.05], high: [0, 1, 2, 6, 11],
+    lede: 'janeiro é o pico, fevereiro, julho e março vêm depois, e a procura fica mais estável no resto do ano, com maio como o mês mais calmo',
+    units: [{ l: 'Studio', d: 311, o: .32, note: 'sem amostra de studio, usa a média de 1 quarto' }, { l: '1 quarto', d: 311, o: .32 }, { l: '2 quartos', d: 441, o: .34 }, { l: '3 quartos', d: 666, o: .32 }] }
+};
+for (const k in MARKET) { const m = MARKET[k]; m.mean = m.season.reduce((a, b) => a + b, 0) / 12; m.hi = new Set(m.high); }
 const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const MONTHS = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-const HIGH = new Set([0, 1, 6, 11]);
-function monthly(daily, occ) {
-  return SEASON.map((w, i) => { const o = Math.min(.97, occ * w / SEASON_MEAN); return { rev: daily * DAYS[i] * o, nights: DAYS[i] * o }; });
+function monthly(daily, occ, region = 'porto') {
+  const m = MARKET[region] || MARKET.porto;
+  return m.season.map((w, i) => { const o = Math.min(.97, occ * w / m.mean); return { rev: daily * DAYS[i] * o, nights: DAYS[i] * o }; });
 }
-const grossYear = (d, o) => monthly(d, o).reduce((s, m) => s + m.rev, 0);
+const grossYear = (d, o, region) => monthly(d, o, region).reduce((s, m) => s + m.rev, 0);
 
 /* ---------- Illustrations ---------- */
 let artN = 0;
@@ -1371,7 +1413,7 @@ const invCache = REGIONS.map(r => invSteady((F0 - r.y) / (F0 - F1)));
 const track = $('#track'), carVp = $('#carVp'), carBar = $('#carBar');
 let filter = 'all';
 const car = { x: 0, target: 0, min: 0, step: 300, offs: [], cards: [], drag: false, moved: false, sx: 0, st: 0, v: 0, lx: 0, lt: 0, block: false, pid: null };
-function bestYield(d) { return Math.max(...d.units.map(u => grossYear(u.d, u.o) / u.p)); }
+function bestYield(d) { return Math.max(...d.units.map(u => grossYear(u.d, u.o, d.region) / u.p)); }
 // capa do empreendimento: a primeira foto quando houver, senão a ilustração
 const devCover = (d, eager) => d.photos && d.photos.length
   ? `<img src="${d.photos[0].src}" alt="${d.photos[0].alt}" style="object-position:${d.photos[0].pos || '50% 50%'}"${eager ? '' : ' loading="lazy"'} decoding="async">`
@@ -1501,7 +1543,7 @@ function tween(el, to, fmt, dur = 750) {
 /* ---------- Modal ---------- */
 const modal = $('#modal'), panel = $('#mPanel'), backdrop = $('.modal-backdrop', modal), mSeg = $('#mSeg'), mBars = $('#mBars');
 let mDev = null, mUnit = 0, mFrom = null, lastFocus = null;
-mBars.innerHTML = SEASON.map((_, i) => `<i class="${HIGH.has(i) ? 'hi' : ''}"></i>`).join('');
+mBars.innerHTML = MONTHS.map(() => '<i></i>').join('');
 const barEls = $$('i', mBars);
 function selectUnit(i) {
   if (!mDev.units.length) return;
@@ -1509,15 +1551,16 @@ function selectUnit(i) {
   $$('button', mSeg).forEach((b, k) => b.setAttribute('aria-pressed', String(k === i)));
   const b = $$('button', mSeg)[i], sp = $('.seg-pill', mSeg);
   sp.style.width = b.offsetWidth + 'px'; sp.style.height = b.offsetHeight + 'px'; sp.style.transform = `translate(${b.offsetLeft}px, ${b.offsetTop}px)`;
-  const g = grossYear(u.d, u.o);
+  const g = grossYear(u.d, u.o, mDev.region);
   tween($('#mPrice'), u.p, v => brl.format(Math.round(v / 1000) * 1000));
   tween($('#mArea'), u.a, v => Math.round(v) + ' m²');
   tween($('#mDaily'), u.d, v => brl.format(Math.round(v)));
   tween($('#mOcc'), u.o * 100, v => Math.round(v) + '%');
   tween($('#mGross'), g, v => brl.format(Math.round(v / 100) * 100));
   tween($('#mYield'), g / u.p * 100, v => pct1(v) + ' a.a.');
-  const m = monthly(u.d, u.o), mx = Math.max(...m.map(x => x.rev));
-  barEls.forEach((el, k) => el.style.height = (m[k].rev / mx * 100).toFixed(1) + '%');
+  const m = monthly(u.d, u.o, mDev.region), mx = Math.max(...m.map(x => x.rev));
+  const hi = MARKET[mDev.region].hi;
+  barEls.forEach((el, k) => { el.style.height = (m[k].rev / mx * 100).toFixed(1) + '%'; el.classList.toggle('hi', hi.has(k)); });
 }
 /* Galeria de fotos do modal: uma foto por vez, setas, contador, arrastar no celular e setas do teclado */
 const NOTE_DEFAULT = $('.m-note', panel).textContent;
@@ -1599,7 +1642,7 @@ panel.addEventListener('pointermove', e => {
 });
 $('#mSim').addEventListener('click', () => {
   const u = mDev.units[mUnit];
-  closeModal(() => { setSim(u.p, u.d, Math.round(u.o * 100)); goTo('#simulador', () => { const o = $('#simOut'); o.classList.remove('flash'); void o.offsetWidth; o.classList.add('flash'); }); });
+  closeModal(() => { setSim(u.p, u.d, Math.round(u.o * 100), mDev.region); goTo('#simulador', () => { const o = $('#simOut'); o.classList.remove('flash'); void o.offsetWidth; o.classList.add('flash'); }); });
 });
 $('#mVisit').addEventListener('click', () => {
   const u = mDev.units[mUnit], d = mDev;
@@ -1620,9 +1663,42 @@ const ns = 'http://www.w3.org/2000/svg';
 const mk = (tag, attrs) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
 const gridG = mk('g', {}), barG = mk('g', {}), lblG = mk('g', {});
 chart.append(gridG, barG, lblG);
-const bars = SEASON.map((_, i) => { const r = mk('rect', { class: 'bar' + (HIGH.has(i) ? ' hi' : ''), x: (PL + slot * i + (slot - bw) / 2).toFixed(1), y: PT + plotH, width: bw.toFixed(1), height: 0, rx: 4 }); barG.appendChild(r); return r; });
+const bars = MONTHS.map((_, i) => { const r = mk('rect', { class: 'bar', x: (PL + slot * i + (slot - bw) / 2).toFixed(1), y: PT + plotH, width: bw.toFixed(1), height: 0, rx: 4 }); barG.appendChild(r); return r; });
 ['J','F','M','A','M','J','J','A','S','O','N','D'].forEach((m, i) => { const t = mk('text', { x: (PL + slot * i + slot / 2).toFixed(1), y: CH - 6, 'text-anchor': 'middle' }); t.textContent = m; lblG.appendChild(t); });
-let shown = SEASON.map(() => 0), targ = SEASON.map(() => 0), yMax = 1, months = [];
+let shown = MONTHS.map(() => 0), targ = MONTHS.map(() => 0), yMax = 1, months = [];
+/* Região e tamanho: a região troca a sazonalidade e os meses de alta; o tamanho preenche diária e ocupação com a média da região */
+const simR = { region: 'porto', type: 1 };
+const MON3 = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+const listPt = a => a.length > 1 ? a.slice(0, -1).join(', ') + ' e ' + a[a.length - 1] : a[0];
+function pickSet(group, attr, val) { $$('button', group).forEach(b => b.setAttribute('aria-checked', String(b.dataset[attr] === String(val)))); }
+function simRegionUi() {
+  const m = MARKET[simR.region];
+  pickSet($('#simRegion'), 'r', simR.region); pickSet($('#simType'), 't', simR.type ?? '');
+  $('#simLedeCity').textContent = m.name === m.city ? m.name : m.city + ' (' + m.name + ')'; $('#simLedeTxt').textContent = m.lede;
+  $('#mk-d').textContent = brl.format(m.d); $('#mk-o').textContent = Math.round(m.o * 100) + '%';
+  $('#mk-h').textContent = listPt(m.high.map(i => MON3[i]));
+  bars.forEach((b, i) => b.classList.toggle('hi', m.hi.has(i)));
+  const u = simR.type == null ? null : m.units[simR.type];
+  $('#simOccNote').textContent = u
+    ? `Média do Airbnb para ${u.l.toLowerCase()} em ${m.name}${m.name === m.city ? '' : ' (' + m.city + ')'}: ${brl.format(u.d)} de diária e ${Math.round(u.o * 100)}% de ocupação${u.note ? ', ' + u.note : ''} (AirROI, out/2025 a set/2026).`
+    : `Valores ajustados por você. A sazonalidade continua sendo a de ${m.name}.`;
+}
+function simPickType(t) {
+  simR.type = t; const u = MARKET[simR.region].units[t];
+  S.daily.value = clamp(Math.round(u.d / 10) * 10, +S.daily.min, +S.daily.max);
+  S.occ.value = clamp(Math.round(u.o * 100), +S.occ.min, +S.occ.max);
+}
+$$('button', $('#simRegion')).forEach(b => b.addEventListener('click', () => {
+  simR.region = b.dataset.r; if (simR.type == null) simR.type = 1;
+  simPickType(simR.type); calc();
+}));
+$$('button', $('#simType')).forEach(b => b.addEventListener('click', () => { simPickType(+b.dataset.t); calc(); }));
+// setas trocam a opção dentro de cada grupo, como num radiogroup
+['#simRegion', '#simType'].forEach(sel => $(sel).addEventListener('keydown', e => {
+  const k = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key]; if (!k) return;
+  const bs = $$('button', $(sel)), i = bs.indexOf(document.activeElement); if (i < 0) return;
+  e.preventDefault(); const n = bs[(i + k + bs.length) % bs.length]; n.focus(); n.click();
+}));
 function niceMax(v) { const p = Math.pow(10, Math.floor(Math.log10(v))); for (const m of [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10]) if (m * p >= v) return m * p; return 10 * p; }
 function drawGrid() {
   gridG.innerHTML = '';
@@ -1647,7 +1723,13 @@ bars.forEach((b, i) => {
   b.addEventListener('pointerleave', () => { bars.forEach(o => o.classList.remove('dim')); tip.classList.remove('on'); });
 });
 function fill(el) { const p = (el.value - el.min) / (el.max - el.min) * 100; el.style.setProperty('--p', p + '%'); }
-function setSim(price, daily, occ) {
+function setSim(price, daily, occ, region) {
+  if (region && MARKET[region]) {
+    simR.region = region;
+    // marca o tamanho só quando diária e ocupação são exatamente a média de um tamanho da região
+    const k = MARKET[region].units.findIndex(u => u.d === daily && Math.round(u.o * 100) === occ);
+    simR.type = k < 0 ? null : k;
+  }
   S.price.value = clamp(Math.round(price / 5000) * 5000, +S.price.min, +S.price.max);
   S.daily.value = clamp(Math.round(daily / 10) * 10, +S.daily.min, +S.daily.max);
   S.occ.value = clamp(occ, +S.occ.min, +S.occ.max);
@@ -1658,7 +1740,8 @@ function calc() {
   const price = +S.price.value, daily = +S.daily.value, occ = +S.occ.value / 100, cost = +S.cost.value / 100, ref = +S.ref.value;
   $('#o-price').textContent = brl.format(price); $('#o-daily').textContent = brl.format(daily);
   $('#o-occ').textContent = Math.round(occ * 100) + '%'; $('#o-cost').textContent = Math.round(cost * 100) + '%'; $('#o-ref').textContent = pct1(ref) + ' a.a.';
-  months = monthly(daily, occ);
+  simRegionUi();
+  months = monthly(daily, occ, simR.region);
   const gross = months.reduce((s, m) => s + m.rev, 0), nights = months.reduce((s, m) => s + m.nights, 0);
   const costs = gross * cost, net = gross - costs, y = net / price * 100;
   tween($('#r-yield'), y, v => pct1(v));
@@ -1681,6 +1764,8 @@ function chartUpdate() {
   bars.forEach((b, i) => { const h = Math.max(0, shown[i] / yMax * plotH); b.setAttribute('height', h.toFixed(1)); b.setAttribute('y', (PT + plotH - h).toFixed(1)); });
 }
 Object.values(S).forEach(el => el.addEventListener('input', calc));
+// mexer na diária ou na ocupação desmarca o tamanho: os valores deixam de ser a média
+[S.daily, S.occ].forEach(el => el.addEventListener('input', () => { simR.type = null; simRegionUi(); }));
 
 /* ---------- Process line ---------- */
 const verbs = $$('#verbs .verb').map(el => ({ el, word: $('.verb-word', el), mark: $('.verb-mark', el) }));
